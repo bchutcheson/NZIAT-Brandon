@@ -52,26 +52,22 @@ img,svg{max-width:100%;}
 .hint{font-size:.8rem;color:var(--muted);margin:.6rem 0 0;}
 .continue{margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--line);}
 
-.masthead{background:var(--navy);color:#fff;}
-.masthead .eyebrow{color:var(--teal);}
-.mast-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0;}
-.wordmark{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff;}
+.app-shell{display:flex;align-items:stretch;min-height:100vh;}
+.sidebar{background:var(--navy);color:#fff;width:270px;flex:0 0 270px;display:flex;flex-direction:column;}
+.sidebar .eyebrow{color:var(--teal);}
+.content-col{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;}
+.wordmark{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff;padding:1.25rem 1.35rem;border-bottom:1px solid #1c3f4f;}
 .wordmark .glyph{width:34px;height:34px;flex:0 0 34px;border-radius:9px;background:linear-gradient(135deg,var(--teal),#0B6F62);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:1rem;color:#fff;}
 .wordmark .wm-t{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:.02em;line-height:1.1;}
 .wordmark .wm-s{font-size:.72rem;color:var(--ice);letter-spacing:.04em;}
-.nav-toggle{display:none;background:transparent;border:1px solid #29505F;color:#fff;border-radius:var(--r-s);padding:.5rem .8rem;font:inherit;font-size:.9rem;cursor:pointer;}
-.nav-toggle:hover{background:#12384B;}
-nav.primary ul{display:flex;gap:.15rem;list-style:none;margin:0;padding:0;flex-wrap:wrap;}
-nav.primary a{display:block;font-family:var(--display);font-weight:600;font-size:1.02rem;letter-spacing:.03em;color:var(--ice);text-decoration:none;padding:.6rem .85rem;border-radius:var(--r-s);border-bottom:3px solid transparent;transition:background .14s,color .14s;}
+nav.primary ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;}
+nav.primary li{border-bottom:1px solid #1c3f4f;}
+nav.primary a{display:block;font-family:var(--display);font-weight:600;font-size:1.02rem;letter-spacing:.03em;color:var(--ice);text-decoration:none;padding:1rem 1.35rem;border-left:4px solid transparent;transition:background .14s,color .14s;}
 nav.primary a:hover{background:#12384B;color:#fff;}
-nav.primary a[aria-current="page"]{color:#fff;border-bottom-color:var(--teal);background:#12384B;}
+nav.primary a[aria-current="page"]{color:#fff;background:#12384B;border-left-color:var(--teal);}
 @media (max-width:880px){
-  .nav-toggle{display:block;}
-  nav.primary{display:none;padding-bottom:.75rem;}
-  nav.primary.open{display:block;}
-  nav.primary ul{flex-direction:column;gap:.1rem;}
-  nav.primary a{border-bottom:none;border-left:3px solid transparent;}
-  nav.primary a[aria-current="page"]{border-left-color:var(--teal);}
+  .app-shell{flex-direction:column;}
+  .sidebar{width:100%;flex:0 0 auto;}
 }
 
 .hero{background:var(--navy);color:#fff;padding:2rem 0 2.5rem;position:relative;overflow:hidden;}
@@ -229,7 +225,7 @@ svg .n{font-size:11px;font-weight:700;fill:var(--teal-d);}
 svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
 
 @media print{
-  .masthead nav,.nav-toggle,.toolbar,.skip,.side,.pagernav{display:none!important;}
+  .sidebar nav,.toolbar,.skip,.side,.pagernav{display:none!important;}
   .view[hidden]{display:block!important;}
   .hero{background:#fff;color:#000;}
   .hero h1,.hero .lede,.hero .byline{color:#000;}
@@ -243,15 +239,12 @@ svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
 
 <a class="skip" href="#main">Skip to main content</a>
 
-<div class="masthead on-dark">
-  <div class="wrap">
-    <div class="mast-top">
-      <a class="wordmark" href="#/" aria-label="NZIAT operating model — home">
-        <span class="glyph" aria-hidden="true">NZ</span>
-        <span><span class="wm-t">NZIAT</span><br><span class="wm-s">Proposed operating model</span></span>
-      </a>
-      <button class="nav-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="primaryNav">Menu</button>
-    </div>
+<div class="app-shell">
+  <aside class="sidebar on-dark" aria-label="Site header and primary navigation">
+    <a class="wordmark" href="#/" aria-label="NZIAT operating model — home">
+      <span class="glyph" aria-hidden="true">NZ</span>
+      <span><span class="wm-t">NZIAT</span><br><span class="wm-s">Proposed operating model</span></span>
+    </a>
     <nav class="primary" id="primaryNav" aria-label="Primary">
       <ul>
         <li><a href="#/" data-route="/">Overview</a></li>
@@ -261,42 +254,44 @@ svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
         <li><a href="#/s/governance" data-route="/s/governance">Governance</a></li>
       </ul>
     </nav>
+  </aside>
+
+  <div class="content-col">
+    <p class="sr" role="status" aria-live="polite" id="announcer"></p>
+
+    <main id="main"><div id="viewRoot"></div></main>
+
+    <footer>
+      <div class="wrap">
+        <p class="eyebrow">New Zealand Institute for Advanced Technology</p>
+        <div class="footgrid">
+          <div>
+            <h4>Navigate</h4>
+            <ul>
+              <li><a href="#/">Overview</a></li>
+              <li><a href="#/s/strategy">Strategy</a></li>
+              <li><a href="#/s/capital">Capital</a></li>
+              <li><a href="#/s/organisation">Organisation</a></li>
+              <li><a href="#/s/governance">Governance</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Utility</h4>
+            <ul>
+              <li><a href="#/all">All frameworks (searchable index)</a></li>
+              <li><a href="#/evidence">Evidence, assumptions and design choices</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Status of this material</h4>
+            <p>This is a proposed operating model, prepared as a candidate working draft, July 2026. The maturity of each element is stated on its page. No element should be read as approved by the Board unless stated.</p>
+          </div>
+        </div>
+        <p class="foot-rule">Thresholds, delegation levels and remuneration bands set out in this operating model are recommendations calibrated to a fund of approximately $58 million a year, and remain subject to Board decision. Intellectual property positions require legal review before adoption. Further detail on the evidence and assumptions underlying the model is set out under <a href="#/evidence">Evidence, assumptions and design choices</a>.</p>
+      </div>
+    </footer>
   </div>
 </div>
-
-<p class="sr" role="status" aria-live="polite" id="announcer"></p>
-
-<main id="main"><div id="viewRoot"></div></main>
-
-<footer>
-  <div class="wrap">
-    <p class="eyebrow">New Zealand Institute for Advanced Technology</p>
-    <div class="footgrid">
-      <div>
-        <h4>Navigate</h4>
-        <ul>
-          <li><a href="#/">Overview</a></li>
-          <li><a href="#/s/strategy">Strategy</a></li>
-          <li><a href="#/s/capital">Capital</a></li>
-          <li><a href="#/s/organisation">Organisation</a></li>
-          <li><a href="#/s/governance">Governance</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Utility</h4>
-        <ul>
-          <li><a href="#/all">All frameworks (searchable index)</a></li>
-          <li><a href="#/evidence">Evidence, assumptions and design choices</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Status of this material</h4>
-        <p>This is a proposed operating model, prepared as a candidate working draft, July 2026. The maturity of each element is stated on its page. No element should be read as approved by the Board unless stated.</p>
-      </div>
-    </div>
-    <p class="foot-rule">Thresholds, delegation levels and remuneration bands set out in this operating model are recommendations calibrated to a fund of approximately $58 million a year, and remain subject to Board decision. Intellectual property positions require legal review before adoption. Further detail on the evidence and assumptions underlying the model is set out under <a href="#/evidence">Evidence, assumptions and design choices</a>.</p>
-  </div>
-</footer>
 
 <script>
 /* ============================================================
@@ -1045,19 +1040,12 @@ function render() {
     window.scrollTo({ top: 0, behavior: 'auto' });
   }
 
-  const nav = $('#primaryNav'), tgl = $('#navToggle');
-  if (nav && nav.classList.contains('open')) { nav.classList.remove('open'); tgl.setAttribute('aria-expanded', 'false'); }
 }
 
 /* ============================================================
    INIT
    ============================================================ */
 (function init() {
-  const tgl = $('#navToggle'), nav = $('#primaryNav');
-  tgl.addEventListener('click', function () { const open = nav.classList.toggle('open'); tgl.setAttribute('aria-expanded', String(open)); });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && nav.classList.contains('open')) { nav.classList.remove('open'); tgl.setAttribute('aria-expanded', 'false'); tgl.focus(); }
-  });
   window.addEventListener('hashchange', render);
   render();
 })();

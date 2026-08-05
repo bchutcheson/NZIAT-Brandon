@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NZIAT's proposed operating model: how national priorities are translated into missions, programmes, investment, commercialisation and governance.">
+<title>NZIAT — Proposed operating model</title>
+
+<!-- ============================================================
+     1. DESIGN TOKENS
+     Self-contained: no external fonts, scripts or stylesheets.
+     ============================================================ -->
+<style>
+:root{
+  --navy:#0B2434; --navy-2:#0F3346; --navy-3:#081B28;
+  --teal:#0FA893; --teal-d:#076F60; --teal-l:#E6F4F1;
+  --ice:#CFE8E3;
+  --ink:#142C39; --body:#33454F; --muted:#5F7580;
+  --line:#D3DFE4; --line-2:#EAF0F2;
+  --paper:#FFFFFF; --paper-2:#F7FAFB; --tint:#EEF6F4;
+  --gold:#8A6414; --gold-bg:#FBF4E4; --gold-line:#E8D5A8;
+  --slate:#54616B; --slate-bg:#EEF1F2; --slate-line:#D7DEE1;
+  --display:"Barlow Condensed","Oswald","Helvetica Neue Condensed",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --r-s:8px; --r-m:12px; --r-l:16px; --r-pill:999px;
+  --shadow:0 1px 2px rgba(11,36,52,.05),0 8px 24px -12px rgba(11,36,52,.18);
+  --shadow-h:0 2px 4px rgba(11,36,52,.07),0 16px 32px -14px rgba(11,36,52,.28);
+  --maxw:1140px;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important;}
+}
+body{margin:0;font-family:var(--sans);color:var(--body);background:var(--paper);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:var(--display);color:var(--navy);line-height:1.14;margin:0;font-weight:700;letter-spacing:.005em;}
+p{margin:0 0 1rem;max-width:78ch;}
+ul,ol{margin:0 0 1rem;padding-left:1.25rem;}
+li{margin-bottom:.45rem;}
+a{color:var(--teal-d);}
+img,svg{max-width:100%;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1rem,4vw,2rem);}
+:focus{outline:none;}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:4px;}
+.on-dark :focus-visible{outline-color:#7FE0D0;}
+.skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--teal);color:#fff;padding:.75rem 1.25rem;font-weight:600;border-radius:0 0 var(--r-s) 0;text-decoration:none;}
+.skip:focus{left:0;}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
+.eyebrow{font-family:var(--display);font-weight:600;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-d);}
+.foot-rule{margin-top:1.5rem;border-top:1px solid #24485B;padding-top:1rem;}
+.hint{font-size:.8rem;color:var(--muted);margin:.6rem 0 0;}
+.continue{margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--line);}
+
+.masthead{background:var(--navy);color:#fff;}
+.masthead .eyebrow{color:var(--teal);}
+.mast-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0;}
+.wordmark{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff;}
+.wordmark .glyph{width:34px;height:34px;flex:0 0 34px;border-radius:9px;background:linear-gradient(135deg,var(--teal),#0B6F62);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:1rem;color:#fff;}
+.wordmark .wm-t{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:.02em;line-height:1.1;}
+.wordmark .wm-s{font-size:.72rem;color:var(--ice);letter-spacing:.04em;}
+.nav-toggle{display:none;background:transparent;border:1px solid #29505F;color:#fff;border-radius:var(--r-s);padding:.5rem .8rem;font:inherit;font-size:.9rem;cursor:pointer;}
+.nav-toggle:hover{background:#12384B;}
+nav.primary ul{display:flex;gap:.15rem;list-style:none;margin:0;padding:0;flex-wrap:wrap;}
+nav.primary a{display:block;font-family:var(--display);font-weight:600;font-size:1.02rem;letter-spacing:.03em;color:var(--ice);text-decoration:none;padding:.6rem .85rem;border-radius:var(--r-s);border-bottom:3px solid transparent;transition:background .14s,color .14s;}
+nav.primary a:hover{background:#12384B;color:#fff;}
+nav.primary a[aria-current="page"]{color:#fff;border-bottom-color:var(--teal);background:#12384B;}
+@media (max-width:880px){
+  .nav-toggle{display:block;}
+  nav.primary{display:none;padding-bottom:.75rem;}
+  nav.primary.open{display:block;}
+  nav.primary ul{flex-direction:column;gap:.1rem;}
+  nav.primary a{border-bottom:none;border-left:3px solid transparent;}
+  nav.primary a[aria-current="page"]{border-left-color:var(--teal);}
+}
+
+.hero{background:var(--navy);color:#fff;padding:2rem 0 2.5rem;position:relative;overflow:hidden;}
+.hero::after{content:"";position:absolute;right:-120px;top:-160px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(15,168,147,.20),rgba(15,168,147,0) 70%);pointer-events:none;}
+.hero h1{font-size:clamp(2rem,5vw,3.15rem);color:#fff;max-width:22ch;margin:.5rem 0 .9rem;}
+.hero .lede{color:var(--ice);font-size:clamp(1rem,1.6vw,1.12rem);max-width:66ch;}
+.hero .byline{margin-top:1.1rem;color:#93AEBB;font-size:.85rem;max-width:70ch;}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:.7rem;margin-top:1.6rem;}
+.stat{background:var(--navy-3);border:1px solid #24485B;border-radius:var(--r-m);padding:.85rem 1rem;}
+.stat b{display:block;font-family:var(--display);font-size:1.7rem;color:#fff;line-height:1;}
+.stat span{display:block;font-size:.76rem;color:var(--ice);margin-top:.3rem;}
+
+main{padding-bottom:4rem;}
+.view{padding-top:2.4rem;}
+.view[hidden]{display:none;}
+.section-head{margin-bottom:1.2rem;}
+.section-head h2{font-size:clamp(1.55rem,3.1vw,2rem);margin:.3rem 0 .5rem;}
+.section-head p{color:var(--muted);}
+.note{background:var(--gold-bg);border:1px solid var(--gold-line);color:var(--gold);border-radius:var(--r-m);padding:1rem 1.15rem;font-size:.94rem;margin:1.2rem 0;}
+.note strong{color:#6B4E0F;}
+.callout{background:var(--tint);border-left:4px solid var(--teal);border-radius:0 var(--r-m) var(--r-m) 0;padding:1rem 1.15rem;font-size:.96rem;color:var(--teal-d);margin:1.2rem 0;}
+.crumbs{font-size:.84rem;color:var(--muted);margin-bottom:.9rem;}
+.crumbs a{color:var(--teal-d);text-decoration:none;}
+.crumbs a:hover{text-decoration:underline;}
+.crumbs span{margin:0 .4rem;color:var(--line);}
+
+.tag{font-size:.72rem;letter-spacing:.03em;border-radius:var(--r-pill);padding:.2rem .65rem;border:1px solid var(--line);color:var(--muted);background:var(--paper-2);display:inline-block;}
+.status-concept{background:var(--slate-bg);border-color:var(--slate-line);color:var(--slate);}
+.status-developed{background:var(--tint);border-color:#BFE3DB;color:var(--teal-d);}
+.status-detailed{background:#E7ECF3;border-color:#C3D0E0;color:#2D4A6B;}
+.status-board{background:var(--gold-bg);border-color:var(--gold-line);color:var(--gold);}
+.status-legal{background:#FBEFEF;border-color:#E9C9C9;color:#9A3E3E;}
+
+.flowcard{border:1px solid var(--line);border-radius:var(--r-l);padding:1.1rem 1rem .6rem;background:var(--paper);box-shadow:var(--shadow);margin:1.4rem 0;}
+.domaingrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;list-style:none;padding:0;margin:0;}
+.dcard{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-l);padding:1.15rem 1.25rem;transition:transform .14s,box-shadow .14s,border-color .14s;}
+.dcard:hover{transform:translateY(-3px);box-shadow:var(--shadow-h);border-color:#BFE3DB;}
+.dcard .dnum{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.16em;color:var(--teal-d);}
+.dcard h3{font-size:1.24rem;margin:.3rem 0 .4rem;}
+.dcard p{font-size:.88rem;color:var(--muted);margin:0 0 .7rem;}
+.dcard .children{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.6rem;}
+.dcard .children span{font-size:.72rem;background:var(--tint);color:var(--teal-d);border-radius:var(--r-pill);padding:.15rem .55rem;}
+.dcard .go{font-size:.85rem;color:var(--teal-d);font-weight:600;margin-top:auto;}
+.dcard:hover .go{text-decoration:underline;}
+
+.testgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;list-style:none;padding:0;margin:0;}
+.testgrid li{border:1px solid var(--line);border-radius:var(--r-m);padding:.9rem 1rem;font-size:.9rem;background:var(--paper-2);}
+.testgrid li a{font-size:.8rem;display:inline-block;margin-top:.4rem;}
+
+.routegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem;}
+.route{border:1px solid var(--line);border-radius:var(--r-m);padding:1rem 1.1rem;background:var(--paper);}
+.route .rt{font-family:var(--display);font-weight:700;font-size:.85rem;color:var(--teal-d);letter-spacing:.05em;}
+.route p{font-size:.87rem;margin:.35rem 0 .5rem;}
+.route a{font-size:.85rem;font-weight:600;}
+
+.domainblock{border-top:1px solid var(--line-2);padding:1.6rem 0;scroll-margin-top:16px;}
+.domainblock:first-of-type{border-top:none;}
+.domainblock .dhead{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;margin-bottom:.3rem;}
+.domainblock .dhead .dnum{font-family:var(--display);font-weight:700;font-size:.85rem;color:var(--teal-d);letter-spacing:.12em;}
+.domainblock h3{font-size:1.5rem;}
+.domainblock > p{color:var(--muted);font-size:.94rem;margin-bottom:1rem;}
+.complist{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.9rem;list-style:none;padding:0;margin:0;}
+.ccard{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:var(--r-m);padding:1rem 1.1rem;background:var(--paper);transition:border-color .14s,background .14s;}
+.ccard:hover{border-color:var(--teal);background:var(--tint);}
+.ccard .cnum{font-family:var(--display);font-weight:700;font-size:.76rem;color:var(--teal-d);letter-spacing:.1em;}
+.ccard h4{font-size:1.08rem;margin:.25rem 0 .3rem;}
+.ccard p{font-size:.85rem;color:var(--muted);margin:0 0 .5rem;}
+
+.detail-head{border-bottom:2px solid var(--navy);padding-bottom:1.05rem;margin-bottom:1.4rem;}
+.detail-head h2{font-size:clamp(1.7rem,3.8vw,2.4rem);margin:.3rem 0 .5rem;}
+.detail-head .sub{font-size:1.03rem;color:var(--body);max-width:74ch;}
+.meta-row{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.85rem;align-items:center;}
+.meta-row .owner{font-size:.82rem;color:var(--muted);}
+.detail-body{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:2rem;align-items:start;}
+@media (max-width:900px){.detail-body{grid-template-columns:1fr;}}
+.detail-body h3{font-size:1.28rem;margin:1.7rem 0 .55rem;}
+.detail-body h3:first-child{margin-top:0;}
+.side{position:sticky;top:1rem;display:flex;flex-direction:column;gap:1rem;}
+.panel{border:1px solid var(--line);border-radius:var(--r-l);padding:1.05rem 1.15rem;background:var(--paper-2);}
+.panel h4{font-size:.8rem;font-family:var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);margin-bottom:.65rem;}
+.figlist{list-style:none;padding:0;margin:0;}
+.figlist li{display:flex;justify-content:space-between;gap:.8rem;border-bottom:1px dashed var(--line);padding:.4rem 0;font-size:.87rem;}
+.figlist li:last-child{border-bottom:none;}
+.figlist b{font-family:var(--display);font-size:1.03rem;color:var(--navy);white-space:nowrap;}
+.btn{display:inline-flex;align-items:center;gap:.5rem;justify-content:center;background:var(--teal-d);color:#fff;text-decoration:none;font-weight:600;font-size:.92rem;border:1px solid var(--teal-d);border-radius:var(--r-s);padding:.65rem 1.1rem;transition:background .14s;}
+.btn:hover{background:#055A4D;}
+.btn.ghost{background:transparent;color:var(--teal-d);}
+.btn.ghost:hover{background:var(--tint);}
+ol.contents{list-style:none;padding:0;counter-reset:c;}
+ol.contents li{counter-increment:c;position:relative;padding-left:2rem;margin-bottom:.5rem;}
+ol.contents li::before{content:counter(c,decimal-leading-zero);position:absolute;left:0;top:.1rem;font-family:var(--display);font-weight:700;font-size:.8rem;color:var(--teal-d);letter-spacing:.05em;}
+.testlist{list-style:none;padding:0;}
+.testlist li{position:relative;padding-left:1.6rem;margin-bottom:.6rem;}
+.testlist li::before{content:"?";position:absolute;left:0;top:-.05rem;font-family:var(--display);font-weight:700;color:var(--gold);}
+.evidlink{font-size:.85rem;display:inline-block;margin:.2rem 0 1rem;}
+.pagernav{display:flex;justify-content:space-between;gap:1rem;margin-top:2.2rem;padding-top:1.2rem;border-top:1px solid var(--line);flex-wrap:wrap;}
+.pagernav a{text-decoration:none;font-size:.88rem;max-width:32%;}
+.pagernav .pn-label{display:block;font-size:.72rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;}
+.pagernav .pn-mid{text-align:center;}
+@media (max-width:640px){.pagernav a{max-width:100%;}.pagernav{flex-direction:column;text-align:left;}}
+
+.toolbar{display:flex;flex-wrap:wrap;gap:.8rem;align-items:flex-end;justify-content:space-between;margin:1.4rem 0 1.1rem;}
+.filters{display:flex;flex-wrap:wrap;gap:.4rem;}
+.filter{background:var(--paper);border:1px solid var(--line);color:var(--body);border-radius:var(--r-pill);padding:.4rem .9rem;font:inherit;font-size:.86rem;cursor:pointer;transition:background .14s,border-color .14s,color .14s;}
+.filter:hover{border-color:var(--teal);background:var(--tint);}
+.filter[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff;}
+.search label{display:block;font-size:.78rem;color:var(--muted);margin-bottom:.25rem;}
+.search input{font:inherit;font-size:.92rem;padding:.5rem .8rem;border:1px solid var(--line);border-radius:var(--r-s);min-width:230px;background:var(--paper);color:var(--ink);}
+.search input:hover{border-color:var(--teal);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;list-style:none;padding:0;margin:0;}
+.card{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-l);padding:1.2rem 1.3rem;transition:transform .14s,box-shadow .14s,border-color .14s;}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-h);border-color:#BFE3DB;}
+.card-top{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem;}
+.card .cnum{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.14em;color:var(--teal-d);}
+.card h3{font-size:1.2rem;margin:.35rem 0 .4rem;}
+.card .sub{font-size:.88rem;color:var(--muted);margin:0 0 .5rem;flex:1 0 auto;}
+.card .go{font-size:.85rem;color:var(--teal-d);font-weight:600;margin-top:.6rem;}
+.card:hover .go{text-decoration:underline;}
+.empty{border:1px dashed var(--line);border-radius:var(--r-m);padding:2rem;text-align:center;color:var(--muted);grid-column:1/-1;}
+
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r-m);margin:1rem 0 1.5rem;}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:600px;}
+caption{text-align:left;font-size:.85rem;color:var(--muted);padding:.6rem .8rem;}
+th,td{text-align:left;vertical-align:top;padding:.7rem .85rem;border-bottom:1px solid var(--line-2);}
+thead th{background:var(--navy);color:#fff;font-family:var(--display);font-weight:600;font-size:.92rem;letter-spacing:.04em;position:sticky;top:0;}
+tbody th{font-weight:600;color:var(--ink);width:28%;}
+tbody tr:nth-child(even){background:var(--paper-2);}
+tbody tr:hover{background:var(--tint);}
+td a{word-break:break-word;font-size:.82rem;}
+td.lands{color:var(--teal-d);}
+.tier{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.06em;border-radius:var(--r-pill);padding:.15rem .6rem;}
+.tier.t1{background:var(--teal-l);color:var(--teal-d);}
+.tier.t2{background:#E9F0F4;color:#3A5A6B;}
+.tier.t3{background:var(--gold-bg);color:var(--gold);}
+
+footer{background:var(--navy);color:#93AEBB;padding:2rem 0 2.5rem;font-size:.85rem;}
+footer .eyebrow{color:var(--teal);}
+footer p{max-width:88ch;margin:.6rem 0 0;}
+footer a{color:var(--ice);}
+.footgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:1.25rem;}
+.footgrid h4{color:#fff;font-size:.95rem;margin-bottom:.5rem;}
+.footgrid ul{list-style:none;padding:0;margin:0;}
+.footgrid li{margin-bottom:.35rem;}
+.footgrid a{text-decoration:none;}
+.footgrid a:hover{text-decoration:underline;color:#fff;}
+
+figure.dia{margin:1.2rem 0;border:1px solid var(--line);border-radius:var(--r-l);padding:1rem .9rem .6rem;background:var(--paper);}
+figure.dia figcaption{font-size:.84rem;color:var(--muted);margin-top:.5rem;padding:0 .25rem;}
+svg text{font-family:var(--sans);}
+svg .t{font-size:13px;font-weight:600;fill:var(--navy);}
+svg .tw{font-size:13px;font-weight:600;fill:#fff;}
+svg .s{font-size:11px;fill:var(--muted);}
+svg .sw{font-size:11px;fill:var(--ice);}
+svg .n{font-size:11px;font-weight:700;fill:var(--teal-d);}
+svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
+
+@media print{
+  .masthead nav,.nav-toggle,.toolbar,.skip,.side,.pagernav{display:none!important;}
+  .view[hidden]{display:block!important;}
+  .hero{background:#fff;color:#000;}
+  .hero h1,.hero .lede,.hero .byline{color:#000;}
+  .detail-body{grid-template-columns:1fr;}
+  .card,.dcard,.ccard,figure.dia,table{break-inside:avoid;}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:.75em;color:#555;}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<div class="masthead on-dark">
+  <div class="wrap">
+    <div class="mast-top">
+      <a class="wordmark" href="#/" aria-label="NZIAT operating model — home">
+        <span class="glyph" aria-hidden="true">NZ</span>
+        <span><span class="wm-t">NZIAT</span><br><span class="wm-s">Proposed operating model</span></span>
+      </a>
+      <button class="nav-toggle" type="button" id="navToggle" aria-expanded="false" aria-controls="primaryNav">Menu</button>
+    </div>
+    <nav class="primary" id="primaryNav" aria-label="Primary">
+      <ul>
+        <li><a href="#/" data-route="/">Overview</a></li>
+        <li><a href="#/s/strategy" data-route="/s/strategy">Strategy</a></li>
+        <li><a href="#/s/capital" data-route="/s/capital">Capital</a></li>
+        <li><a href="#/s/organisation" data-route="/s/organisation">Organisation</a></li>
+        <li><a href="#/s/governance" data-route="/s/governance">Governance</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<p class="sr" role="status" aria-live="polite" id="announcer"></p>
+
+<main id="main"><div id="viewRoot"></div></main>
+
+<footer>
+  <div class="wrap">
+    <p class="eyebrow">New Zealand Institute for Advanced Technology</p>
+    <div class="footgrid">
+      <div>
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#/">Overview</a></li>
+          <li><a href="#/s/strategy">Strategy</a></li>
+          <li><a href="#/s/capital">Capital</a></li>
+          <li><a href="#/s/organisation">Organisation</a></li>
+          <li><a href="#/s/governance">Governance</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Utility</h4>
+        <ul>
+          <li><a href="#/all">All frameworks (searchable index)</a></li>
+          <li><a href="#/evidence">Evidence, assumptions and design choices</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Status of this material</h4>
+        <p>This is a proposed operating model, prepared as a candidate working draft, July 2026. The maturity of each element is stated on its page. No element should be read as approved by the Board unless stated.</p>
+      </div>
+    </div>
+    <p class="foot-rule">Thresholds, delegation levels and remuneration bands set out in this operating model are recommendations calibrated to a fund of approximately $58 million a year, and remain subject to Board decision. Intellectual property positions require legal review before adoption. Further detail on the evidence and assumptions underlying the model is set out under <a href="#/evidence">Evidence, assumptions and design choices</a>.</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   DATA — SECTIONS (primary nav)
+   ============================================================ */
+const SECTIONS = [
+  { id:'strategy',     name:'Strategy',     blurb:'Sets out what NZIAT exists to achieve and how national priorities are translated into defined missions.', domains:['mandate','firstyear','missions'] },
+  { id:'capital',      name:'Capital',      blurb:'Governs how capital is committed, monitored, reallocated and converted into commercial and national value.', domains:['capital','commercial'] },
+  { id:'organisation', name:'Organisation', blurb:'Sets out the structure, roles and leadership required to deliver missions and programmes.', domains:['organisation'] },
+  { id:'governance',   name:'Governance',   blurb:'Defines how decisions are made, evidenced, delegated and held accountable.', domains:['governance'] }
+];
+
+/* ============================================================
+   DATA — DOMAINS (7)
+   ============================================================ */
+const DOMAINS = [
+  { id:'mandate',      num:'1', name:'Mandate and outcomes',                       blurb:'Defines NZIAT\u2019s purpose and the outcomes that would indicate success.',                                   children:['vision'] },
+  { id:'firstyear',    num:'2', name:'First-year plan',                            blurb:'Sets out how NZIAT would establish its operating foundations within the first hundred days and its first year.', children:['first100','opplan'] },
+  { id:'missions',     num:'3', name:'Mission selection and origination',          blurb:'Explains how national challenges are translated into missions, and how investable opportunities are identified.', children:['missiondev','discovery'] },
+  { id:'capital',      num:'4', name:'Capital allocation and portfolio management',blurb:'Governs how capital is committed, staged, monitored, reallocated and closed.',                    children:['investment','portfolio','programme'] },
+  { id:'commercial',   num:'5', name:'Commercialisation and retained value',       blurb:'Explains how research is converted into licences, ventures, partnerships and retained national value.', children:['commercialisation'] },
+  { id:'organisation', num:'6', name:'Organisation and leadership',                blurb:'Sets out the structure, roles and leadership model required to deliver missions and programmes.',               children:['org','missiondirector'] },
+  { id:'governance',   num:'7', name:'Governance and assurance',                   blurb:'Defines decision rights, evidence requirements, and how conflicts and accountability are managed.',       children:['committee'] }
+];
+
+/* ============================================================
+   DATA — COMPONENTS (12)
+   ============================================================ */
+const COMPONENTS = [
+  { id:'vision', title:'Vision and mandate', owner:'Chief Executive',
+    status:'developed', doc:'NZIAT vision and mandate statement', site:null, evidence:false,
+    sub:'NZIAT\u2019s purpose as an active investor and system orchestrator for advanced technology.',
+    purpose:'NZIAT exists to convert frontier research into national capability, including firms, intellectual property, skilled talent, industry partnerships, exports and retained economic value. It would operate as an active investor and system orchestrator, not solely as a grant administrator, with its priorities and investment decisions accountable to the Board and the public.',
+    diagram:'vision',
+    how:[
+      'Fund what is too uncertain for conventional private capital but too strategically important for New Zealand to forgo.',
+      'The technologies involved \u2014 AI, quantum, synthetic biology and advanced materials \u2014 support the strategy; they are not the strategy itself.',
+      'Resist drifting into a broad grant programme, a duplicate institution, or a short-horizon commercial fund.',
+      'Measure success by conversion and retained value, never by activity counts.'
+    ],
+    figures:[['$231m','First mandate, four years'],['~$58m','Deployable per year'],['4','Missions']],
+    decisions:['The distinction between an active system orchestrator and a broad grant programme depends on ongoing Board oversight rather than being fixed at the outset.','Success by year four would be measured through evidence of conversion \u2014 concentrated investment in credible priorities, a trusted decision-making system, private co-investment secured, and value retained in New Zealand \u2014 rather than through levels of funded activity.'],
+    test:['Is the mandate concentrated enough, or does it still read as a technology list?','What would falsify this vision within two years, and who is watching for it?']
+  },
+  { id:'first100', title:'The first 100 days', owner:'Chief Executive',
+    status:'developed', doc:'NZIAT first-year implementation plan (summary)', site:null, evidence:false,
+    sub:'How the mandate would be confirmed, the decision system established, and early priorities set.',
+    purpose:'The greatest risk in the first phase is spending two years designing the institution. The first 100 days must build confidence \u2014 in the Board, the ecosystem and the public \u2014 without pre-empting a strategy the Board has not yet approved.',
+    diagram:'first100',
+    how:[
+      'Days 1\u201330: confirm mandate, delegations and risk appetite; map every live commitment.',
+      'Days 31\u201360: test the strategic thesis with the ecosystem; design the investment decision system.',
+      'Days 61\u2013100: bring an integrated strategy, confirmed missions and first challenge statements to the Board.',
+      'Engage stakeholders in a defined sequence: the Board and existing commitments first, with the wider research and industry network engaged in parallel.'
+    ],
+    figures:[['100','Days to a Board decision point'],['1 wk','To a no-surprises cadence']],
+    decisions:['No irreversible commitment is made before the Board has approved the decision system.','M\u0101ori partnership is engaged as structural to investment design from day one, not as late consultation.'],
+    test:['Does the 100-day sequence commit anything irreversible before the decision system is Board-approved?','Is the stakeholder order \u2014 Board and inheritance first \u2014 the sequence the Board itself would choose?']
+  },
+  { id:'opplan', title:'Year-one operational plan', owner:'Chief Executive',
+    status:'developed', doc:'Chief Executive\u2019s Operational Plan', site:null, evidence:true,
+    sub:'How strategic direction would be converted into an operating model, roadmap and control system.',
+    purpose:'Translates the strategy into an executable operating model, organisation design, quarterly roadmap and control system for the first year \u2014 grounded in the evidence on how effective frontier-technology agencies operate, adapted to NZIAT\u2019s scale and inherited commitments.',
+    diagram:'roadmap',
+    how:[
+      'Around two-thirds of the first mandate is already committed to inherited programmes, so the first year focuses as much on managing these to a consistent standard as on making new commitments.',
+      'Organise around missions rather than functions, so judgement sits with empowered mission leadership.',
+      'Draws on the operating practices of comparable international agencies \u2014 empowered leadership and active investment gates \u2014 adapted to New Zealand\u2019s scale rather than replicated at their scale.',
+      'Report performance, risk and opex quarterly against a small, fixed set of measures.'
+    ],
+    figures:[['4','Quarters of accountable milestones'],['8','Recommended changes to the original proposition'],['12\u201315%','Central opex discipline']],
+    decisions:['Eight specific changes to the original proposition are recommended, including two-to-three empowered Mission Directors in place of five functional directorates.','The single most important year-one milestone is the first evidence-based stop, executed respectfully and explained publicly.'],
+    test:['Which of the eight recommended changes to the original proposition does the Board still need to test?','Is the opex ceiling realistic once mission-team delivery costs are counted in?']
+  },
+  { id:'missiondev', title:'Mission Development Framework', owner:'Chief Executive',
+    status:'detailed', doc:'Mission Development Framework', site:'NZIAT_Operating_System_Frameworks.html', evidence:true,
+    sub:'How missions would be identified, approved, reviewed and closed.',
+    purpose:'Missions are NZIAT\u2019s largest commitments of capital and credibility, so the process that creates them is deliberately slower and more evidenced than the process that funds anything inside them. It also governs the harder discipline: how a mission ends.',
+    diagram:'lenses',
+    how:[
+      'A mission is defined by the problem attacked and the value built \u2014 not by a technology label.',
+      'Candidates emerge only where global trajectory, New Zealand capability and national need overlap.',
+      'Six prioritisation tests, each with a stated disqualifying answer.',
+      'A funded, time-boxed discovery phase (four to six months) precedes any mission case.',
+      'Approval of a mission is simultaneously approval of its expiry conditions \u2014 the two are not separable.'
+    ],
+    figures:[['6','Prioritisation tests'],['4\u20136 mths','Funded discovery phase'],['\u226415pp','Mission case length']],
+    decisions:['Adding a fifth mission requires new appropriation or the closure of an existing one.','Discovery must be capable of concluding \u201Cdo not proceed\u201D \u2014 a process that never has is not a discovery process.'],
+    test:['Could a fifth mission be added without breaching the discipline that adding one requires closing another?','Has any mission case actually been able to conclude \u201Cdo not proceed\u201D, or only ever \u201Cproceed with conditions\u201D?']
+  },
+  { id:'discovery', title:'Opportunity Discovery Framework', owner:'Chief Investment Officer',
+    status:'detailed', doc:'Opportunity Discovery Framework', site:'NZIAT_Operating_System_Frameworks.html', evidence:true,
+    sub:'How opportunities for investment would be identified across ten channels.',
+    purpose:'Most funding institutions treat origination passively: publish a call, assess what arrives. That systematically misses the best opportunities, which are frequently unformed, unaffiliated, or held by people who do not read government funding notices.',
+    diagram:'channels',
+    how:[
+      'Ten channels, each with a named owner: universities, PROs, start-ups, industry, defence, international, Crown agencies, M\u0101ori organisations, venture capital, overseas intelligence.',
+      'Every opportunity enters one common intake regardless of channel \u2014 relationship-sourced work is flagged and faces identical diligence.',
+      'A scheduled programme of engagement rather than opportunistic outreach, including site visits, capability mapping and ongoing relationships with research and industry organisations.',
+      'Applications that are declined receive a substantive explanation rather than a standard response, to maintain trust in the process.'
+    ],
+    figures:[['10','Origination channels'],['15 days','Substantive response standard'],['$250k','Seed award ceiling']],
+    decisions:['Institutional affiliation is not a proxy for quality and is not a precondition for funding.','Coverage is measured by channel, performer concentration and non-traditional participation \u2014 not by application volume.'],
+    test:['Which of the ten channels is least developed at present, and who is accountable for improving it?','Does the 15-working-day response standard hold once the pipeline is operating at scale?']
+  },
+  { id:'investment', title:'Investment Operating Framework', owner:'Chief Investment Officer',
+    status:'detailed', doc:'Investment Operating Framework', site:'NZIAT_Operating_System_Frameworks.html', evidence:true,
+    sub:'A single lifecycle, decision gates, delegated authority and evidence standard governing all investment decisions.',
+    purpose:'The keystone operating document of an investment-led institution. It applies to every dollar NZIAT deploys \u2014 new commitments, inherited platforms, opportunity seeds and follow-on capital alike \u2014 and prevails over any other document on an investment matter.',
+    diagram:'gates',
+    how:[
+      'Seven-stage lifecycle: intelligence, sourcing, triage, diligence, commitment, active management, transition or exit.',
+      'Five decision tests every case must pass: strategic fit, New Zealand advantage, additionality, value pathway, deliverability.',
+      'Three proportionate diligence tiers, with six-week seed and sixteen-week programme standards.',
+      'Five gates, G0 to G4, each with four equally legitimate outcomes: continue, reshape, stop, scale.'
+    ],
+    figures:[['7','Lifecycle stages'],['5','Gates, G0 to G4'],['6 wks','Seed decision standard'],['16 wks','Programme diligence standard']],
+    decisions:['Delegations: Mission Directors to $500k, the Investment Committee to $5m, the Board above that and for all equity.','An investment is not ready for commitment until clear conditions for stopping it have been defined.'],
+    test:['Are the $500k and $5m delegation thresholds right for a fund of this size?','Has a gate produced a stop in practice, or only continues and reshapes?']
+  },
+  { id:'portfolio', title:'Portfolio Management Framework', owner:'Chief Investment Officer',
+    status:'detailed', doc:'Portfolio Management Framework', site:'NZIAT_Operating_System_Frameworks.html', evidence:true,
+    sub:'How a central team would maintain oversight across a large number of active investments.',
+    purpose:'The answer is segmentation, tiered attention, explicit risk appetite and a reallocation discipline that moves capital on evidence. Attention is allocated by materiality and risk, never spread evenly.',
+    diagram:'tiers',
+    how:[
+      'Four oversight tiers \u2014 platform, programme, project, seed \u2014 with governance intensity falling as volume rises.',
+      'Triple segmentation: by mission, by horizon (discovery, development, deployment), and by pathway.',
+      'Risk appetite stated by domain, not as one statement: high tolerance for technical failure, near-zero for probity failure.',
+      'Six explicit concentration limits, tested and reported every quarter whether or not they are breached.'
+    ],
+    figures:[['4','Oversight tiers'],['6','Concentration limits'],['80/20','Mission to open allocation'],['5%','Intervention reserve']],
+    decisions:['Seeds are cohort-managed and reported in aggregate; the cohort, not the individual seed, is the unit of management.','No single mission may exceed 40% of uncommitted capital in an allocation round without Board approval.'],
+    test:['Are the six concentration limits tight enough to prevent one mission or performer dominating the portfolio?','Is aggregate cohort reporting on seeds giving the Board enough visibility, or too little?']
+  },
+  { id:'programme', title:'Programme Management Framework', owner:'Chief Executive',
+    status:'detailed', doc:'Programme Management Framework', site:'NZIAT_Operating_System_Frameworks.html', evidence:true,
+    sub:'How programmes within each mission would be created, planned, delivered, reviewed and closed.',
+    purpose:'A mission sets direction and holds capital; a programme is the coordinated body of work that converts a challenge statement into evidence and eventually into value. Programme discipline is what stops a mission becoming a portfolio of unrelated grants.',
+    diagram:'prog',
+    how:[
+      'A challenge statement, co-developed with partners, anchors every programme before capital moves.',
+      'An eight-element standard plan: objective, project set, milestones, gate schedule, value pathway, budget, risk register, stop conditions.',
+      'Monthly engagement with performers, and active coordination of capability across institutions.',
+      'Reshaping is a first-class gate outcome \u2014 teams are explicitly not penalised for recommending it.'
+    ],
+    figures:[['2\u20134','Programmes per mission'],['2\u20135 yrs','Typical programme life'],['30 days','Closure record deadline']],
+    decisions:['A collection of separately negotiated grants sharing a topic is not a programme \u2014 that distinction is what stops agencies quietly reverting to grant administration.','Every closure, successful or not, produces a written record feeding the annual decision-quality review.'],
+    test:['Do programme teams treat reshaping as a legitimate outcome, or as a disguised failure?','Are closure records actually being written within 30 days, in practice?']
+  },
+  { id:'commercialisation', title:'Commercialisation Framework', owner:'Head of Ventures',
+    status:'detailed', doc:'Commercialisation Framework', site:'NZIAT_Operating_System_Frameworks.html', evidence:false, legal:true,
+    sub:'How research is converted into licences, ventures, partnerships and value retained in New Zealand.',
+    purpose:'Commercialisation is not an end-stage handoff: it is a design input that shapes programmes before the technical path locks in. The framework covers IP, licensing, venture creation, industry partnership, internationalisation and exit pathways.',
+    diagram:'pathways',
+    how:[
+      'Retained national value \u2014 IP anchoring, onshore capability, high-value roles, M\u0101ori partnership value \u2014 is negotiated at commitment, when NZIAT still holds leverage.',
+      'Six exit pathways, selected on evidence: licence, venture creation, joint venture, corporate adoption, public procurement, strategic platform.',
+      'Strategic-capability commitments are measured on capability formed, not near-term revenue.',
+      'Post-exit outcomes are tracked for at least three years \u2014 value from an early licence is not knowable immediately.'
+    ],
+    figures:[['6','Exit pathways'],['3 yrs','Minimum post-exit tracking']],
+    decisions:['Venture creation is one route among six, not the definition of success.','IP default positions favour performer ownership with onshore anchoring and rights to reclaim unused intellectual property (march-in rights) \u2014 a negotiating posture, not settled policy.'],
+    test:['Are the IP default positions realistic once multiple institutions collaborate on one programme?','Is venture creation being treated as the definition of commercial success, contrary to the framework\u2019s intent?']
+  },
+  { id:'org', title:'Organisation, roles and remuneration', owner:'Chief Operating Officer',
+    status:'board', doc:'Organisation charts, roster and position descriptions', site:'NZIAT_Organisation_Charts.html', evidence:false,
+    sub:'The structure, roles and remuneration required to deliver the operating model.',
+    purpose:'Four staffed mission teams and a thin functional spine, every unit reporting directly to the Chief Executive. Twenty-eight position descriptions with indicative remuneration bands, benchmarked to attract from industry and international programmes within Crown entity constraints.',
+    diagram:'org',
+    how:[
+      'Mission teams are the primary operating unit; the functional spine provides shared standards, assurance and scarce expertise.',
+      'Reporting lines run directly to the Chief Executive, with cross-mission coordination taking place through the Executive Investment Committee.',
+      'Scientific depth is bought through fixed-term panels, fellows and secondments rather than a permanent hierarchy.',
+      'Five roles are budgeted at the top of band as scarce-judgement hires: Chief Executive, the four Mission Directors, Chief Investment Officer, Head of Ventures, M\u0101ori Partnership executive.'
+    ],
+    figures:[['44','Total FTE, fully hired'],['9','Direct reports to the CEO'],['~$9\u201310m','Fully hired people cost']],
+    decisions:['Fully hired people cost strains the opex cap; mission-team costs are proposed to be charged to mission envelopes as direct programme delivery, a choice put transparently to the Board.','Chief executive remuneration is subject to Public Service Commission consultation, not management discretion.'],
+    test:['Does the fully hired centre actually fit inside the opex discipline once mission-team delivery costs are counted?','Are the five roles budgeted at the top of the pay range the right ones to prioritise?']
+  },
+  { id:'missiondirector', title:'Mission Director Operating Framework', owner:'Chief Executive',
+    status:'detailed', doc:'Mission Director Operating Framework', site:null, evidence:true,
+    sub:'The role and authority of Mission Directors in leading each mission.',
+    purpose:'Mission Directors are not grant administrators or research managers. They define challenges, assemble performers across institutions, recommend and reallocate capital, hold programmes to honest milestones, and own the pathway from research to value.',
+    diagram:'delegations',
+    how:[
+      'Fixed three-to-four-year terms, non-renewable by default, to maintain momentum and ensure each mission remains time-bound rather than becoming a permanent position.',
+      'Decides project selection and commitments to $500k within envelope; reallocates up to 15% of envelope a year on evidence.',
+      'Actively assembles teams across institutions where the strongest configuration does not yet exist.',
+      'Never penalised for evidence-based stops \u2014 only for surprises, drift and unexamined momentum.'
+    ],
+    figures:[['3\u20134 yrs','Fixed term'],['$500k','Independent commitment authority'],['15%','Annual reallocation']],
+    decisions:['A mission with no stops is presumed under-managed rather than high-performing.','Authority is delegated to Mission Directors within clear limits, and every decision is visible to the next level of oversight within a single reporting cycle.'],
+    test:['Is a three-to-four-year fixed term long enough to see a mission\u2019s founding thesis through, or too short?','Does \u201Ca mission with no stops is under-managed\u201D actually get applied in practice, or only stated as principle?']
+  },
+  { id:'committee', title:'Investment Committee Framework', owner:'Chief Executive',
+    status:'board', doc:'Investment Committee Framework', site:'NZIAT_Operating_System_Frameworks.html', evidence:false,
+    sub:'Decision rights, voting, papers and conflict management for the Executive Investment Committee.',
+    purpose:'The Executive Investment Committee is where investment judgement is exercised between Board meetings, and where coordination between mission teams and functional units takes place. It exercises delegated authority \u2014 it does not dilute the accountability of the individuals who sit on it.',
+    diagram:'committee',
+    how:[
+      'Fortnightly, quorum of four, chaired by the CEO with the CIO as deputy; a Mission Director may not form quorum on their own mission.',
+      'Decisions are made by consensus where possible; where consensus is not reached, the Chair decides and any dissenting views are recorded.',
+      'Five paper types with required content and page limits, each answering one standing question: what would change our mind?',
+      'Any two voting members may escalate a decision to the Board without the Chair\u2019s agreement.'
+    ],
+    figures:[['Fortnightly','Meeting cadence'],['4','Quorum'],['5 days','Papers circulated in advance'],['$5m','Board escalation threshold']],
+    decisions:['Decisions made collectively by a committee can dilute individual accountability; every decision under this framework belongs to a named person acting at a defined level of delegation.','Conflicts are declared at the point an opportunity is logged, not at the meeting, and managed by recorded recusal.'],
+    test:['Is a CEO-chaired committee with a two-member escalation right sufficient counterweight, or does the Board want a direct attendance right?','Are the conflict-management provisions realistic given the small size of New Zealand\u2019s research and investment community?']
+  }
+];
+
+/* ============================================================
+   DERIVED LOOKUPS
+   ============================================================ */
+const byId = arr => { const m = {}; arr.forEach(x => m[x.id] = x); return m; };
+const DOMAIN_BY_ID = byId(DOMAINS);
+const SECTION_BY_ID = byId(SECTIONS);
+const COMPONENT_BY_ID = byId(COMPONENTS);
+
+const META = {};
+const FLAT_ORDER = [];
+DOMAINS.forEach(function (d) {
+  d.children.forEach(function (cid, i) {
+    META[cid] = { domain: d, section: SECTIONS.filter(s => s.domains.indexOf(d.id) !== -1)[0], number: d.num + '.' + (i + 1) };
+    FLAT_ORDER.push(cid);
+  });
+});
+function domainOfSection(sectionId) { return DOMAINS.filter(d => SECTIONS.filter(s => s.id === sectionId)[0].domains.indexOf(d.id) !== -1); }
+
+/* ============================================================
+   DATA — EVIDENCE
+   ============================================================ */
+const SOURCES = [
+  { s:'Azoulay, Fuchs, Goldstein &amp; Kearney \u2014 \u201CFunding Breakthrough Research: Promises and Challenges of the \u2018ARPA Model\u2019\u201D, Innovation Policy and the Economy 19 (2019)',
+    e:'The empowered programme director as the nexus of judgement; active management of capital, tasks, milestones and technical goals; managers actively engineering research teams rather than receiving proposals.',
+    w:'Mission Director authority \u00B7 gate regime \u00B7 active team assembly', u:'https://www.journals.uchicago.edu/doi/10.1086/699933' },
+  { s:'National Academies of Sciences, Engineering, and Medicine \u2014 An Assessment of ARPA-E (2017)',
+    e:'Structuring for risk-taking rather than risk avoidance; empowerment of program directors as a precondition for recruiting world-class talent; a flat organisation.',
+    w:'Risk appetite by domain \u00B7 lean centre \u00B7 tiered diligence', u:'https://www.nationalacademies.org/read/24778/chapter/4' },
+  { s:'Cheney, D. W. \u2014 Personnel Systems of DARPA and ARPA-E, report to NEDO',
+    e:'Fixed three-to-five-year programme manager terms with real authority; termination of non-progressing work treated as learning rather than failure.',
+    w:'Fixed non-renewable terms \u00B7 \u201Cno stops means under-managed\u201D', u:'https://www.technopoli.net/assets/docs/Personnel_Systems_of_DARPA_and_ARPA-E.131103620.pdf' },
+  { s:'Federation of American Scientists \u2014 \u201CHow to Unlock the Potential of the Advanced Research Projects Agency Model\u201D (2024)',
+    e:'The programme as the fundamental unit of work; fixed programme terms; each designed, executed and transitioned by its manager.',
+    w:'Programme Management Framework \u00B7 transition as a designed stage', u:'https://fas.org/publication/how-to-unlock-the-potential-of-the-advanced-research-projects-agency-model/' },
+  { s:'Bonvillian, W. \u2014 \u201CARPA-E and DARPA: Applying the DARPA Model to Energy Innovation\u201D',
+    e:'Vision-first programme development; empowered managers making award selections rather than disparate peer review; organisational flatness.',
+    w:'Challenge-statement-first creation \u00B7 delegated selection authority', u:'https://books.openbookpublishers.com/10.11647/obp.0184/ch13.xhtml' },
+  { s:'ARIA (UK Advanced Research and Invention Agency) \u2014 Applicant guidance',
+    e:'Contract or grant signature expected no later than six weeks from notification; support for structures atypical in academic research.',
+    w:'Six-week seed standard \u00B7 published cycle times', u:'https://aria.org.uk/funding-opportunities/applicant-guidance' },
+  { s:'ARIA \u2014 Funding opportunities and opportunity seed calls',
+    e:'Opportunity seeds as a distinct instrument alongside major programmes; awards for early-stage, high-uncertainty work outside programme structures.',
+    w:'The seeds mechanism \u00B7 the open allocation \u00B7 cohort management', u:'https://aria.org.uk/funding-opportunities' },
+  { s:'Mazzucato, M. \u2014 \u201CMission-oriented innovation policies: challenges and opportunities\u201D, Industrial and Corporate Change 27(5) (2018)',
+    e:'Missions must be bold with wide societal relevance and clearly framed with a targeted, time-bound direction; the risk of sectoral capture.',
+    w:'Mission defined as problem-led \u00B7 prioritisation tests', u:'https://academic.oup.com/icc/article/27/5/803/5127692' },
+  { s:'Mazzucato, M. \u2014 Mission-Oriented Research &amp; Innovation in the European Union, report for the European Commission (2018)',
+    e:'The movement from broad societal challenges to specific selected missions; mission selection criteria.',
+    w:'Three-lens challenge identification \u00B7 mission case contents', u:'https://www.horizon-europe.gouv.fr/sites/default/files/2022-11/mazzucato-report-2018-pdf-7474.pdf' },
+  { s:'Kattel, R. &amp; Mazzucato, M. \u2014 \u201CMission-oriented innovation policies in Europe: from normative to epistemic turn?\u201D, UCL IIPP Working Paper 2023-09',
+    e:'The uneven application of mission approaches in Europe, and the gap between mission rhetoric and institutional capability.',
+    w:'Insistence that challenge statements be specific enough to generate criteria in year one', u:'https://discovery-pp.ucl.ac.uk/id/eprint/10196679' }
+];
+const DESIGNED = [
+  ['Delegation thresholds \u2014 $500k, $500k\u2013$5m, above $5m, all equity to Board','Calibrated so a Mission Director can act independently at discovery scale, while anything material to a fund of approximately $58m a year reaches the Board.'],
+  ['15% annual reallocation limit within a mission envelope','Set high enough to make reallocation a genuine tool, and low enough that a mission cannot redefine its strategy between Board cycles without oversight.'],
+  ['Gate names and sequence G0\u2013G4','The underlying discipline \u2014 scheduled decisions with genuine authority to stop a programme \u2014 is supported by evidence; this five-gate sequence is a design choice fitted to NZIAT\u2019s scale.'],
+  ['Four gate outcomes: continue, reshape, stop, scale','Reshape and scale are included alongside continue and stop because the evidence shows that redirecting a programme is often as valuable as stopping or continuing it unchanged.'],
+  ['Three diligence tiers, 6-week and 16-week standards','The six-week standard is anchored on ARIA\u2019s published practice. The sixteen-week standard and the three-tier structure are a design choice suited to a smaller team.'],
+  ['Four-tier oversight model','Designed to address the practical challenge of overseeing a large number of investments; cohort management of seeds is what makes this volume manageable for a small central team.'],
+  ['Six concentration limits','A specific calibration, set out explicitly so the Board can test individual limits rather than approve a general principle.'],
+  ['Risk appetite stated by domain','Follows the evidence that tolerance for technical failure and tolerance for probity failure need to be set independently, rather than as a single statement.'],
+  ['Ten origination channels with named owners','The list of channels reflects NZIAT\u2019s intended reach; assigning a named owner and coverage measure to each channel is a design addition.'],
+  ['15-working-day intake response standard','A service standard set to give the research and industry community a clear, dependable point of engagement with NZIAT.'],
+  ['Committee quorum of four, Mission Directors barred from quorum on their own mission','A standard governance construction, adapted to the size of NZIAT\u2019s executive team.'],
+  ['Two-member escalation right to the Board','A design choice intended to provide a structural counterweight to a Committee chaired by the Chief Executive.'],
+  ['Five paper types with page limits and the standing "what would change our mind?" question','Draws on the tradition of structured decision papers used in comparable agencies, adapted to NZIAT\u2019s scale.'],
+  ['IP default positions','Constructed from general technology-transfer practice. These require legal review and represent a negotiating posture, not settled policy.'],
+  ['Six exit pathways','Set out to ensure venture creation is treated as one commercial route among several, rather than as the definition of success.'],
+  ['Organisation shape, 44 FTE and remuneration bands','Designed to a discipline of 12\u201315% central operating cost. Remuneration bands are market benchmarks; chief executive remuneration is subject to Public Service Commission consultation.']
+];
+
+/* ============================================================
+   DIAGRAMS
+   ============================================================ */
+const DIA = {};
+const svgWrap = (h, vb, label, caption) => '<figure class="dia"><svg viewBox="' + vb + '" width="100%" role="img" aria-label="' + label + '">' + h + '</svg><figcaption>' + caption + '</figcaption></figure>';
+const arrowDef = '<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#5F7580" stroke-width="1.6" stroke-linecap="round"/></marker></defs>';
+
+DIA.flow = () => svgWrap(
+  ['National priorities','Missions','Programmes|and investments','Commercialisation|pathways','Retained national|value'].map(function (s, i) {
+    const x = 10 + i * 192, last = i === 4;
+    const parts = s.split('|');
+    const cls = (i === 1 || last) ? 'tw' : 't';
+    const lines = parts.map(function (ln, li) {
+      const y = parts.length > 1 ? (48 + li * 20) : 58;
+      return '<text class="' + cls + '" x="' + (x + 16) + '" y="' + y + '" font-size="12.5">' + ln + '</text>';
+    }).join('');
+    return '<rect x="' + x + '" y="16" width="172" height="76" rx="10" fill="' + (last ? '#0FA893' : (i === 1 ? '#0B2434' : '#F7FAFB')) + '" stroke="' + (i === 1 || last ? 'none' : '#D3DFE4') + '"/>' +
+      lines +
+      (i < 4 ? '<line x1="' + (x + 174) + '" y1="54" x2="' + (x + 200) + '" y2="54" stroke="#5F7580" marker-end="url(#ar)"/>' : '');
+  }).join('') + '<text class="cap" x="10" y="118">Each stage is supported by a defined decision-making framework, covering mission selection, investment decisions, commercialisation pathways and governance.</text>' + arrowDef,
+  '0 0 970 130', 'National priorities are translated into missions, delivered through programmes and investment, converted through commercialisation pathways, and retained as national value',
+  'This sequence summarises how NZIAT would move from national priorities to long-term value for New Zealand.');
+
+DIA.vision = () => svgWrap(
+  '<rect x="10" y="14" width="240" height="92" rx="10" fill="#0B2434"/><text class="tw" x="30" y="46">Frontier research</text><text class="sw" x="30" y="68">Universities, PROs, firms,</text><text class="sw" x="30" y="84">independents, partners</text>' +
+  '<rect x="300" y="14" width="240" height="92" rx="10" fill="#0FA893"/><text class="tw" x="320" y="46">NZIAT</text><text class="sw" x="320" y="68">Orchestrate \u00B7 invest \u00B7</text><text class="sw" x="320" y="84">convert \u00B7 retain</text>' +
+  '<rect x="590" y="14" width="240" height="92" rx="10" fill="#EEF6F4" stroke="#0FA893"/><text class="t" x="610" y="46">National capability</text><text class="s" x="610" y="68">Firms, IP, talent, exports,</text><text class="s" x="610" y="84">retained economic value</text>' +
+  '<line x1="252" y1="60" x2="296" y2="60" stroke="#5F7580" marker-end="url(#ar)"/><line x1="542" y1="60" x2="586" y2="60" stroke="#5F7580" marker-end="url(#ar)"/>' +
+  '<text class="cap" x="10" y="132">Investment-led \u00B7 intelligence-informed \u00B7 partnership-delivered \u00B7 publicly accountable</text>' + arrowDef,
+  '0 0 840 145', 'Frontier research converted by NZIAT into national capability', 'The conversion function NZIAT exists to perform.');
+
+DIA.first100 = () => svgWrap(
+  ['Days 1\u201330|Listen, diagnose, map|#EEF6F4|#0FA893|no','Days 31\u201360|Test and design|#EEF6F4|#0FA893|no','Days 61\u2013100|Commit and launch|#0B2434|#0B2434|yes'].map(function (b, i) {
+    const p = b.split('|'), x = 10 + i * 276, dark = p[4] === 'yes';
+    return '<rect x="' + x + '" y="16" width="252" height="76" rx="10" fill="' + p[2] + '" stroke="' + p[3] + '"/>' +
+      '<text class="n" x="' + (x + 20) + '" y="44" ' + (dark ? 'fill="#CFE8E3"' : '') + '>' + p[0] + '</text>' +
+      '<text class="' + (dark ? 'tw' : 't') + '" x="' + (x + 20) + '" y="70">' + p[1] + '</text>' +
+      (i < 2 ? '<line x1="' + (x + 254) + '" y1="54" x2="' + (x + 282) + '" y2="54" stroke="#5F7580" marker-end="url(#ar)"/>' : '');
+  }).join('') + '<text class="cap" x="10" y="118">Deliberately reversible early \u00B7 decisively committed by day 100</text>' + arrowDef,
+  '0 0 840 130', 'Three phases across the first hundred days', 'Pace without premature lock-in.');
+
+DIA.roadmap = () => svgWrap(
+  ['Q1|Confirm, design, commit','Q2|Stand up the machine','Q3|First disciplined capital','Q4|Prove the system'].map(function (b, i) {
+    const p = b.split('|'), x = 10 + i * 208;
+    return '<rect x="' + x + '" y="16" width="188" height="74" rx="10" fill="' + (i === 3 ? '#0B2434' : '#F7FAFB') + '" stroke="' + (i === 3 ? '#0B2434' : '#D3DFE4') + '"/>' +
+      '<text class="n" x="' + (x + 18) + '" y="42" ' + (i === 3 ? 'fill="#CFE8E3"' : '') + '>' + p[0] + '</text>' +
+      '<text class="' + (i === 3 ? 'tw' : 't') + '" x="' + (x + 18) + '" y="66" font-size="12">' + p[1] + '</text>' +
+      (i < 3 ? '<line x1="' + (x + 190) + '" y1="53" x2="' + (x + 214) + '" y2="53" stroke="#5F7580" marker-end="url(#ar)"/>' : '');
+  }).join('') + '<text class="cap" x="10" y="116">The milestone that matters most: the first evidence-based stop, executed respectfully and explained publicly</text>' + arrowDef,
+  '0 0 840 128', 'Four quarters of the year-one roadmap', 'Each quarter carries accountable milestones \u2014 deliberately few and verifiable.');
+
+DIA.org = () => svgWrap(
+  '<rect x="330" y="8" width="180" height="40" rx="9" fill="#0B2434"/><text class="tw" x="420" y="33" text-anchor="middle">Board</text>' +
+  '<line x1="420" y1="48" x2="420" y2="66" stroke="#5F7580" marker-end="url(#ar)"/>' +
+  '<rect x="330" y="70" width="180" height="40" rx="9" fill="#0B2434"/><text class="tw" x="420" y="95" text-anchor="middle">Chief executive</text>' +
+  '<path d="M420 110 L420 128 M150 128 L690 128" stroke="#5F7580" fill="none"/>' +
+  '<line x1="150" y1="128" x2="150" y2="146" stroke="#5F7580" marker-end="url(#ar)"/><line x1="690" y1="128" x2="690" y2="146" stroke="#5F7580" marker-end="url(#ar)"/>' +
+  '<text class="n" x="20" y="166">MISSION TEAMS</text>' +
+  ['Advanced materials &amp; magnetics','Applied AI','Quantum technologies','Synthetic biology'].map(function (m, i) {
+    return '<rect x="20" y="' + (176 + i * 42) + '" width="380" height="34" rx="8" fill="#EEF6F4" stroke="#0FA893"/><text class="t" x="38" y="' + (198 + i * 42) + '" font-size="12">' + m + '</text><text class="s" x="330" y="' + (198 + i * 42) + '">5 FTE</text>';
+  }).join('') +
+  '<text class="n" x="440" y="166">FUNCTIONAL SPINE</text>' +
+  [['Office of the CEO','3'],['Investment &amp; intelligence','7'],['Ventures, IP &amp; partnerships','4'],['M\u0101ori partnership','2'],['Corporate &amp; Crown ops','8']].map(function (m, i) {
+    return '<rect x="440" y="' + (176 + i * 42) + '" width="380" height="34" rx="8" fill="#F7FAFB" stroke="#D3DFE4"/><text class="t" x="458" y="' + (198 + i * 42) + '" font-size="12">' + m[0] + '</text><text class="s" x="760" y="' + (198 + i * 42) + '">' + m[1] + ' FTE</text>';
+  }).join('') + '<text class="cap" x="20" y="404">Every box is a direct report to the Chief Executive \u2014 nothing reports through a mission</text>' + arrowDef,
+  '0 0 840 415', 'Organisation chart with four mission teams and five functional units reporting to the chief executive', 'Mission teams deliver each mission; functional units provide shared standards and specialist support across all missions.');
+
+DIA.gates = () => svgWrap(
+  [['G0','Entry'],['G1','Feasibility'],['G2','Progress'],['G3','Pathway'],['G4','Exit']].map(function (g, i) {
+    const x = 10 + i * 166;
+    return '<rect x="' + x + '" y="16" width="146" height="62" rx="9" fill="#0B2434"/><text class="tw" x="' + (x + 73) + '" y="42" text-anchor="middle" font-size="15">' + g[0] + '</text><text class="sw" x="' + (x + 73) + '" y="62" text-anchor="middle">' + g[1] + '</text>' +
+      (i < 4 ? '<line x1="' + (x + 148) + '" y1="47" x2="' + (x + 162) + '" y2="47" stroke="#5F7580" marker-end="url(#ar)"/>' : '');
+  }).join('') + '<text class="n" x="10" y="106">FOUR OUTCOMES \u2014 EQUALLY LEGITIMATE</text>' +
+  ['Continue','Reshape','Stop','Scale'].map(function (o, i) {
+    const x = 10 + i * 208;
+    return '<rect x="' + x + '" y="118" width="188" height="38" rx="9" fill="#fff" stroke="' + (o === 'Stop' ? '#8A6414' : '#0FA893') + '" stroke-width="1.5"/><text class="t" x="' + (x + 94) + '" y="142" text-anchor="middle">' + o + '</text>';
+  }).join('') + '<text class="cap" x="10" y="180">A stop on good evidence is a success of the decision system, not a failure of the team</text>' + arrowDef,
+  '0 0 840 190', 'Five gates from entry to exit, each with four possible outcomes', 'Gates are scheduled decisions with evidence prepared beforehand.');
+
+DIA.delegations = () => svgWrap(
+  [['Mission Director','Up to $500k within envelope \u00B7 project selection \u00B7 15% reallocation','#EEF6F4','#0FA893',false],
+   ['Executive Investment Committee','$500k \u2013 $5m \u00B7 continue and reshape \u00B7 seeds to $250k','#F7FAFB','#D3DFE4',false],
+   ['Board','Above $5m \u00B7 all equity \u00B7 stop and scale \u00B7 mission envelopes','#0B2434','#0B2434',true]].map(function (t, i) {
+    const y = 12 + i * 60;
+    return '<rect x="10" y="' + y + '" width="820" height="50" rx="9" fill="' + t[2] + '" stroke="' + t[3] + '"/><text class="' + (t[4] ? 'tw' : 't') + '" x="30" y="' + (y + 22) + '">' + t[0] + '</text><text class="' + (t[4] ? 'sw' : 's') + '" x="30" y="' + (y + 40) + '">' + t[1] + '</text>';
+  }).join('') + '<text class="cap" x="10" y="208">No single point of unreviewed judgement \u2014 each level is visible one level up within a single cycle</text>',
+  '0 0 840 218', 'Three-tier delegation ladder by commitment value', 'Decision-making authority is delegated to the appropriate level, with clear limits at each stage.');
+
+DIA.tiers = () => svgWrap(
+  [['Platform','Above $5m','Board-visible \u00B7 scheduled gates \u00B7 external validation','#0B2434',true,420],
+   ['Programme','$500k \u2013 $5m','Committee-visible \u00B7 annual gates','#166B5E',true,540],
+   ['Project','Under $500k','Managed within programme \u00B7 exception reporting','#0FA893',true,660],
+   ['Seed','Under $250k','Cohort-managed \u00B7 reported in aggregate','#EEF6F4',false,780]].map(function (t, i) {
+    const y = 12 + i * 52;
+    return '<rect x="10" y="' + y + '" width="' + t[5] + '" height="42" rx="8" fill="' + t[3] + '"/><text class="' + (t[4] ? 'tw' : 't') + '" x="28" y="' + (y + 26) + '">' + t[0] + '</text><text class="' + (t[4] ? 'sw' : 's') + '" x="120" y="' + (y + 26) + '">' + t[1] + '</text><text class="s" x="' + (t[5] + 22) + '" y="' + (y + 26) + '">' + t[2] + '</text>';
+  }).join('') + '<text class="cap" x="10" y="238">Attention is allocated by materiality and risk \u2014 volume rises as governance intensity falls</text>',
+  '0 0 840 248', 'Four oversight tiers from platform to seed', 'A central team maintains oversight across a large number of active investments, with attention concentrated where materiality and risk are highest.');
+
+DIA.lenses = () => svgWrap(
+  '<circle cx="330" cy="112" r="96" fill="#0FA893" fill-opacity="0.13" stroke="#0FA893"/><circle cx="500" cy="112" r="96" fill="#0FA893" fill-opacity="0.13" stroke="#0FA893"/><circle cx="415" cy="190" r="96" fill="#0FA893" fill-opacity="0.13" stroke="#0FA893"/>' +
+  '<text class="t" x="286" y="66" text-anchor="middle">Where the world</text><text class="t" x="286" y="84" text-anchor="middle">is going</text>' +
+  '<text class="t" x="548" y="66" text-anchor="middle">What New</text><text class="t" x="548" y="84" text-anchor="middle">Zealand has</text>' +
+  '<text class="t" x="415" y="262" text-anchor="middle">What New Zealand needs</text>' +
+  '<circle cx="415" cy="140" r="30" fill="#0B2434"/><text class="tw" x="415" y="145" text-anchor="middle" font-size="12">Mission</text>' +
+  '<text class="cap" x="10" y="292">Fields where New Zealand would be a marginal, replaceable contributor are deliberately not pursued</text>',
+  '0 0 840 302', 'Three enquiries intersecting to identify a candidate mission', 'Candidates emerge only where all three overlap.');
+
+DIA.prog = () => svgWrap(
+  ['Create','Plan','Execute','Review','Close'].map(function (s, i) {
+    const x = 10 + i * 166;
+    return '<rect x="' + x + '" y="16" width="146" height="54" rx="9" fill="' + (i === 3 ? '#EEF6F4' : '#F7FAFB') + '" stroke="' + (i === 3 ? '#0FA893' : '#D3DFE4') + '"/><text class="t" x="' + (x + 73) + '" y="48" text-anchor="middle">' + s + '</text>' +
+      (i < 4 ? '<line x1="' + (x + 148) + '" y1="43" x2="' + (x + 162) + '" y2="43" stroke="#5F7580" marker-end="url(#ar)"/>' : '');
+  }).join('') + '<path d="M83 70 L83 100 L747 100 L747 70" stroke="#0FA893" stroke-dasharray="4 4" fill="none" marker-end="url(#ar)"/>' +
+  '<text class="cap" x="415" y="122" text-anchor="middle">Reshape \u2014 returning a programme to planning rather than ending it</text>' + arrowDef,
+  '0 0 840 134', 'Programme lifecycle with a reshape loop returning to planning', 'Reshaping is frequently the highest-value gate outcome.');
+
+DIA.pathways = () => svgWrap(
+  '<rect x="300" y="10" width="240" height="46" rx="9" fill="#0B2434"/><text class="tw" x="420" y="30" text-anchor="middle">G3 \u2014 pathway decision</text><text class="sw" x="420" y="48" text-anchor="middle">Mission Director with Head of Ventures</text>' +
+  ['Licence','Venture creation','Joint venture','Corporate adoption','Public procurement','Strategic platform'].map(function (p, i) {
+    const col = i % 3, row = Math.floor(i / 3), x = 10 + col * 278, y = 100 + row * 62;
+    return '<line x1="420" y1="56" x2="' + (x + 129) + '" y2="' + (y - 6) + '" stroke="#D3DFE4" marker-end="url(#ar)"/><rect x="' + x + '" y="' + y + '" width="258" height="46" rx="9" fill="#EEF6F4" stroke="#0FA893"/><text class="t" x="' + (x + 129) + '" y="' + (y + 29) + '" text-anchor="middle" font-size="12">' + p + '</text>';
+  }).join('') + '<text class="cap" x="415" y="238" text-anchor="middle">Selected on evidence, not preference</text>' + arrowDef,
+  '0 0 840 248', 'Six exit pathways fanning from the pathway decision', 'Pathway selection happens while NZIAT still holds leverage.');
+
+DIA.channels = () => svgWrap(
+  ['Universities','Public Research Orgs','Start-ups &amp; scale-ups','Industry','Defence &amp; security','International','Crown agencies','M\u0101ori organisations','Venture capital','Overseas intelligence'].map(function (c, i) {
+    const col = i % 2, row = Math.floor(i / 2), x = 10 + col * 212, y = 12 + row * 38;
+    return '<rect x="' + x + '" y="' + y + '" width="198" height="30" rx="7" fill="#EEF6F4" stroke="#0FA893"/><text class="t" x="' + (x + 14) + '" y="' + (y + 20) + '" font-size="11.5">' + c + '</text>';
+  }).join('') + '<path d="M424 106 L470 106 L470 130" stroke="#5F7580" fill="none" marker-end="url(#ar)"/>' +
+  '<rect x="470" y="134" width="360" height="42" rx="9" fill="#0B2434"/><text class="tw" x="490" y="160">One intake \u2014 everything logged</text>' +
+  '<line x1="650" y1="176" x2="650" y2="192" stroke="#5F7580" marker-end="url(#ar)"/>' +
+  '<rect x="470" y="196" width="360" height="42" rx="9" fill="#F7FAFB" stroke="#D3DFE4"/><text class="t" x="490" y="215">Triage \u2014 five criteria, tier assigned</text><text class="s" x="490" y="231">Response within 15 working days</text>' +
+  '<text class="cap" x="10" y="228">Relationship-sourced opportunities face</text><text class="cap" x="10" y="244">identical diligence, flagged as such.</text>' + arrowDef,
+  '0 0 840 254', 'Ten origination channels feeding one common intake and triage', 'One intake for all ten channels.');
+
+DIA.committee = () => svgWrap(
+  '<rect x="10" y="10" width="820" height="88" rx="12" fill="#F7FAFB" stroke="#D3DFE4"/><text class="n" x="30" y="34">EXECUTIVE INVESTMENT COMMITTEE \u2014 FORTNIGHTLY \u00B7 QUORUM 4</text>' +
+  [['CEO','Chair'],['CIO','Deputy'],['MDs \u00D74','Voting'],['COO','Voting'],['Ventures','Voting'],['M\u0101ori Ptnr','Voting']].map(function (m, i) {
+    const x = 30 + i * 133;
+    return '<rect x="' + x + '" y="44" width="120" height="40" rx="8" fill="#EEF6F4" stroke="#0FA893"/><text class="t" x="' + (x + 60) + '" y="62" text-anchor="middle" font-size="12">' + m[0] + '</text><text class="s" x="' + (x + 60) + '" y="77" text-anchor="middle">' + m[1] + '</text>';
+  }).join('') +
+  '<rect x="10" y="112" width="400" height="52" rx="9" fill="#EEF6F4" stroke="#0FA893"/><text class="t" x="30" y="134">Consensus where possible</text><text class="s" x="30" y="152">Otherwise the Chair decides \u2014 dissent recorded</text>' +
+  '<rect x="430" y="112" width="400" height="52" rx="9" fill="#0B2434"/><text class="tw" x="450" y="134">Any two voting members may escalate</text><text class="sw" x="450" y="152">to the Board, without the Chair\u2019s agreement</text>' +
+  '<text class="cap" x="10" y="186">A Mission Director may not form quorum for a decision on their own mission</text>',
+  '0 0 840 196', 'Investment Committee composition, decision rule and escalation right', 'The Committee tests recommendations; it does not absorb accountability.');
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+const $ = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.prototype.slice.call((r || document).querySelectorAll(s));
+const esc = s => String(s).replace(/&(?![a-z#0-9]+;)/g, '&amp;').replace(/</g, '&lt;');
+
+const STATUS_LABEL = { concept:'Concept', developed:'Developed proposal', detailed:'Detailed framework available', board:'Requires Board decision' };
+const STATUS_CLASS = { concept:'status-concept', developed:'status-developed', detailed:'status-detailed', board:'status-board' };
+function statusTag(key) { return '<span class="tag ' + STATUS_CLASS[key] + '">' + STATUS_LABEL[key] + '</span>'; }
+function legalTag() { return '<span class="tag status-legal">Requires legal review</span>'; }
+
+/* ============================================================
+   VIEW — HOME
+   ============================================================ */
+const TOP_TESTS = [
+  ['Is the mandate concentrated enough to be credible, or still a technology list?','mandate'],
+  ['Are the capital delegations \u2014 $500k / $5m \u2014 right for a fund this size?','capital'],
+  ['Does the organisation have enough scientific and commercial depth without over-hiring?','organisation'],
+  ['Are the stopping and reallocation mechanisms credible, or only theoretical?','capital'],
+  ['Are the national-value terms in commercialisation strong enough to retain value onshore?','commercial'],
+  ['Is the Investment Committee sufficient counterweight, or does the Board want a direct attendance right?','governance']
+];
+
+function viewHome() {
+  return '' +
+  '<section class="hero" aria-labelledby="h-title"><div class="wrap">' +
+    '<p class="eyebrow" style="color:var(--teal)">Proposed operating model \u00B7 Candidate working draft</p>' +
+    '<h1 id="h-title">How NZIAT would operate</h1>' +
+    '<p class="lede">This operating model sets out how NZIAT would establish strategic priorities, select missions, allocate and manage capital, organise delivery, support commercialisation, and maintain effective governance and accountability.</p>' +
+    '<p class="byline">Prepared by Brandon Hutcheson for the Board of the New Zealand Institute for Advanced Technology \u00B7 July 2026</p>' +
+    '<div class="stats">' +
+      '<div class="stat"><b>$231m</b><span>First mandate, four years</span></div>' +
+      '<div class="stat"><b>4</b><span>Missions</span></div>' +
+      '<div class="stat"><b>44</b><span>FTE, fully hired</span></div>' +
+      '<div class="stat"><b>7</b><span>Core operating domains</span></div>' +
+    '</div>' +
+  '</div></section>' +
+  '<div class="wrap">' +
+    '<section class="view" aria-labelledby="h-flow">' +
+      '<div class="section-head"><p class="eyebrow">How NZIAT operates</p><h2 id="h-flow">How the operating model works</h2>' +
+      '<p>NZIAT\u2019s operating model links national priorities to investment and commercialisation. Priorities are translated into missions, missions are delivered through programmes and investments, and successful outcomes are converted into capability, value and long-term benefit for New Zealand.</p></div>' +
+      DIA.flow() +
+    '</section>' +
+
+    '<section class="view" aria-labelledby="h-domains">' +
+      '<div class="section-head"><p class="eyebrow">Operating domains</p><h2 id="h-domains">Core operating domains</h2>' +
+      '<p>Together, these areas govern how national priorities are identified, how missions and programmes are delivered, how capital is invested and managed, and how value is commercialised, retained and accounted for.</p></div>' +
+      domainGrid() +
+    '</section>' +
+
+    '<section class="view" aria-labelledby="h-test">' +
+      '<div class="section-head"><p class="eyebrow">Matters for decision</p><h2 id="h-test">Matters requiring Board consideration</h2>' +
+      '<p>The following matters remain open for Board decision as the operating model is finalised.</p></div>' +
+      '<ul class="testgrid">' + TOP_TESTS.map(function (t) {
+        const sec = SECTIONS.filter(function (s) { return s.domains.indexOf(t[1]) !== -1; })[0] || { id: 'strategy' };
+        return '<li>' + esc(t[0]) + '<br><a href="#/s/' + sec.id + '/' + t[1] + '">Related operating area &rarr;</a></li>';
+      }).join('') + '</ul>' +
+    '</section>' +
+
+    '<section class="view" aria-labelledby="h-routes">' +
+      '<div class="section-head"><p class="eyebrow">Further information</p><h2 id="h-routes">Further detail on the operating model</h2>' +
+      '<p>Additional detail on purpose, strategy, capital allocation, organisation and governance is set out below, together with the evidence and assumptions underlying the model.</p></div>' +
+      '<div class="routegrid">' +
+        '<div class="route"><p class="rt">Purpose and mandate</p><p>The rationale for NZIAT and the outcomes it is intended to achieve.</p><a href="#/c/vision">View purpose and mandate &rarr;</a></div>' +
+        '<div class="route"><p class="rt">Strategy and missions</p><p>How national priorities are translated into missions and delivery.</p><a href="#/s/strategy">View strategy &rarr;</a></div>' +
+        '<div class="route"><p class="rt">Full framework index</p><p>All operating frameworks, searchable by area.</p><a href="#/all">View framework index &rarr;</a></div>' +
+        '<div class="route"><p class="rt">Evidence and assumptions</p><p>The evidence base and planning assumptions underlying the model.</p><a href="#/evidence">View evidence &rarr;</a></div>' +
+      '</div>' +
+    '</section>' +
+
+    '<div class="callout"><strong>A consistent principle underpins the operating model.</strong> Each stage is designed to allow a negative decision where the evidence requires it: discovery may conclude that a proposal should not proceed, a proportion of early-stage investments are expected to fail, and missions with no stopped or reshaped programmes would be considered under-managed rather than well managed. This principle is intended to preserve discipline and public confidence as the model is implemented.</div>' +
+  '</div>';
+}
+
+function domainGrid() {
+  return '<ul class="domaingrid">' + DOMAINS.map(function (d) {
+    const sec = SECTIONS.filter(s => s.domains.indexOf(d.id) !== -1)[0];
+    return '<li><a class="dcard" href="#/s/' + sec.id + '/' + d.id + '">' +
+      '<span class="dnum">Part ' + d.num + '</span>' +
+      '<h3>' + esc(d.name) + '</h3>' +
+      '<p>' + esc(d.blurb) + '</p>' +
+      '<div class="children">' + d.children.map(function (cid) { return '<span>' + esc(COMPONENT_BY_ID[cid].title) + '</span>'; }).join('') + '</div>' +
+      '<span class="go">Explore &rarr;</span>' +
+    '</a></li>';
+  }).join('') + '</ul>';
+}
+
+/* ============================================================
+   VIEW — SECTION
+   ============================================================ */
+function viewSection(sectionId) {
+  const sec = SECTION_BY_ID[sectionId];
+  if (!sec) return viewNotFound();
+  const domains = domainOfSection(sectionId);
+  return '<div class="wrap"><section class="view" aria-labelledby="sec-title">' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>' + esc(sec.name) + '</nav>' +
+    '<div class="section-head"><p class="eyebrow">NZIAT operating model</p><h2 id="sec-title">' + esc(sec.name) + '</h2><p>' + esc(sec.blurb) + '</p></div>' +
+    domains.map(function (d) {
+      return '<div class="domainblock" id="domain-' + d.id + '">' +
+        '<div class="dhead"><span class="dnum">Part ' + d.num + '</span><h3>' + esc(d.name) + '</h3></div>' +
+        '<p>' + esc(d.blurb) + '</p>' +
+        '<ul class="complist">' + d.children.map(function (cid) {
+          const c = COMPONENT_BY_ID[cid], m = META[cid];
+          return '<li><a class="ccard" href="#/c/' + cid + '">' +
+            '<span class="cnum">' + m.number + '</span><h4>' + esc(c.title) + '</h4><p>' + esc(c.sub) + '</p>' +
+            statusTag(c.status) + '</a></li>';
+        }).join('') + '</ul>' +
+      '</div>';
+    }).join('') +
+  '</section></div>';
+}
+
+/* ============================================================
+   VIEW — COMPONENT DETAIL
+   ============================================================ */
+function viewComponent(id) {
+  const c = COMPONENT_BY_ID[id];
+  if (!c) return viewNotFound();
+  const m = META[id];
+  const dia = c.diagram && DIA[c.diagram] ? DIA[c.diagram]() : '';
+  const idx = FLAT_ORDER.indexOf(id);
+  const prev = idx > 0 ? COMPONENT_BY_ID[FLAT_ORDER[idx - 1]] : null;
+  const next = idx < FLAT_ORDER.length - 1 ? COMPONENT_BY_ID[FLAT_ORDER[idx + 1]] : null;
+
+  const evidenceLink = c.evidence ? '<p class="evidlink"><a href="#/evidence">See the published evidence behind this framework &rarr;</a></p>' : '';
+  const siteBlock = c.site
+    ? '<a class="btn" href="' + c.site + '">View the detailed framework &rarr;</a><p class="hint">Sets out the full detail of this framework, including delegations, criteria and process.</p>'
+    : '';
+
+  return '<div class="wrap"><section class="view" aria-labelledby="d-title">' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>' +
+      '<a href="#/s/' + m.section.id + '">' + esc(m.section.name) + '</a><span>/</span>' +
+      '<a href="#/s/' + m.section.id + '/' + m.domain.id + '">' + esc(m.domain.name) + '</a><span>/</span>' + esc(c.title) +
+    '</nav>' +
+    '<div class="detail-head">' +
+      '<p class="eyebrow">Part ' + m.number + ' \u00B7 ' + esc(m.domain.name) + '</p>' +
+      '<h2 id="d-title" tabindex="-1">' + esc(c.title) + '</h2>' +
+      '<p class="sub">' + esc(c.sub) + '</p>' +
+      '<div class="meta-row">' + statusTag(c.status) + (c.legal ? legalTag() : '') +
+        '<span class="owner">Owner: ' + esc(c.owner) + '</span><span class="owner">Source: ' + esc(c.doc) + '</span>' +
+      '</div>' +
+    '</div>' +
+    '<div class="detail-body">' +
+      '<div>' +
+        '<h3>1. Purpose</h3><p>' + esc(c.purpose) + '</p>' +
+        dia +
+        '<h3>2. How it operates</h3><ul>' + c.how.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' +
+        '<h3>3. Key decisions and thresholds</h3><ul>' + c.decisions.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' +
+        '<h3>4. Considerations for the Board</h3><ul class="testlist">' + c.test.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' +
+        evidenceLink +
+        (siteBlock ? '<h3>5. Further detail</h3>' + siteBlock : '') +
+      '</div>' +
+      '<aside class="side" aria-label="Component summary">' +
+        (c.figures && c.figures.length ? '<div class="panel"><h4>Key figures</h4><ul class="figlist">' +
+          c.figures.map(f => '<li><span>' + esc(f[1]) + '</span><b>' + esc(f[0]) + '</b></li>').join('') + '</ul></div>' : '') +
+        '<div class="panel"><h4>Operating area</h4><p style="font-size:.88rem;margin:0">' + esc(m.domain.name) + ', within ' + esc(m.section.name) + '.</p></div>' +
+      '</aside>' +
+    '</div>' +
+    '<nav class="pagernav" aria-label="Component sequence">' +
+      (prev ? '<a href="#/c/' + prev.id + '"><span class="pn-label">&larr; Previous</span>' + esc(prev.title) + '</a>' : '<span></span>') +
+      '<a class="pn-mid" href="#/s/' + m.section.id + '/' + m.domain.id + '"><span class="pn-label">Part</span>' + esc(m.domain.name) + '</a>' +
+      (next ? '<a href="#/c/' + next.id + '" style="text-align:right"><span class="pn-label">Next &rarr;</span>' + esc(next.title) + '</a>' : '<span></span>') +
+    '</nav>' +
+  '</section></div>';
+}
+
+/* ============================================================
+   VIEW — ALL FRAMEWORKS (secondary utility, not primary nav)
+   ============================================================ */
+let filterState = { domain: 'all', q: '' };
+
+function viewAll() {
+  return '<div class="wrap"><section class="view" aria-labelledby="h-all">' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>All frameworks</nav>' +
+    '<div class="section-head"><p class="eyebrow">Framework index</p><h2 id="h-all">All operating frameworks</h2>' +
+    '<p>A complete list of the frameworks that make up the NZIAT operating model, searchable by operating area.</p></div>' +
+    '<div class="toolbar">' +
+      '<div class="filters" role="group" aria-label="Filter by domain">' +
+        '<button class="filter" type="button" data-domain="all" aria-pressed="true">All areas</button>' +
+        DOMAINS.map(d => '<button class="filter" type="button" data-domain="' + d.id + '" aria-pressed="false">' + d.num + '. ' + esc(d.name) + '</button>').join('') +
+      '</div>' +
+      '<div class="search"><label for="q">Search</label><input type="search" id="q" placeholder="e.g. gates, remuneration, closure" autocomplete="off"></div>' +
+    '</div>' +
+    '<p class="sr" role="status" aria-live="polite" id="resultCount"></p>' +
+    '<ul class="grid" id="cardGrid"></ul>' +
+  '</section></div>';
+}
+
+function renderCards() {
+  const grid = $('#cardGrid');
+  if (!grid) return;
+  const q = filterState.q.trim().toLowerCase();
+  const list = COMPONENTS.filter(function (c) {
+    const m = META[c.id];
+    if (filterState.domain !== 'all' && m.domain.id !== filterState.domain) return false;
+    if (!q) return true;
+    const hay = [c.title, c.sub, c.purpose, c.doc, c.owner, c.how.join(' '), c.decisions.join(' '), c.test.join(' ')].join(' ').toLowerCase();
+    return hay.indexOf(q) !== -1;
+  });
+  grid.innerHTML = list.length ? list.map(function (c) {
+    const m = META[c.id];
+    return '<li><a class="card" href="#/c/' + c.id + '">' +
+      '<div class="card-top"><span class="cnum">' + m.number + '</span>' + statusTag(c.status) + '</div>' +
+      '<h3>' + esc(c.title) + '</h3><p class="sub">' + esc(c.sub) + '</p>' +
+      '<p class="go">' + esc(m.domain.name) + ' &rarr;</p></a></li>';
+  }).join('') : '<li class="empty">No components match that filter. <button class="filter" type="button" data-domain="all">Reset</button></li>';
+  const count = $('#resultCount');
+  if (count) count.textContent = list.length + ' of ' + COMPONENTS.length + ' frameworks shown.';
+}
+
+/* ============================================================
+   VIEW — EVIDENCE
+   ============================================================ */
+function viewEvidence() {
+  return '<div class="wrap"><section class="view" aria-labelledby="h-ev">' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>Evidence, assumptions and design choices</nav>' +
+    '<div class="section-head"><p class="eyebrow">Appendix</p><h2 id="h-ev">Evidence, assumptions and design choices</h2>' +
+    '<p>The operating model draws on three distinct foundations: published evidence from comparable institutions, planning assumptions about NZIAT\u2019s current context, and design choices made to fit the scale and obligations of a New Zealand Crown entity.</p></div>' +
+    '<div class="note"><strong>Why the distinction matters.</strong> Some design choices, such as fixed, non-renewable terms for Mission Directors, are supported directly by published evidence. Others, such as a $500,000 delegation threshold, are management recommendations calibrated to NZIAT\u2019s scale, put forward for Board decision rather than derived from external evidence.</div>' +
+
+    '<h3><span class="tier t1">Tier one</span> The published evidence base</h3>' +
+    '<p>Ten sources, concentrated on the ARPA family, the UK\u2019s ARIA, and the mission-oriented innovation policy literature.</p>' +
+    '<div class="tablewrap"><table><caption>Published sources and where their influence lands</caption>' +
+      '<thead><tr><th scope="col">Source</th><th scope="col">What it establishes</th><th scope="col">Where it lands</th></tr></thead><tbody>' +
+      SOURCES.map(s => '<tr><th scope="row">' + s.s + '<br><a href="' + s.u + '" target="_blank" rel="noopener noreferrer">' + s.u.replace(/^https?:\/\//, '').slice(0, 46) + '\u2026</a></th><td>' + s.e + '</td><td class="lands">' + s.w + '</td></tr>').join('') +
+    '</tbody></table></div>' +
+    '<p>Two honest caveats: this evidence comes from agencies at ten to a hundred times NZIAT\u2019s scale \u2014 the mechanics transfer, the scale does not. And the ARPA literature is descriptive and case-based rather than causally identified.</p>' +
+
+    '<h3><span class="tier t2">Tier two</span> NZIAT facts used as planning assumptions</h3>' +
+    '<p>Approximately $231 million over four years; an Auckland hub with a national network; priorities guided by the Prime Minister\u2019s Science, Innovation and Technology Advisory Council; and inherited commitments including a magnetics and materials platform, an AI platform, a completed quantum discovery process, and the Deep Tech Incubator transferring from the former Callaghan Innovation. Treat these as planning assumptions to re-verify against current MBIE and NZIAT sources.</p>' +
+
+    '<h3><span class="tier t3">Tier three</span> Designed mechanics</h3>' +
+    '<p>Most of what appears on the page is institutional design work: calibrated to a fund of roughly $58 million a year, offered as recommendations.</p>' +
+    '<div class="tablewrap"><table><caption>Designed elements and the reasoning behind them</caption>' +
+      '<thead><tr><th scope="col">Designed element</th><th scope="col">Reasoning, and what it is sensitive to</th></tr></thead><tbody>' +
+      DESIGNED.map(d => '<tr><th scope="row">' + d[0] + '</th><td>' + d[1] + '</td></tr>').join('') +
+    '</tbody></table></div>' +
+
+    '<h3>Using this material</h3>' +
+    '<p>The frameworks are drafted as though already in force, to demonstrate how the institution would operate. They remain a candidate\u2019s working proposal \u2014 every threshold is a recommendation for the Board to test, and the intellectual property positions require legal review before adoption.</p>' +
+    '<p><a class="btn ghost" href="#/">Back to overview</a></p>' +
+  '</section></div>';
+}
+
+/* ============================================================
+   VIEW — NOT FOUND
+   ============================================================ */
+function viewNotFound() {
+  return '<div class="wrap"><section class="view" aria-labelledby="h-404">' +
+    '<div class="section-head"><p class="eyebrow">Not found</p><h2 id="h-404">That page does not exist</h2><p>The link may be out of date.</p></div>' +
+    '<p><a class="btn" href="#/">Back to overview</a></p>' +
+  '</section></div>';
+}
+
+/* ============================================================
+   ROUTER
+   ============================================================ */
+function parseHash() {
+  const h = (location.hash || '#/').replace(/^#/, '');
+  const parts = h.split('/').filter(Boolean);
+  if (!parts.length) return { name: 'home' };
+  if (parts[0] === 's' && parts[1]) return { name: 'section', id: parts[1], domain: parts[2] || null };
+  if (parts[0] === 'c' && parts[1]) return { name: 'component', id: parts[1] };
+  if (parts[0] === 'all') return { name: 'all' };
+  if (parts[0] === 'evidence') return { name: 'evidence' };
+  return { name: 'home' };
+}
+
+function render() {
+  const route = parseHash();
+  const root = $('#viewRoot');
+  let html = '', label = '', navKey = '/';
+
+  switch (route.name) {
+    case 'section':
+      html = viewSection(route.id); label = SECTION_BY_ID[route.id] ? SECTION_BY_ID[route.id].name : 'Section';
+      navKey = '/s/' + route.id; break;
+    case 'component': {
+      const c = COMPONENT_BY_ID[route.id];
+      html = viewComponent(route.id); label = c ? c.title : 'Component not found';
+      navKey = c ? '/s/' + META[c.id].section.id : '/'; break;
+    }
+    case 'all': html = viewAll(); label = 'All frameworks'; navKey = '__all'; break;
+    case 'evidence': html = viewEvidence(); label = 'Evidence, assumptions and design choices'; navKey = '__evidence'; break;
+    default: html = viewHome(); label = 'Overview'; navKey = '/';
+  }
+
+  root.innerHTML = html;
+
+  $$('nav.primary a').forEach(function (a) {
+    if (a.getAttribute('data-route') === navKey) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+  });
+
+  if (route.name === 'all') {
+    renderCards();
+    $$('.filter').forEach(function (b) {
+      b.addEventListener('click', function () {
+        filterState.domain = b.getAttribute('data-domain');
+        $$('.filter').forEach(x => x.setAttribute('aria-pressed', String(x.getAttribute('data-domain') === filterState.domain)));
+        renderCards();
+      });
+    });
+    const input = $('#q');
+    if (input) { input.value = filterState.q; input.addEventListener('input', function () { filterState.q = input.value; renderCards(); }); }
+  }
+
+  $('#announcer').textContent = label + ' \u2014 view loaded.';
+  const heading = root.querySelector('h1, h2');
+  if (heading) { if (!heading.hasAttribute('tabindex')) heading.setAttribute('tabindex', '-1'); heading.focus({ preventScroll: true }); }
+
+  if (route.name === 'section' && route.domain) {
+    const target = document.getElementById('domain-' + route.domain);
+    if (target) { requestAnimationFrame(function () { target.scrollIntoView({ block: 'start' }); }); }
+  } else {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+
+  const nav = $('#primaryNav'), tgl = $('#navToggle');
+  if (nav && nav.classList.contains('open')) { nav.classList.remove('open'); tgl.setAttribute('aria-expanded', 'false'); }
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+(function init() {
+  const tgl = $('#navToggle'), nav = $('#primaryNav');
+  tgl.addEventListener('click', function () { const open = nav.classList.toggle('open'); tgl.setAttribute('aria-expanded', String(open)); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('open')) { nav.classList.remove('open'); tgl.setAttribute('aria-expanded', 'false'); tgl.focus(); }
+  });
+  window.addEventListener('hashchange', render);
+  render();
+})();
+</script>
+</body>
+</html>

@@ -96,11 +96,16 @@ main{padding-bottom:4rem;}
 .crumbs span{margin:0 .4rem;color:var(--line);}
 
 .tag{font-size:.72rem;letter-spacing:.03em;border-radius:var(--r-pill);padding:.2rem .65rem;border:1px solid var(--line);color:var(--muted);background:var(--paper-2);display:inline-block;}
-.status-concept{background:var(--slate-bg);border-color:var(--slate-line);color:var(--slate);}
-.status-developed{background:var(--tint);border-color:#BFE3DB;color:var(--teal-d);}
-.status-detailed{background:#E7ECF3;border-color:#C3D0E0;color:#2D4A6B;}
+.status-proposed{background:var(--slate-bg);border-color:var(--slate-line);color:var(--slate);}
+.status-evidence{background:var(--tint);border-color:#BFE3DB;color:var(--teal-d);}
+.status-hypothesis{background:#E7ECF3;border-color:#C3D0E0;color:#2D4A6B;}
 .status-board{background:var(--gold-bg);border-color:var(--gold-line);color:var(--gold);}
 .status-legal{background:#FBEFEF;border-color:#E9C9C9;color:#9A3E3E;}
+.statuslegend{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;align-items:center;font-size:.85rem;color:var(--muted);margin:1rem 0 1.5rem;}
+.statuslegend .tag{margin-right:.35rem;}
+.statusstrip{background:var(--gold-bg);border-bottom:1px solid var(--gold-line);color:#6B4E0F;font-size:.86rem;padding:.7rem 0;}
+.statusstrip .wrap{display:flex;gap:.5rem;align-items:baseline;}
+.statusstrip strong{font-family:var(--display);letter-spacing:.03em;flex:0 0 auto;}
 
 .flowcard{border:1px solid var(--line);border-radius:var(--r-l);padding:1.1rem 1rem .6rem;background:var(--paper);box-shadow:var(--shadow);margin:1.4rem 0;}
 .domaingrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;list-style:none;padding:0;margin:0;}
@@ -226,7 +231,7 @@ svg .n{font-size:11px;font-weight:700;fill:var(--teal-d);}
 svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
 
 @media print{
-  .sidebar nav,.toolbar,.skip,.side,.pagernav{display:none!important;}
+  .sidebar nav,.toolbar,.skip,.side,.pagernav,.statusstrip{display:none!important;}
   .view[hidden]{display:block!important;}
   .hero{background:#fff;color:#000;}
   .hero h1,.hero .lede,.hero .byline{color:#000;}
@@ -256,9 +261,11 @@ svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
         <li><a href="#/" data-route="/">Overview</a></li>
         <li><a href="#/s/strategy/missions">Missions</a></li>
         <li><a href="#/s/strategy" data-route="/s/strategy">Strategy</a></li>
+        <li><a href="#/missions" data-route="/missions">Mission hypotheses</a></li>
         <li><a href="#/c/investment">Investment Framework</a></li>
         <li><a href="#/s/capital" data-route="/s/capital">Capital</a></li>
         <li><a href="#/s/organisation" data-route="/s/organisation">Organisation</a></li>
+        <li><a href="#/leadership" data-route="/leadership">Leadership approach</a></li>
         <li><a href="#/s/governance" data-route="/s/governance">Governance</a></li>
       </ul>
     </nav>
@@ -266,6 +273,8 @@ svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
 
   <div class="content-col">
     <p class="sr" role="status" aria-live="polite" id="announcer"></p>
+
+    <div class="statusstrip"><div class="wrap"><strong>Candidate working proposition.</strong> Hypotheses and design choices on this site are subject to Board mandate, inherited commitments, legal review and evidence.</div></div>
 
     <main id="main"><div id="viewRoot"></div></main>
 
@@ -282,9 +291,11 @@ svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
               <li><a href="#/">Overview</a></li>
               <li><a href="#/s/strategy/missions">Missions</a></li>
               <li><a href="#/s/strategy">Strategy</a></li>
+              <li><a href="#/missions">Mission hypotheses</a></li>
               <li><a href="#/c/investment">Investment Framework</a></li>
               <li><a href="#/s/capital">Capital</a></li>
               <li><a href="#/s/organisation">Organisation</a></li>
+              <li><a href="#/leadership">Leadership approach</a></li>
               <li><a href="#/s/governance">Governance</a></li>
             </ul>
           </div>
@@ -293,14 +304,16 @@ svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
             <ul>
               <li><a href="#/all">All frameworks (searchable index)</a></li>
               <li><a href="#/evidence">Evidence, assumptions and design choices</a></li>
+              <li><a href="#/glossary">Glossary</a></li>
             </ul>
           </div>
           <div>
             <h4>Status of this material</h4>
-            <p>This is a proposed operating model, prepared as a candidate working draft, July 2026. The maturity of each element is stated on its page. No element should be read as approved by the Board unless stated.</p>
+            <p>This is a proposed operating model, prepared as a candidate working draft. The maturity of each element is stated on its page. No element should be read as approved by the Board unless stated.</p>
+            <p><em>Working draft updated 6 August 2026.</em></p>
           </div>
         </div>
-        <p class="foot-rule">Thresholds, delegation levels and remuneration bands set out in this operating model are recommendations calibrated to a fund of approximately $58 million a year, and remain subject to Board decision. Intellectual property positions require legal review before adoption. Further detail on the evidence and assumptions underlying the model is set out under <a href="#/evidence">Evidence, assumptions and design choices</a>.</p>
+        <p class="foot-rule">Thresholds, delegation levels and remuneration bands set out in this operating model are recommendations calibrated to the scale of NZIAT's $231m first mandate, pending an authoritative inherited-commitments baseline, and remain subject to Board decision. Intellectual property positions require legal review before adoption. Further detail on the evidence and assumptions underlying the model is set out under <a href="#/evidence">Evidence, assumptions and design choices</a>.</p>
       </div>
     </footer>
   </div>
@@ -324,7 +337,7 @@ const DOMAINS = [
   { id:'mandate',      num:'1', name:'Mandate and outcomes',                       blurb:'Defines NZIAT\u2019s purpose and the outcomes that would indicate success.',                                   children:['vision'] },
   { id:'firstyear',    num:'2', name:'First-year plan',                            blurb:'Sets out how NZIAT would establish its operating foundations within the first hundred days and its first year.', children:['first100','opplan'] },
   { id:'missions',     num:'3', name:'Mission selection and origination',          blurb:'Explains how national challenges are translated into missions, and how investable opportunities are identified.', children:['missiondev','discovery'] },
-  { id:'capital',      num:'4', name:'Capital allocation and portfolio management',blurb:'Governs how capital is committed, staged, monitored, reallocated and closed.',                    children:['investment','portfolio','programme'] },
+  { id:'capital',      num:'4', name:'Capital allocation and portfolio management',blurb:'Governs how capital is committed, staged, monitored, reallocated and closed.',                    children:['inheritedCommitments','investment','portfolio','programme','aiIntelligence'] },
   { id:'commercial',   num:'5', name:'Commercialisation and retained value',       blurb:'Explains how research is converted into licences, ventures, partnerships and retained national value.', children:['commercialisation'] },
   { id:'organisation', num:'6', name:'Organisation and leadership',                blurb:'Sets out the structure, roles and leadership model required to deliver missions and programmes.',               children:['org','missiondirector'] },
   { id:'governance',   num:'7', name:'Governance and assurance',                   blurb:'Defines decision rights, evidence requirements, and how conflicts and accountability are managed.',       children:['committee'] }
@@ -335,7 +348,7 @@ const DOMAINS = [
    ============================================================ */
 const COMPONENTS = [
   { id:'vision', title:'Vision and mandate', owner:'Chief Executive',
-    status:'developed', doc:'NZIAT vision and mandate statement', site:null, evidence:false,
+    status:'proposed', doc:'NZIAT vision and mandate statement', site:null, evidence:false,
     sub:'NZIAT\u2019s purpose as an active investor and system orchestrator for advanced technology.',
     purpose:'NZIAT exists to convert frontier research into national capability, including firms, intellectual property, skilled talent, industry partnerships, exports and retained economic value. It would operate as an active investor and system orchestrator, not solely as a grant administrator, with its priorities and investment decisions accountable to the Board and the public.',
     diagram:'vision',
@@ -345,32 +358,43 @@ const COMPONENTS = [
       'Resist drifting into a broad grant programme, a duplicate institution, or a short-horizon commercial fund.',
       'Measure success by conversion and retained value, never by activity counts.'
     ],
-    figures:[['$231m','First mandate, four years'],['~$58m','Deployable per year'],['4','Missions']],
-    decisions:['The distinction between an active system orchestrator and a broad grant programme depends on ongoing Board oversight rather than being fixed at the outset.','Success by year four would be measured through evidence of conversion \u2014 concentrated investment in credible priorities, a trusted decision-making system, private co-investment secured, and value retained in New Zealand \u2014 rather than through levels of funded activity.'],
+    figures:[['$231m','First mandate, four years'],['100 days','To an authoritative baseline'],['\u22644','Mission hypotheses under test']],
+    decisions:['The distinction between an active system orchestrator and a broad grant programme depends on ongoing Board oversight rather than being fixed at the outset.','Success by year four would be measured through evidence of conversion \u2014 concentrated investment in credible priorities, a trusted decision-making system, private co-investment secured, and value retained in New Zealand \u2014 rather than through levels of funded activity.','$231m is the size of the first mandate over four years, not a figure to be divided by four; annual discretionary capacity depends on an inherited-commitments baseline still to be established.'],
     test:['Is the mandate concentrated enough, or does it still read as a technology list?','What would falsify this vision within two years, and who is watching for it?']
   },
   { id:'first100', title:'The first 100 days', owner:'Chief Executive',
-    status:'developed', doc:'NZIAT first-year implementation plan (summary)', site:null, evidence:false,
-    sub:'How the mandate would be confirmed, the decision system established, and early priorities set.',
-    purpose:'The greatest risk in the first phase is spending two years designing the institution. The first 100 days must build confidence \u2014 in the Board, the ecosystem and the public \u2014 without pre-empting a strategy the Board has not yet approved.',
+    status:'proposed', doc:'NZIAT first-year implementation plan (summary)', site:null, evidence:false,
+    sub:'The incoming Chief Executive inherits commitments and a clock already running. The first phase begins with truth about the starting position, not a blank-sheet strategy process.',
+    purpose:'The first 100 days should establish a trusted mandate, an authoritative capital and capability baseline, a Board-approved decision system and enough visible movement to prove pace. The objective is not to arrive with every answer. It is to make the first consequential decisions well and create confidence that the institution can learn, choose and act.',
     diagram:'first100',
+    extra:'<div class="tablewrap"><table><caption>Four phases, including pre-day-one transition</caption><thead><tr><th scope="col">Phase</th><th scope="col">Leadership focus</th><th scope="col">Concrete outputs</th></tr></thead><tbody>' +
+      [
+        ['Before day one / transition','Use available transition time to understand the Establishment CEO\u2019s work, current staff, legal commitments, active procurements, platform processes, Board calendar and ministerial expectations. Agree the handover protocol and identify information gaps.','Transition map; preliminary risk register; first-month meeting sequence.'],
+        ['Days 1\u201330: establish truth and mandate','Confirm Board expectations, risk appetite, delegations and no-surprises rhythm. Build one inherited-capital register: legally committed, contracted, provisionally committed, ring-fenced and unallocated. Map current people, systems, stakeholders and dependencies.','Board-aligned mandate; capital baseline; inherited-programme review; CEO support plan.'],
+        ['Days 31\u201360: design and test the decision system','Engage universities, PROs, firms, investors, M\u0101ori partners, government and international experts through a structured sequence. Test mission hypotheses and investment criteria. Establish triage, diligence, conflict, stage-gate and reporting processes.','Draft investment architecture; stakeholder compact; initial mission discovery cases; recruitment priorities.'],
+        ['Days 61\u2013100: decide and move visibly','Bring an integrated strategy and operating plan to the Board. Confirm which mission discoveries proceed, identify first challenge statements, place inherited programmes into the common governance model and launch visible partnerships or seeds that remain reversible.','Board decision package; first challenge statements; investment calendar; public narrative; initial appointments.']
+      ].map(r => '<tr><th scope="row">' + r[0] + '</th><td>' + r[1] + '</td><td>' + r[2] + '</td></tr>').join('') +
+      '</tbody></table></div>' +
+      '<p>The first visible actions should prove pace and judgement \u2014 not activity. No irreversible commitment should be made merely to create the appearance of momentum, but the institution also cannot spend its first year designing itself.</p>' +
+      '<div class="callout"><strong>Year-one milestone.</strong> The strongest evidence that the operating model is real will be a transparent reallocation, reshape or stop decision based on evidence \u2014 handled respectfully and explained as learning rather than failure.</div>',
     how:[
-      'Days 1\u201330: confirm mandate, delegations and risk appetite; map every live commitment.',
-      'Days 31\u201360: test the strategic thesis with the ecosystem; design the investment decision system.',
-      'Days 61\u2013100: bring an integrated strategy, confirmed missions and first challenge statements to the Board.',
+      'Before day one: use available transition time to understand the Establishment CEO\u2019s work, current staff, legal commitments, active procurements, platform processes, Board calendar and ministerial expectations; agree the handover protocol.',
+      'Days 1\u201330: confirm mandate, delegations and risk appetite; build one inherited-capital register \u2014 legally committed, contracted, provisionally committed, ring-fenced, unallocated.',
+      'Days 31\u201360: test the strategic thesis and mission hypotheses with the ecosystem; design the investment decision system.',
+      'Days 61\u2013100: bring an integrated strategy, confirmed mission discoveries and first challenge statements to the Board.',
       'Engage stakeholders in a defined sequence: the Board and existing commitments first, with the wider research and industry network engaged in parallel.'
     ],
-    figures:[['100','Days to a Board decision point'],['1 wk','To a no-surprises cadence']],
-    decisions:['No irreversible commitment is made before the Board has approved the decision system.','M\u0101ori partnership is engaged as structural to investment design from day one, not as late consultation.'],
+    figures:[['100','Days to a Board decision point'],['1 wk','To a no-surprises cadence'],['4','Phases, including pre-day-one transition']],
+    decisions:['No irreversible commitment is made before the Board has approved the decision system.','M\u0101ori partnership is engaged as structural to investment design from day one, not as late consultation.','The inherited-capital register \u2014 not an assumed even split of $231m across four years \u2014 is the starting point for any statement about discretionary capacity.'],
     test:['Does the 100-day sequence commit anything irreversible before the decision system is Board-approved?','Is the stakeholder order \u2014 Board and inheritance first \u2014 the sequence the Board itself would choose?']
   },
   { id:'opplan', title:'Year-one operational plan', owner:'Chief Executive',
-    status:'developed', doc:'Chief Executive\u2019s Operational Plan', site:null, evidence:true,
+    status:'proposed', doc:'Chief Executive\u2019s Operational Plan', site:null, evidence:true,
     sub:'How strategic direction would be converted into an operating model, roadmap and control system.',
     purpose:'Translates the strategy into an executable operating model, organisation design, quarterly roadmap and control system for the first year \u2014 grounded in the evidence on how effective frontier-technology agencies operate, adapted to NZIAT\u2019s scale and inherited commitments.',
     diagram:'roadmap',
     how:[
-      'Around two-thirds of the first mandate is already committed to inherited programmes, so the first year focuses as much on managing these to a consistent standard as on making new commitments.',
+      'The starting position is not yet known with confidence: the first year establishes an inherited-commitments baseline — legally committed, contracted, provisionally committed, ring-fenced and unallocated — before any claim is made about how much of the $231m mandate is genuinely discretionary.',
       'Organise around missions rather than functions, so judgement sits with empowered mission leadership.',
       'Draws on the operating practices of comparable international agencies \u2014 empowered leadership and active investment gates \u2014 adapted to New Zealand\u2019s scale rather than replicated at their scale.',
       'Report performance, risk and opex quarterly against a small, fixed set of measures.'
@@ -380,7 +404,7 @@ const COMPONENTS = [
     test:['Which of the eight recommended changes to the original proposition does the Board still need to test?','Is the opex ceiling realistic once mission-team delivery costs are counted in?']
   },
   { id:'missiondev', title:'Mission Development Framework', owner:'Chief Executive',
-    status:'detailed', doc:'Mission Development Framework', site:'NZIAT_Operating_System_Frameworks.html', evidence:true,
+    status:'proposed', doc:'Mission Development Framework', site:null, evidence:true,
     sub:'How missions would be identified, approved, reviewed and closed.',
     purpose:'Missions are NZIAT\u2019s largest commitments of capital and credibility, so the process that creates them is deliberately slower and more evidenced than the process that funds anything inside them. It also governs the harder discipline: how a mission ends.',
     diagram:'lenses',
@@ -396,7 +420,7 @@ const COMPONENTS = [
     test:['Could a fifth mission be added without breaching the discipline that adding one requires closing another?','Has any mission case actually been able to conclude \u201Cdo not proceed\u201D, or only ever \u201Cproceed with conditions\u201D?']
   },
   { id:'discovery', title:'Opportunity Discovery Framework', owner:'Chief Investment Officer',
-    status:'detailed', doc:'Opportunity Discovery Framework', site:'NZIAT_Operating_System_Frameworks.html', evidence:true,
+    status:'proposed', doc:'Opportunity Discovery Framework', site:null, evidence:true,
     sub:'How opportunities for investment would be identified across ten channels.',
     purpose:'Most funding institutions treat origination passively: publish a call, assess what arrives. That systematically misses the best opportunities, which are frequently unformed, unaffiliated, or held by people who do not read government funding notices.',
     diagram:'channels',
@@ -411,7 +435,7 @@ const COMPONENTS = [
     test:['Which of the ten channels is least developed at present, and who is accountable for improving it?','Does the 15-working-day response standard hold once the pipeline is operating at scale?']
   },
   { id:'investment', title:'Investment Operating Framework', owner:'Chief Investment Officer',
-    status:'detailed', doc:'Investment Operating Framework', site:'NZIAT_Operating_System_Frameworks.html', evidence:true,
+    status:'proposed', doc:'Investment Operating Framework', site:null, evidence:true,
     sub:'A single lifecycle, decision gates, delegated authority and evidence standard governing all investment decisions.',
     purpose:'The keystone operating document of an investment-led institution. It applies to every dollar NZIAT deploys \u2014 new commitments, inherited platforms, opportunity seeds and follow-on capital alike \u2014 and prevails over any other document on an investment matter.',
     diagram:'gates',
@@ -426,7 +450,7 @@ const COMPONENTS = [
     test:['Are the $500k and $5m delegation thresholds right for a fund of this size?','Has a gate produced a stop in practice, or only continues and reshapes?']
   },
   { id:'portfolio', title:'Portfolio Management Framework', owner:'Chief Investment Officer',
-    status:'detailed', doc:'Portfolio Management Framework', site:'NZIAT_Operating_System_Frameworks.html', evidence:true,
+    status:'proposed', doc:'Portfolio Management Framework', site:null, evidence:true,
     sub:'How a central team would maintain oversight across a large number of active investments.',
     purpose:'The answer is segmentation, tiered attention, explicit risk appetite and a reallocation discipline that moves capital on evidence. Attention is allocated by materiality and risk, never spread evenly.',
     diagram:'tiers',
@@ -441,7 +465,7 @@ const COMPONENTS = [
     test:['Are the six concentration limits tight enough to prevent one mission or performer dominating the portfolio?','Is aggregate cohort reporting on seeds giving the Board enough visibility, or too little?']
   },
   { id:'programme', title:'Programme Management Framework', owner:'Chief Executive',
-    status:'detailed', doc:'Programme Management Framework', site:'NZIAT_Operating_System_Frameworks.html', evidence:true,
+    status:'proposed', doc:'Programme Management Framework', site:null, evidence:true,
     sub:'How programmes within each mission would be created, planned, delivered, reviewed and closed.',
     purpose:'A mission sets direction and holds capital; a programme is the coordinated body of work that converts a challenge statement into evidence and eventually into value. Programme discipline is what stops a mission becoming a portfolio of unrelated grants.',
     diagram:'prog',
@@ -455,8 +479,8 @@ const COMPONENTS = [
     decisions:['A collection of separately negotiated grants sharing a topic is not a programme \u2014 that distinction is what stops agencies quietly reverting to grant administration.','Every closure, successful or not, produces a written record feeding the annual decision-quality review.'],
     test:['Do programme teams treat reshaping as a legitimate outcome, or as a disguised failure?','Are closure records actually being written within 30 days, in practice?']
   },
-  { id:'commercialisation', title:'Commercialisation Framework', owner:'Head of Ventures',
-    status:'detailed', doc:'Commercialisation Framework', site:'NZIAT_Operating_System_Frameworks.html', evidence:false, legal:true,
+  { id:'commercialisation', title:'Commercialisation Framework', owner:'Commercialisation & Partnerships lead',
+    status:'proposed', doc:'Commercialisation Framework', site:null, evidence:false, legal:true,
     sub:'How research is converted into licences, ventures, partnerships and value retained in New Zealand.',
     purpose:'Commercialisation is not an end-stage handoff: it is a design input that shapes programmes before the technical path locks in. The framework covers IP, licensing, venture creation, industry partnership, internationalisation and exit pathways.',
     diagram:'pathways',
@@ -470,30 +494,44 @@ const COMPONENTS = [
     decisions:['Venture creation is one route among six, not the definition of success.','IP default positions favour performer ownership with onshore anchoring and rights to reclaim unused intellectual property (march-in rights) \u2014 a negotiating posture, not settled policy.'],
     test:['Are the IP default positions realistic once multiple institutions collaborate on one programme?','Is venture creation being treated as the definition of commercial success, contrary to the framework\u2019s intent?']
   },
-  { id:'org', title:'Organisation, roles and remuneration', owner:'Chief Operating Officer',
-    status:'board', doc:'Organisation charts, roster and position descriptions', site:'NZIAT_Organisation_Charts.html', evidence:false,
-    sub:'The structure, roles and remuneration required to deliver the operating model.',
-    purpose:'Four staffed mission teams and a thin functional spine, every unit reporting directly to the Chief Executive. Twenty-eight position descriptions with indicative remuneration bands, benchmarked to attract from industry and international programmes within Crown entity constraints.',
+  { id:'org', title:'Organisation, roles and remuneration', owner:'Chief Executive',
+    status:'board-decision', doc:'Organisation charts, roster and position descriptions', site:null, evidence:false,
+    sub:'A phased capability model: a small institution with unusually high judgement, built in three stages rather than hired complete on day one.',
+    purpose:'Build a small institution with unusually high judgement. Keep internally the capabilities where trust, capital, integration, Crown accountability and intervention rights matter most; draw technical depth from fixed-term experts, panels, fellows, secondments and delivery partners. The organisation is shown in three phases, not as a finished day-one structure, and directly addresses the Board\u2019s likely appointment risks and the support a new Chief Executive will need.',
     diagram:'org',
+    extra:'<p>Eight roles carry the accountable core of the institution. Mission Directors are added in phases as missions are validated, not hired ahead of evidence.</p>' +
+      '<div class="tablewrap"><table><caption>Roles and accountability</caption><thead><tr><th scope="col">Role</th><th scope="col">Accountability and rationale</th></tr></thead><tbody>' +
+      [
+        ['Chief Executive','Owns institutional strategy, Board relationship, ministerial confidence, culture, public narrative and integration of science, capital and national value. Does not personally substitute for technical, investment or Crown expertise.'],
+        ['Chief of Staff / Strategy &amp; Intelligence','Board and ministerial rhythm, strategic synthesis, CEO priorities, global intelligence, decision follow-through and cross-functional integration.'],
+        ['Chief Investment Officer','Capital architecture, diligence, portfolio construction, investment papers, gates, reallocation, reserves and performance management.'],
+        ['Crown Operations &amp; Governance lead','Finance, delegations, risk, audit, OIA, procurement/grants controls, people, records, select-committee readiness and no-surprises discipline. This is an early critical hire.'],
+        ['Science &amp; Technical Challenge lead','Independent technical quality, expert networks, research integrity, infrastructure and challenge of Mission Director assumptions.'],
+        ['Commercialisation &amp; Partnerships lead','Customers, IP, venture/licensing/JV/procurement routes, investor and corporate pipelines, and retained-value negotiation.'],
+        ['M\u0101ori Partnership executive','Embeds Te Tiriti, M\u0101ori economic value, data and IP considerations, partnership design and relationships from mission formation onward.'],
+        ['Mission Directors \u2014 phased','Appoint two to three only as mission cases are validated; scale toward four if the Board confirms four missions, capital permits and the work requires it.']
+      ].map(r => '<tr><th scope="row">' + r[0] + '</th><td>' + r[1] + '</td></tr>').join('') +
+      '</tbody></table></div>',
     how:[
-      'Mission teams are the primary operating unit; the functional spine provides shared standards, assurance and scarce expertise.',
-      'Reporting lines run directly to the Chief Executive, with cross-mission coordination taking place through the Executive Investment Committee.',
-      'Scientific depth is bought through fixed-term panels, fellows and secondments rather than a permanent hierarchy.',
-      'Five roles are budgeted at the top of band as scarce-judgement hires: Chief Executive, the four Mission Directors, Chief Investment Officer, Head of Ventures, M\u0101ori Partnership executive.'
+      'Phase 1 \u2014 critical control and judgement: Chief Executive, Chief of Staff / Strategy &amp; Intelligence, Chief Investment Officer, Crown Operations &amp; Governance lead, Science &amp; Technical Challenge lead, Commercialisation &amp; Partnerships lead and M\u0101ori Partnership executive, in place before new capital is committed.',
+      'Phase 2 \u2014 mission teams aligned to validated missions: two to three Mission Directors appointed only once mission cases are validated, each leading a small team of programme lead, embedded commercial lead and analyst/intelligence support drawn from universities, PROs, firms, M\u0101ori enterprises, independent researchers and international partners.',
+      'Phase 3 \u2014 scale only where portfolio volume and evidence justify it: a fourth Mission Director and further mission-team capacity added only if the Board confirms four missions, capital permits and the work requires it.',
+      'A Mission Director is a conductor, not a soloist: they align science, industry, capital and government around a time-bound national commitment, and need enough technical credibility to challenge the work without being its deepest expert.'
     ],
-    figures:[['44','Total FTE, fully hired'],['9','Direct reports to the CEO'],['~$9\u201310m','Fully hired people cost']],
-    decisions:['Fully hired people cost strains the opex cap; mission-team costs are proposed to be charged to mission envelopes as direct programme delivery, a choice put transparently to the Board.','Chief executive remuneration is subject to Public Service Commission consultation, not management discretion.'],
-    test:['Does the fully hired centre actually fit inside the opex discipline once mission-team delivery costs are counted?','Are the five roles budgeted at the top of the pay range the right ones to prioritise?']
+    figures:[['8','Phase 1 executive roles'],['2\u20133','Mission Directors to start \u2014 phased to 4'],['44','Upper-scenario FTE \u2014 an assumption to test, not a commitment']],
+    decisions:['Do not display 44 FTE as the default day-one organisation; it is kept in the assumptions register as an upper scenario, tested against portfolio volume and evidence as missions are validated.','Crown Operations &amp; Governance is an early critical hire, not a later addition \u2014 select-committee readiness and no-surprises discipline reduce the incoming Chief Executive\u2019s appointment risk from day one.','Chief executive remuneration is subject to Public Service Commission consultation, not management discretion.'],
+    test:['Does the Phase 1 core give an incoming Chief Executive enough Crown-operations and investment capability without over-hiring ahead of evidence?','Is scaling to four Mission Directors only on Board confirmation the right gate, or should capacity be built ahead of validated missions?']
   },
   { id:'missiondirector', title:'Mission Director Operating Framework', owner:'Chief Executive',
-    status:'detailed', doc:'Mission Director Operating Framework', site:null, evidence:true,
-    sub:'The role and authority of Mission Directors in leading each mission.',
-    purpose:'Mission Directors are not grant administrators or research managers. They define challenges, assemble performers across institutions, recommend and reallocate capital, hold programmes to honest milestones, and own the pathway from research to value.',
+    status:'proposed', doc:'Mission Director Operating Framework', site:null, evidence:true,
+    sub:'A conductor, not a soloist: the role and authority of Mission Directors, appointed in phases as missions are validated.',
+    purpose:'Mission Directors are not grant administrators or research managers. A Mission Director is a conductor, not a soloist: they align science, industry, capital and government around a time-bound national commitment. They define challenges, assemble performers across institutions, recommend and reallocate capital, hold programmes to honest milestones, and own the pathway from research to value. They require enough technical credibility to challenge the work, but their defining capability is integrated judgement and the ability to assemble and redirect a portfolio \u2014 not being the deepest expert in the room.',
     diagram:'delegations',
     how:[
+      'Appointed in phases, not all at once: two to three initially as mission cases are validated, scaling toward four only if the Board confirms four missions, capital permits and the work requires it.',
       'Fixed three-to-four-year terms, non-renewable by default, to maintain momentum and ensure each mission remains time-bound rather than becoming a permanent position.',
       'Decides project selection and commitments to $500k within envelope; reallocates up to 15% of envelope a year on evidence.',
-      'Actively assembles teams across institutions where the strongest configuration does not yet exist.',
+      'Actively assembles teams across institutions where the strongest configuration does not yet exist \u2014 each mission team also includes a programme lead, embedded commercial lead and analyst/intelligence support.',
       'Never penalised for evidence-based stops \u2014 only for surprises, drift and unexamined momentum.'
     ],
     figures:[['3\u20134 yrs','Fixed term'],['$500k','Independent commitment authority'],['15%','Annual reallocation']],
@@ -501,7 +539,7 @@ const COMPONENTS = [
     test:['Is a three-to-four-year fixed term long enough to see a mission\u2019s founding thesis through, or too short?','Does \u201Ca mission with no stops is under-managed\u201D actually get applied in practice, or only stated as principle?']
   },
   { id:'committee', title:'Investment Committee Framework', owner:'Chief Executive',
-    status:'board', doc:'Investment Committee Framework', site:'NZIAT_Operating_System_Frameworks.html', evidence:false,
+    status:'board-decision', doc:'Investment Committee Framework', site:null, evidence:false,
     sub:'Decision rights, voting, papers and conflict management for the Executive Investment Committee.',
     purpose:'The Executive Investment Committee is where investment judgement is exercised between Board meetings, and where coordination between mission teams and functional units takes place. It exercises delegated authority \u2014 it does not dilute the accountability of the individuals who sit on it.',
     diagram:'committee',
@@ -514,6 +552,44 @@ const COMPONENTS = [
     figures:[['Fortnightly','Meeting cadence'],['4','Quorum'],['5 days','Papers circulated in advance'],['$5m','Board escalation threshold']],
     decisions:['Decisions made collectively by a committee can dilute individual accountability; every decision under this framework belongs to a named person acting at a defined level of delegation.','Conflicts are declared at the point an opportunity is logged, not at the meeting, and managed by recorded recusal.'],
     test:['Is a CEO-chaired committee with a two-member escalation right sufficient counterweight, or does the Board want a direct attendance right?','Are the conflict-management provisions realistic given the small size of New Zealand\u2019s research and investment community?']
+  },
+  { id:'inheritedCommitments', title:'Inherited commitments baseline', owner:'Chief Investment Officer',
+    status:'proposed', doc:'Inherited commitments baseline (working summary)', site:null, evidence:false,
+    sub:'How the starting capital position would be established before any claim is made about discretionary capacity.',
+    purpose:'\u201cAround two-thirds committed\u201d cannot be asserted without a current, authoritative capital schedule \u2014 that claim is too consequential to infer from public announcements. This component explains the baseline process the incoming Chief Executive would run in the first 30 days, even before actual amounts are populated.',
+    how:[
+      'Every live commitment is classified into one of five categories: legally committed, contracted, provisionally committed, ring-fenced, or unallocated.',
+      'Each commitment is recorded with amount, remaining discretion, next decision point, accountable owner and strategic fit \u2014 not just a total dollar figure.',
+      'The register is built in the first 30 days of the first 100 days and refreshed before every capital-allocation claim is made publicly.',
+      'Until the register is populated with authoritative figures, no page on this site states a specific committed proportion of the $231m mandate.'
+    ],
+    extra:'<p>This is a placeholder structure, not populated data. It must be filled from authoritative transition information before any public claim is made about how much of the mandate is committed.</p>' +
+      '<div class="tablewrap"><table><caption>Current commitments \u2014 placeholder, to be populated</caption><thead><tr><th scope="col">Commitment</th><th scope="col">Legal status</th><th scope="col">Amount</th><th scope="col">Remaining discretion</th><th scope="col">Next decision</th><th scope="col">Owner</th><th scope="col">Strategic fit</th></tr></thead><tbody>' +
+      '<tr><td colspan="7" style="text-align:center;color:var(--muted);font-style:italic">To be populated from the authoritative transition schedule</td></tr>' +
+      '</tbody></table></div>' +
+      '<h3>Funding instrument matrix</h3><p>Once the baseline is established, commitments and new capital are deployed through a compact set of instruments, each subject to NZIAT\u2019s mandate and legal authority.</p>' +
+      '<ul>' + ['Discovery seeds','Challenge contracts','Grants','Commissioned research','Co-investment','Fellowships / secondments','Infrastructure / platform commitments','Equity or convertible instruments (subject to mandate and legal authority)'].map(x => '<li>' + x + '</li>').join('') + '</ul>',
+    figures:[['5','Baseline categories'],['30 days','Target to first draft register']],
+    decisions:['No figure for \u201cproportion committed\u201d is published until the register is built from authoritative transition information, not public announcements.','The register \u2014 not an assumed even split of $231m across four years \u2014 is the basis for any statement about discretionary capacity.'],
+    test:['Has the inherited-commitments register actually been built from authoritative sources, or is it still an assumption?','What proportion of the mandate turns out to be genuinely discretionary once the register is complete?']
+  },
+  { id:'aiIntelligence', title:'AI-enhanced investment intelligence', owner:'Chief Investment Officer',
+    status:'proposed', doc:'AI-enhanced investment intelligence (working summary)', site:null, evidence:false,
+    sub:'Frontier tooling for better public-capital decisions \u2014 accountable decision support, not automated allocation.',
+    purpose:'NZIAT can be AI-enhanced from inception. The purpose is not to replace expert judgement or delegate public authority to an algorithm. It is to give decision-makers a continuously updated evidence base, reduce administrative friction and identify changes that conventional periodic review can miss.',
+    how:[
+      'Application intelligence: extract claims, teams, dependencies, milestones and requested capital into a consistent decision record.',
+      'Duplication and differentiation scan: compare proposals with global publications, patents, funded programmes, companies and technical benchmarks; require assessors to resolve material matches rather than accept an automated score.',
+      'Persistent global landscape agents: monitor competing breakthroughs, adjacent research, regulatory developments, market formation and capital flows throughout the life of an investment.',
+      'Milestone validation: connect programme evidence, technical outputs, market signals and previous gate assumptions so the next review starts with what changed.',
+      'Portfolio pattern detection: flag concentration, repeated dependencies, common failure modes, hidden performer overlap and opportunities for shared infrastructure or partnerships.',
+      'Auditability: preserve sources, model version, prompts or rules, uncertainty and the human decision. No automated recommendation becomes a funding decision without named accountable judgement.',
+      'Fairness and confidentiality: test for institutional, disciplinary and demographic bias; protect unpublished research, commercial information and M\u0101ori data interests; use secure approved environments.'
+    ],
+    extra:'<div class="callout"><strong>Interview-ready anchor.</strong> \u201cI would make NZIAT AI-enhanced from the start, not AI-decided. Intelligent agents can continuously scan the global research and market environment, identify possible duplication and tell us when the assumptions behind an investment have changed. That gives our experts and Mission Directors better evidence at each gate. The accountable decision remains human, documented and visible to the Board.\u201d</div>',
+    figures:[['0','Autonomous funding decisions \u2014 by design'],['7','Capability areas']],
+    decisions:['No automated recommendation becomes a funding decision without named accountable human judgement.','Sources, model version, prompts or rules, uncertainty and the human decision are all preserved for audit.'],
+    test:['Is the boundary between AI-enhanced decision support and automated allocation actually enforced in practice, or only stated as principle?','Are the fairness, confidentiality and M\u0101ori data-interest safeguards sufficient once this operates at the scale of a full portfolio?']
   }
 ];
 
@@ -571,7 +647,7 @@ const SOURCES = [
     w:'Insistence that challenge statements be specific enough to generate criteria in year one', u:'https://discovery-pp.ucl.ac.uk/id/eprint/10196679' }
 ];
 const DESIGNED = [
-  ['Delegation thresholds \u2014 $500k, $500k\u2013$5m, above $5m, all equity to Board','Calibrated so a Mission Director can act independently at discovery scale, while anything material to a fund of approximately $58m a year reaches the Board.'],
+  ['Delegation thresholds \u2014 $500k, $500k\u2013$5m, above $5m, all equity to Board','Calibrated so a Mission Director can act independently at discovery scale, while anything material to the scale of NZIAT\u2019s $231m mandate reaches the Board \u2014 a calibration to be re-tested once the inherited-commitments baseline is established.'],
   ['15% annual reallocation limit within a mission envelope','Set high enough to make reallocation a genuine tool, and low enough that a mission cannot redefine its strategy between Board cycles without oversight.'],
   ['Gate names and sequence G0\u2013G4','The underlying discipline \u2014 scheduled decisions with genuine authority to stop a programme \u2014 is supported by evidence; this five-gate sequence is a design choice fitted to NZIAT\u2019s scale.'],
   ['Four gate outcomes: continue, reshape, stop, scale','Reshape and scale are included alongside continue and stop because the evidence shows that redirecting a programme is often as valuable as stopping or continuing it unchanged.'],
@@ -586,7 +662,68 @@ const DESIGNED = [
   ['Five paper types with page limits and the standing "what would change our mind?" question','Draws on the tradition of structured decision papers used in comparable agencies, adapted to NZIAT\u2019s scale.'],
   ['IP default positions','Constructed from general technology-transfer practice. These require legal review and represent a negotiating posture, not settled policy.'],
   ['Six exit pathways','Set out to ensure venture creation is treated as one commercial route among several, rather than as the definition of success.'],
-  ['Organisation shape, 44 FTE and remuneration bands','Designed to a discipline of 12\u201315% central operating cost. Remuneration bands are market benchmarks; chief executive remuneration is subject to Public Service Commission consultation.']
+  ['Organisation shape, 44 FTE and remuneration bands','A phased design \u2014 44 FTE is an upper scenario for a fully built-out institution, not a day-one commitment, tested against portfolio volume and evidence as missions are validated. Remuneration bands are market benchmarks; chief executive remuneration is subject to Public Service Commission consultation.'],
+  ['Inherited-commitments baseline categories \u2014 legally committed, contracted, provisionally committed, ring-fenced, unallocated','A classification designed to let the Board see how much of the $231m mandate is genuinely discretionary before any capital-allocation claim is made, rather than assuming an even split across four years.'],
+  ['AI-enhanced investment intelligence as decision support, not automated funding decisions','Designed so intelligent tooling accelerates evidence-gathering \u2014 duplication scans, landscape monitoring, milestone validation \u2014 while every funding decision remains a named, accountable human judgement, visible to the Board.'],
+  ['Four mission hypotheses shown for ambition','A deliberate choice to demonstrate the scale of ambition NZIAT could pursue, while making clear each hypothesis must still pass discovery, New Zealand-advantage and Board tests before becoming an approved mission.']
+];
+
+/* ============================================================
+   DATA \u2014 MISSION HYPOTHESES (examples, not approved missions)
+   ============================================================ */
+const MISSION_HYPOTHESES = [
+  { id:'space', num:'1', title:'Space and off-world systems', status:'hypothesis',
+    objective:'Enable people, machines and industry to operate reliably in space and other remote, resource-constrained environments.',
+    subChallenges:['Closed-loop life support','Lightweight radiation-resistant materials','Autonomous maintenance','Power and thermal systems','Sensing and communications','In-situ production','Remote logistics'],
+    nzRationale:'New Zealand aerospace, Antarctic, marine, remote-operations and materials capabilities; strong dual-use pathways on Earth.',
+    technologyStack:['Advanced materials','AI','Autonomous systems'],
+    pathways:['Space agencies','Aerospace primes','Remote infrastructure','Defence','Mining','Emergency response','Oceans and agriculture'],
+    discoveryQuestions:['Does New Zealand have a specific capability or test environment that can become globally indispensable, rather than merely participating in a fashionable space theme?'],
+    safeguards:'Discovery must establish a defensible New Zealand-specific advantage before this proceeds beyond hypothesis.'
+  },
+  { id:'humanmachine', num:'2', title:'Human\u2013machine partnership and neural interfaces', status:'hypothesis',
+    objective:'Create safe, trusted and high-performance ways for humans, intelligent machines and robotic systems to work together \u2014 including selected neural and assistive interfaces.',
+    subChallenges:['Neural sensing and stimulation','Prosthetics','Rehabilitation','Human-robot teaming','Autonomous collaboration','Safety and assurance','Data rights','Adaptive interfaces','Workforce integration'],
+    nzRationale:'Potential as a high-trust testbed, with strengths in AI, health, robotics and regulation \u2014 but clinical infrastructure and New Zealand advantage require proof.',
+    technologyStack:['AI','Robotics','Synthetic biology'],
+    pathways:['Assistive technology','Health','Hazardous work','Manufacturing','Agriculture','Defence','Logistics','Ageing populations'],
+    discoveryQuestions:['Is this best treated as one mission, a smaller frontier programme, or a cross-cutting capability supporting several missions?'],
+    safeguards:'Clinical and regulatory pathways, data rights and safety assurance are tested in discovery before any mission case is brought forward.'
+  },
+  { id:'climate', num:'3', title:'Planetary climate intervention and carbon removal systems', status:'hypothesis',
+    objective:'Develop verifiable, governable and scalable methods to remove greenhouse gases or increase climate resilience where conventional mitigation alone is insufficient.',
+    subChallenges:['Engineered carbon-capturing organisms','Ocean and mineral pathways','Advanced sorbent materials','Measurement and verification','Climate modelling','Ecological safeguards','Reversibility','Governance and international coordination'],
+    nzRationale:'New Zealand\u2019s geothermal, biological, ocean, materials and environmental-science base may create niches, but legitimacy and overlap with existing organisations must be tested carefully.',
+    technologyStack:['Synthetic biology','Advanced materials','AI'],
+    pathways:['Carbon removal','Industrial emissions','Environmental monitoring','Engineered biology','Materials','Verification platforms','International climate partnerships'],
+    discoveryQuestions:['Can NZIAT define a technically frontier intervention that is safe, additional, globally relevant and complementary to existing climate institutions?'],
+    safeguards:'Governance, reversibility, ecological safety, M\u0101ori perspectives and international legitimacy are embedded from discovery onward, not added later. Framed as planetary climate intervention and carbon removal, not open-ended geoengineering.'
+  },
+  { id:'foodsystems', num:'4', title:'Food systems for extreme and closed environments', status:'hypothesis',
+    objective:'Create complete food-production systems that operate with minimal water, land, inputs and waste in deserts, disaster zones, remote sites and off-world environments.',
+    subChallenges:['Closed-loop ecosystems','Engineered crops and microbes','Waste-to-nutrition','Compact cultivation','Autonomous control','Novel proteins','Nutrient recycling','Resilient packaging and storage'],
+    nzRationale:'Builds on national food and biological capability while requiring a frontier boundary that does not duplicate the Bioeconomy Science Institute or Plant &amp; Food Research.',
+    technologyStack:['Synthetic biology','AI','Advanced materials'],
+    pathways:['Remote communities','Humanitarian response','Defence','Controlled-environment agriculture','Space','Mining','Climate-exposed regions'],
+    discoveryQuestions:['Does existing New Zealand capability leave a genuine coordination and frontier-technology gap for NZIAT, or should this become a programme inside the off-world mission?'],
+    safeguards:'Discovery must show a genuine frontier-technology and coordination gap beyond the mandates of existing food-science institutions before this proceeds.'
+  }
+];
+const MISSION_SELECTION_RULE = 'A mission should proceed only where six tests are passed: the future outcome is consequential; the problem is specific enough to organise action; New Zealand has a credible basis to contribute; public investment is additional; multiple capabilities can reinforce one another; and success can produce retained national value. Approval must include end conditions and reasons to stop.';
+
+/* ============================================================
+   DATA \u2014 GLOSSARY
+   ============================================================ */
+const GLOSSARY = [
+  ['Mission','A concrete, time-bound national commitment to a specific future-world problem or outcome \u2014 not a technology category and not a permanent organisational territory. Ends when its purpose is fulfilled, invalidated or superseded.'],
+  ['Programme','A coordinated body of work within a mission, anchored by a challenge statement, that converts a problem into evidence and eventually into value.'],
+  ['Project','A specific piece of funded work inside a programme, typically delivered by one performer or a small consortium.'],
+  ['Platform','Larger-scale, longer-lived infrastructure or capability \u2014 often inherited \u2014 that multiple programmes or missions draw on.'],
+  ['Seed','A small, rapid, cohort-managed award for exceptional work outside current missions, or to test a new mission thesis.'],
+  ['Strategic capability investment','An investment assessed on technical learning, options created and national capability, rather than on near-term commercial return.'],
+  ['Translation pathway','An investment pathway that requires clearer customer, partner, regulatory, procurement, licensing or venture evidence than a strategic capability investment.'],
+  ['Retained national value','The onshore capability, intellectual property anchoring, high-value roles and economic value NZIAT negotiates to keep in New Zealand as investments convert to outcomes.'],
+  ['Additionality','The test of whether public investment funds something that would not otherwise happen at the same pace, scale or in New Zealand at all.']
 ];
 
 /* ============================================================
@@ -621,14 +758,14 @@ DIA.vision = () => svgWrap(
   '0 0 840 145', 'Frontier research converted by NZIAT into national capability', 'The conversion function NZIAT exists to perform.');
 
 DIA.first100 = () => svgWrap(
-  ['Days 1\u201330|Listen, diagnose, map|#EEF6F4|#0FA893|no','Days 31\u201360|Test and design|#EEF6F4|#0FA893|no','Days 61\u2013100|Commit and launch|#0B2434|#0B2434|yes'].map(function (b, i) {
-    const p = b.split('|'), x = 10 + i * 276, dark = p[4] === 'yes';
-    return '<rect x="' + x + '" y="16" width="252" height="76" rx="10" fill="' + p[2] + '" stroke="' + p[3] + '"/>' +
-      '<text class="n" x="' + (x + 20) + '" y="44" ' + (dark ? 'fill="#CFE8E3"' : '') + '>' + p[0] + '</text>' +
-      '<text class="' + (dark ? 'tw' : 't') + '" x="' + (x + 20) + '" y="70">' + p[1] + '</text>' +
-      (i < 2 ? '<line x1="' + (x + 254) + '" y1="54" x2="' + (x + 282) + '" y2="54" stroke="#5F7580" marker-end="url(#ar)"/>' : '');
-  }).join('') + '<text class="cap" x="10" y="118">Deliberately reversible early \u00B7 decisively committed by day 100</text>' + arrowDef,
-  '0 0 840 130', 'Three phases across the first hundred days', 'Pace without premature lock-in.');
+  ['Transition|Listen, diagnose, handover|#EEF6F4|#0FA893|no','Days 1\u201330|Truth and mandate|#EEF6F4|#0FA893|no','Days 31\u201360|Test and design|#EEF6F4|#0FA893|no','Days 61\u2013100|Decide and move visibly|#0B2434|#0B2434|yes'].map(function (b, i) {
+    const p = b.split('|'), x = 10 + i * 208, dark = p[4] === 'yes';
+    return '<rect x="' + x + '" y="16" width="188" height="76" rx="10" fill="' + p[2] + '" stroke="' + p[3] + '"/>' +
+      '<text class="n" x="' + (x + 16) + '" y="44" ' + (dark ? 'fill="#CFE8E3"' : '') + '>' + p[0] + '</text>' +
+      '<text class="' + (dark ? 'tw' : 't') + '" x="' + (x + 16) + '" y="68" font-size="12">' + p[1] + '</text>' +
+      (i < 3 ? '<line x1="' + (x + 190) + '" y1="54" x2="' + (x + 214) + '" y2="54" stroke="#5F7580" marker-end="url(#ar)"/>' : '');
+  }).join('') + '<text class="cap" x="10" y="118">Deliberately reversible before day one \u00B7 decisively committed by day 100</text>' + arrowDef,
+  '0 0 840 130', 'Four phases across the transition and first hundred days', 'Pace without premature lock-in.');
 
 DIA.roadmap = () => svgWrap(
   ['Q1|Confirm, design, commit','Q2|Stand up the machine','Q3|First disciplined capital','Q4|Prove the system'].map(function (b, i) {
@@ -646,15 +783,18 @@ DIA.org = () => svgWrap(
   '<rect x="330" y="70" width="180" height="40" rx="9" fill="#0B2434"/><text class="tw" x="420" y="95" text-anchor="middle">Chief executive</text>' +
   '<path d="M420 110 L420 128 M150 128 L690 128" stroke="#5F7580" fill="none"/>' +
   '<line x1="150" y1="128" x2="150" y2="146" stroke="#5F7580" marker-end="url(#ar)"/><line x1="690" y1="128" x2="690" y2="146" stroke="#5F7580" marker-end="url(#ar)"/>' +
-  '<text class="n" x="20" y="166">MISSION TEAMS</text>' +
-  ['Advanced materials &amp; magnetics','Applied AI','Quantum technologies','Synthetic biology'].map(function (m, i) {
-    return '<rect x="20" y="' + (176 + i * 42) + '" width="380" height="34" rx="8" fill="#EEF6F4" stroke="#0FA893"/><text class="t" x="38" y="' + (198 + i * 42) + '" font-size="12">' + m + '</text><text class="s" x="330" y="' + (198 + i * 42) + '">5 FTE</text>';
+  '<text class="n" x="20" y="166">MISSION TEAMS \u2014 PHASED, NOT DAY-ONE COMPLETE</text>' +
+  ['Mission A \u2014 small team, validated first','Mission B \u2014 small team, validated first','Mission C \u2014 small team, phased'].map(function (m, i) {
+    return '<rect x="20" y="' + (176 + i * 42) + '" width="380" height="34" rx="8" fill="#EEF6F4" stroke="#0FA893"/><text class="t" x="38" y="' + (198 + i * 42) + '" font-size="12">' + m + '</text>';
   }).join('') +
-  '<text class="n" x="440" y="166">FUNCTIONAL SPINE</text>' +
-  [['Office of the CEO','3'],['Investment &amp; intelligence','7'],['Ventures, IP &amp; partnerships','4'],['M\u0101ori partnership','2'],['Corporate &amp; Crown ops','8']].map(function (m, i) {
-    return '<rect x="440" y="' + (176 + i * 42) + '" width="380" height="34" rx="8" fill="#F7FAFB" stroke="#D3DFE4"/><text class="t" x="458" y="' + (198 + i * 42) + '" font-size="12">' + m[0] + '</text><text class="s" x="760" y="' + (198 + i * 42) + '">' + m[1] + ' FTE</text>';
-  }).join('') + '<text class="cap" x="20" y="404">Every box is a direct report to the Chief Executive \u2014 nothing reports through a mission</text>' + arrowDef,
-  '0 0 840 415', 'Organisation chart with four mission teams and five functional units reporting to the chief executive', 'Mission teams deliver each mission; functional units provide shared standards and specialist support across all missions.');
+  '<rect x="20" y="302" width="380" height="34" rx="8" fill="#fff" stroke="#D3DFE4" stroke-dasharray="4 4"/><text class="s" x="38" y="324" font-size="11.5">Mission D \u2014 added only if the Board confirms a fourth mission</text>' +
+  '<text class="n" x="440" y="166">PHASE 1 \u2014 CRITICAL CONTROL AND JUDGEMENT</text>' +
+  ['Chief of Staff / Strategy &amp; Intelligence','Chief Investment Officer','Crown Operations &amp; Governance lead','Science &amp; Technical Challenge lead','Commercialisation &amp; Partnerships lead','M\u0101ori Partnership executive'].map(function (m, i) {
+    return '<rect x="440" y="' + (176 + i * 42) + '" width="380" height="34" rx="8" fill="#F7FAFB" stroke="#D3DFE4"/><text class="t" x="458" y="' + (198 + i * 42) + '" font-size="12">' + m + '</text>';
+  }).join('') +
+  '<rect x="20" y="440" width="800" height="40" rx="9" fill="#0B2434"/><text class="tw" x="40" y="464" font-size="12">Enabling technology stack \u2014 AI \u00b7 quantum \u00b7 synthetic biology \u00b7 advanced materials &amp; magnetics \u2014 shared across missions, not a mission itself</text>' +
+  '<text class="cap" x="20" y="500">Every box is a direct report to the Chief Executive \u2014 nothing reports through a mission. Mission Directors are added as missions are validated.</text>' + arrowDef,
+  '0 0 840 512', 'Organisation chart with phased mission teams, Phase 1 executive roles and a shared enabling technology stack, all reporting to the chief executive', 'Mission teams are added in phases as missions are validated; the technology stack is shared infrastructure, not a set of missions.');
 
 DIA.gates = () => svgWrap(
   [['G0','Entry'],['G1','Feasibility'],['G2','Progress'],['G3','Pathway'],['G4','Exit']].map(function (g, i) {
@@ -706,7 +846,7 @@ DIA.prog = () => svgWrap(
   '0 0 840 134', 'Programme lifecycle with a reshape loop returning to planning', 'Reshaping is frequently the highest-value gate outcome.');
 
 DIA.pathways = () => svgWrap(
-  '<rect x="300" y="10" width="240" height="46" rx="9" fill="#0B2434"/><text class="tw" x="420" y="30" text-anchor="middle">G3 \u2014 pathway decision</text><text class="sw" x="420" y="48" text-anchor="middle">Mission Director with Head of Ventures</text>' +
+  '<rect x="300" y="10" width="240" height="46" rx="9" fill="#0B2434"/><text class="tw" x="420" y="30" text-anchor="middle">G3 \u2014 pathway decision</text><text class="sw" x="420" y="48" text-anchor="middle">Mission Director with Commercialisation &amp; Partnerships lead</text>' +
   ['Licence','Venture creation','Joint venture','Corporate adoption','Public procurement','Strategic platform'].map(function (p, i) {
     const col = i % 3, row = Math.floor(i / 3), x = 10 + col * 278, y = 100 + row * 62;
     return '<line x1="420" y1="56" x2="' + (x + 129) + '" y2="' + (y - 6) + '" stroke="#D3DFE4" marker-end="url(#ar)"/><rect x="' + x + '" y="' + y + '" width="258" height="46" rx="9" fill="#EEF6F4" stroke="#0FA893"/><text class="t" x="' + (x + 129) + '" y="' + (y + 29) + '" text-anchor="middle" font-size="12">' + p + '</text>';
@@ -726,7 +866,7 @@ DIA.channels = () => svgWrap(
 
 DIA.committee = () => svgWrap(
   '<rect x="10" y="10" width="820" height="88" rx="12" fill="#F7FAFB" stroke="#D3DFE4"/><text class="n" x="30" y="34">EXECUTIVE INVESTMENT COMMITTEE \u2014 FORTNIGHTLY \u00B7 QUORUM 4</text>' +
-  [['CEO','Chair'],['CIO','Deputy'],['MDs \u00D74','Voting'],['COO','Voting'],['Ventures','Voting'],['M\u0101ori Ptnr','Voting']].map(function (m, i) {
+  [['CEO','Chair'],['CIO','Deputy'],['MDs (phased)','Voting'],['Crown Ops','Voting'],['Comm. &amp; Ptnr','Voting'],['M\u0101ori Ptnr','Voting']].map(function (m, i) {
     const x = 30 + i * 133;
     return '<rect x="' + x + '" y="44" width="120" height="40" rx="8" fill="#EEF6F4" stroke="#0FA893"/><text class="t" x="' + (x + 60) + '" y="62" text-anchor="middle" font-size="12">' + m[0] + '</text><text class="s" x="' + (x + 60) + '" y="77" text-anchor="middle">' + m[1] + '</text>';
   }).join('') +
@@ -742,42 +882,66 @@ const $ = (s, r) => (r || document).querySelector(s);
 const $$ = (s, r) => Array.prototype.slice.call((r || document).querySelectorAll(s));
 const esc = s => String(s).replace(/&(?![a-z#0-9]+;)/g, '&amp;').replace(/</g, '&lt;');
 
-const STATUS_LABEL = { concept:'Concept', developed:'Developed proposal', detailed:'Detailed framework available', board:'Requires Board decision' };
-const STATUS_CLASS = { concept:'status-concept', developed:'status-developed', detailed:'status-detailed', board:'status-board' };
+const STATUS_LABEL = { evidence:'Evidence-based', proposed:'Proposed design choice', hypothesis:'Hypothesis to test', 'board-decision':'Requires Board decision', 'legal-review':'Requires legal review' };
+const STATUS_CLASS = { evidence:'status-evidence', proposed:'status-proposed', hypothesis:'status-hypothesis', 'board-decision':'status-board', 'legal-review':'status-legal' };
 function statusTag(key) { return '<span class="tag ' + STATUS_CLASS[key] + '">' + STATUS_LABEL[key] + '</span>'; }
 function legalTag() { return '<span class="tag status-legal">Requires legal review</span>'; }
+function statusLegend() {
+  return '<div class="statuslegend" aria-label="Status legend">' +
+    Object.keys(STATUS_LABEL).map(k => statusTag(k)).join('') +
+    '<span>Every page states which of these applies. None should be read as approved unless it says “requires Board decision” and the Board has since approved it.</span>' +
+  '</div>';
+}
 
 /* ============================================================
    VIEW — HOME
    ============================================================ */
 const TOP_TESTS = [
-  ['Is the mandate concentrated enough to be credible, or still a technology list?','mandate'],
-  ['Are the capital delegations \u2014 $500k / $5m \u2014 right for a fund this size?','capital'],
-  ['Does the organisation have enough scientific and commercial depth without over-hiring?','organisation'],
-  ['Are the stopping and reallocation mechanisms credible, or only theoretical?','capital'],
-  ['Are the national-value terms in commercialisation strong enough to retain value onshore?','commercial'],
-  ['Is the Investment Committee sufficient counterweight, or does the Board want a direct attendance right?','governance']
+  ['What is the true inherited-commitments baseline, and how much of the $231m mandate is genuinely discretionary?','firstyear'],
+  ['What concentration appetite does the Board want across missions, before capital is committed?','capital'],
+  ['How many missions should NZIAT actually run, and on what evidence would a fourth be added?','missions'],
+  ['Are the CEO/Board delegations \u2014 $500k / $5m \u2014 set at the right level for a fund this size?','governance'],
+  ['What level of technical failure is acceptable, and how is that different from probity failure?','governance'],
+  ['When will the Board see the first visible, evidence-based proof the model works?','firstyear'],
+  ['Does the full-build organisation actually fit inside the opex discipline once mission-team delivery costs are counted?','organisation'],
+  ['Are the retained-national-value terms strong enough to keep value onshore?','commercial']
+];
+
+const PREVENTS = [
+  'Technology labels becoming the strategy.',
+  'Capital being spread thinly to avoid difficult choices.',
+  'Research being funded first and connected to customers only after the technical path is locked.',
+  'Programmes continuing because stopping them is institutionally uncomfortable.',
+  'The CEO becoming a bottleneck or pretending to be the deepest expert in every room.',
+  'Public money taking early risk while nearly all later value migrates offshore without an explicit national rationale.'
 ];
 
 function viewHome() {
   return '' +
   '<section class="hero" aria-labelledby="h-title"><div class="wrap">' +
-    '<p class="eyebrow" style="color:var(--teal)">Proposed operating model \u00B7 Candidate working draft</p>' +
-    '<h1 id="h-title">How NZIAT would operate</h1>' +
-    '<p class="lede">This operating model sets out how NZIAT would establish strategic priorities, select missions, allocate and manage capital, organise delivery, support commercialisation, and maintain effective governance and accountability.</p>' +
-    '<p class="byline">Prepared by Brandon Hutcheson for the Board of the New Zealand Institute for Advanced Technology \u00B7 July 2026</p>' +
+    '<p class="eyebrow" style="color:var(--teal)">New Zealand Institute for Advanced Technology</p>' +
+    '<h1 id="h-title">A national operating system for frontier technology</h1>' +
+    '<p class="lede">NZIAT should make disciplined choices about the future New Zealand helps create. Its task is to connect frontier science, capital, industry, government and global partners \u2014 then convert that combined capability into firms, intellectual property, talent, resilience, exports and enduring national value.</p>' +
+    '<p class="byline">Prepared by Brandon Hutcheson for the Board of the New Zealand Institute for Advanced Technology \u00B7 August 2026</p>' +
     '<div class="stats">' +
-      '<div class="stat"><b>$231m</b><span>First mandate, four years</span></div>' +
-      '<div class="stat"><b>4</b><span>Missions</span></div>' +
-      '<div class="stat"><b>44</b><span>FTE, fully hired</span></div>' +
-      '<div class="stat"><b>7</b><span>Core operating domains</span></div>' +
+      '<div class="stat"><b>$231m</b><span>First mandate over four years</span></div>' +
+      '<div class="stat"><b>100 days</b><span>To establish mandate, inherited baseline and decision system</span></div>' +
+      '<div class="stat"><b>4</b><span>Mission hypotheses to test, not a pre-selected portfolio</span></div>' +
+      '<div class="stat"><b>1</b><span>Integrated operating system from discovery to retained value</span></div>' +
     '</div>' +
   '</div></section>' +
   '<div class="wrap">' +
+    '<div class="callout"><strong>The real product of NZIAT is decision quality.</strong> Good decisions compound: they attract stronger people, concentrate capital behind better opportunities, create credible partnerships and make difficult stop or scale decisions possible.</div>' +
+
     '<section class="view" aria-labelledby="h-flow">' +
       '<div class="section-head"><p class="eyebrow">How NZIAT operates</p><h2 id="h-flow">How the operating model works</h2>' +
-      '<p>NZIAT\u2019s operating model links national priorities to investment and commercialisation. Priorities are translated into missions, missions are delivered through programmes and investments, and successful outcomes are converted into capability, value and long-term benefit for New Zealand.</p></div>' +
+      '<p>National priorities define where New Zealand needs capability. Opportunity discovery tests where New Zealand could become distinctive. The Board approves a small number of missions. Mission Directors then assemble programmes and performers, while staged capital, commercial pathways and public accountability operate from the beginning \u2014 not as end-stage additions.</p></div>' +
       DIA.flow() +
+    '</section>' +
+
+    '<section class="view" aria-labelledby="h-prevent">' +
+      '<div class="section-head"><p class="eyebrow">Discipline by design</p><h2 id="h-prevent">What this model is designed to prevent</h2></div>' +
+      '<ul>' + PREVENTS.map(p => '<li>' + esc(p) + '</li>').join('') + '</ul>' +
     '</section>' +
 
     '<section class="view" aria-labelledby="h-domains">' +
@@ -826,6 +990,51 @@ function domainGrid() {
 /* ============================================================
    VIEW — SECTION
    ============================================================ */
+const SECTION_EXTRA = {
+  strategy:
+    '<p>NZIAT should be selective enough to matter, disciplined enough to be trusted, and connected enough to convert. New Zealand will not win by matching the scale of larger economies or entering every technology race already under way. It must choose future-world challenges where national capability, global trajectory, partnership potential and a credible pathway to value overlap.</p>' +
+    '<div class="callout"><strong>Vision.</strong> Place bets on the unknown with discipline; rekindle New Zealand’s adventurous spirit; and build the groundwork on which the world’s boldest future breakthroughs can stand.</div>' +
+    '<p><strong>A clarifying distinction.</strong> AI, quantum, synthetic biology, advanced materials and magnetics are the enabling stack. A mission is the nationally significant problem those technologies are combined to solve. A programme is a coordinated body of work within a mission. An investment is a staged commitment to a specific performer, team, platform or project.</p>' +
+    '<h3>Why missions rather than broad themes?</h3>' +
+    '<div class="tablewrap"><table><caption>Funding mechanisms compared</caption><thead><tr><th scope="col">Mechanism</th><th scope="col">How it works</th><th scope="col">Strength</th><th scope="col">Limitation</th></tr></thead><tbody>' +
+      [
+        ['Broad thematic funding','Defines categories such as health, climate or digital technology, then receives many separate proposals within them.','Breadth, accessibility, familiar peer-review processes.','Can spread capital thinly; projects may share a label without reinforcing one another.'],
+        ['Investigator-led grants','Researchers originate projects and seek funding through competitive calls.','Protects scientific creativity and bottom-up discovery.','Commercial context and system coordination may arrive late; duplication can be difficult to detect.'],
+        ['Co-investment / partnerships','Public capital follows or matches private and industry commitments.','Leverages external capital and market knowledge.','May bias the portfolio toward nearer-term, lower-uncertainty opportunities.'],
+        ['NZIAT mission model','Defines a concrete future outcome, actively assembles complementary programmes and uses staged capital to concentrate behind evidence.','Strategic coherence, ecosystem formation, accountability and the ability to create industries that do not yet exist.','Requires excellent mission definition, empowered leadership, strong governance and the courage to stop.']
+      ].map(r => '<tr><th scope="row">' + r[0] + '</th><td>' + r[1] + '</td><td>' + r[2] + '</td><td>' + r[3] + '</td></tr>').join('') +
+    '</tbody></table></div>' +
+    '<p><strong>Mission ecosystem effect.</strong> A mission does more than fund research. It creates a visible national focal point that can inspire young researchers, attract international collaborators, engage the public, produce spin-offs, shape policy, stimulate start-ups, strengthen educational pipelines, diversify capital, build national pride and leave a durable capability beyond any single investment.</p>' +
+    '<p><strong>Commercial ecosystem effect.</strong> A distinctive mission gives global capital and strategic partners a reason to watch New Zealand. Within each mission, customer access, data, test environments, regulatory learning, investors and international relationships can be shared across multiple programmes. One successful partnership should lower the path-to-market friction for the rest of the mission portfolio.</p>' +
+    '<p><a class="btn ghost" href="#/missions">See the four mission hypotheses this thinking would test &rarr;</a></p>',
+  capital:
+    '<p>NZIAT should not try to pick every winner at the beginning. It should create options, learn quickly, concentrate behind evidence and protect enough follow-on capacity to scale what proves out. Capital allocation is an ongoing leadership activity, not a once-a-year grant round.</p>' +
+    '<h3>A layered capital model</h3>' +
+    '<p>The simple “80/20” split is kept only as an indicative discipline within the priority-missions layer, not as a promise about the whole $231m mandate.</p>' +
+    '<div class="tablewrap"><table><caption>Capital layers</caption><thead><tr><th scope="col">Capital layer</th><th scope="col">Purpose</th><th scope="col">Required discipline</th></tr></thead><tbody>' +
+      [
+        ['Inherited commitments','Existing platforms, contracts and obligations.','Bring every inherited commitment into one common evidence, gate and reporting standard; do not pretend all $231m is discretionary.'],
+        ['Priority missions','Major multi-year envelopes approved by the Board.','Indicatively the majority of genuinely discretionary capital, concentrated across a small number of validated missions.'],
+        ['Opportunity seeds / open allocation','Small, rapid awards for exceptional work outside current missions or to test a new mission thesis.','Protect frontier optionality and access for independent researchers and non-traditional teams.'],
+        ['Follow-on and intervention reserve','Uncommitted capital protected for scaling, rescue, reshaping, bridging or orderly closure.','Avoid spending the portfolio before evidence shows where conviction should rise.'],
+        ['Operations and institutional capability','Lean central capability, assurance, data, specialist panels and platform costs.','Show transparently; do not disguise central costs inside mission delivery.']
+      ].map(r => '<tr><th scope="row">' + r[0] + '</th><td>' + r[1] + '</td><td>' + r[2] + '</td></tr>').join('') +
+    '</tbody></table></div>' +
+    '<p><strong>Two pathway model.</strong> Use two principal investment pathways. Strategic capability investments build foundational science, infrastructure, data, talent or platforms and are assessed on technical learning, options created and national capability. Translation investments require clearer customer, partner, regulatory, procurement, licensing or venture evidence. A programme may move between pathways as evidence develops, but the expectations must be explicit.</p>' +
+    '<p><strong>Stage-gate principle.</strong> Every commitment must state what evidence the next tranche is buying and what conditions would cause NZIAT to continue, reshape, merge, stop or scale. Milestones should reduce uncertainty rather than manufacture false precision.</p>' +
+    '<p><strong>Duplication treatment.</strong> Apparent duplication is not automatically waste: independent replication, alternative methods and competitive approaches can be valuable. The decision question is whether the proposal creates additional information, capability or strategic options relative to existing work. The assessment must explicitly document the global landscape, the claimed differentiation and why public funding is additional.</p>',
+  organisation:
+    '<p>Build a small institution with unusually high judgement, shown as a phased capability model rather than a finished day-one structure. See <a href="#/leadership">Leadership approach</a> for how this organisation would actually be led.</p>',
+  governance:
+    '<p>NZIAT must be protected from short-termism without becoming detached from democratic accountability. Good governance is not a brake on frontier ambition; it is what gives the institution permission to take technical uncertainty while maintaining public trust.</p>' +
+    '<h3>Board relationship</h3><p>The Board sets strategy, approves missions, holds major allocation and equity decisions, and sets risk appetite. It receives a no-surprises rhythm from the Chief Executive: material risks, prospective stops and inherited-commitment issues are raised before they become news, not after.</p>' +
+    '<h3>Ministerial and public interface</h3><p>The Minister holds an ownership and accountability relationship consistent with the statutory and Crown-entity framework — not routine project selection. Public communication explains choices in plain terms, including why a mission was stopped or reshaped, so scrutiny strengthens rather than erodes trust.</p>' +
+    '<h3>Humility and challenge</h3><p>Independent experts, panels and the Science &amp; Technical Challenge lead exist to challenge Mission Director and Executive assumptions before capital is committed, not to rubber-stamp them. Dissent is recorded, not smoothed over.</p>' +
+    '<h3>Failure and accountability</h3><p>Frontier investment can fail technically while still being governed well: a proportion of early-stage investment is expected not to work, and a mission or programme with no stops is presumed under-managed rather than high-performing. What must never fail is probity — conflicts declared late, evidence suppressed, or decisions made outside delegated authority. Risk appetite is stated by domain because technical risk and probity risk are not the same risk.</p>' +
+    '<h3>Conflicts and small-system reality</h3><p>New Zealand’s research and investment community is small enough that conflicts of interest are common rather than exceptional. Conflicts are declared at the point an opportunity is logged, not at the meeting where it is decided, and are managed by recorded recusal rather than by pretending they do not exist.</p>' +
+    '<div class="note"><strong>Decision hierarchy.</strong> Mission Director: decisions within approved envelope and delegation. Executive Investment Committee: cross-functional challenge and delegated commitments. Chief Executive: accountable recommendation, organisational integration and escalation. Board: strategy, mission approval, major allocations, equity positions, risk appetite and material exceptions. Minister: ownership and accountability relationship consistent with the statutory and Crown-entity framework, not routine project selection.</div>'
+};
+
 function viewSection(sectionId) {
   const sec = SECTION_BY_ID[sectionId];
   if (!sec) return viewNotFound();
@@ -833,6 +1042,7 @@ function viewSection(sectionId) {
   return '<div class="wrap"><section class="view" aria-labelledby="sec-title">' +
     '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>' + esc(sec.name) + '</nav>' +
     '<div class="section-head"><p class="eyebrow">NZIAT operating model</p><h2 id="sec-title">' + esc(sec.name) + '</h2><p>' + esc(sec.blurb) + '</p></div>' +
+    (SECTION_EXTRA[sectionId] || '') +
     domains.map(function (d) {
       return '<div class="domainblock" id="domain-' + d.id + '">' +
         '<div class="dhead"><span class="dnum">Part ' + d.num + '</span><h3>' + esc(d.name) + '</h3></div>' +
@@ -875,13 +1085,14 @@ function viewComponent(id) {
       '<h2 id="d-title" tabindex="-1">' + esc(c.title) + '</h2>' +
       '<p class="sub">' + esc(c.sub) + '</p>' +
       '<div class="meta-row">' + statusTag(c.status) + (c.legal ? legalTag() : '') +
-        '<span class="owner">Owner: ' + esc(c.owner) + '</span><span class="owner">Source: ' + esc(c.doc) + '</span>' +
+        '<span class="owner">Owner: ' + esc(c.owner) + '</span><span class="owner">Source: ' + esc(c.doc) + '</span><span class="owner">Working draft updated 6 August 2026</span>' +
       '</div>' +
     '</div>' +
     '<div class="detail-body">' +
       '<div>' +
         '<h3>1. Purpose</h3><p>' + esc(c.purpose) + '</p>' +
         dia +
+        (c.extra || '') +
         '<h3>2. How it operates</h3><ul>' + c.how.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' +
         '<h3>3. Key decisions and thresholds</h3><ul>' + c.decisions.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' +
         '<h3>4. Considerations for the Board</h3><ul class="testlist">' + c.test.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' +
@@ -954,7 +1165,19 @@ function viewEvidence() {
     '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>Evidence, assumptions and design choices</nav>' +
     '<div class="section-head"><p class="eyebrow">Appendix</p><h2 id="h-ev">Evidence, assumptions and design choices</h2>' +
     '<p>The operating model draws on three distinct foundations: published evidence from comparable institutions, planning assumptions about NZIAT\u2019s current context, and design choices made to fit the scale and obligations of a New Zealand Crown entity.</p></div>' +
+    statusLegend() +
     '<div class="note"><strong>Why the distinction matters.</strong> Some design choices, such as fixed, non-renewable terms for Mission Directors, are supported directly by published evidence. Others, such as a $500,000 delegation threshold, are management recommendations calibrated to NZIAT\u2019s scale, put forward for Board decision rather than derived from external evidence.</div>' +
+
+    '<h3>What changed in August 2026</h3>' +
+    '<p>This working draft was revised in August 2026 to correct unsupported assumptions and complete missing content ahead of Board discussion. The principal shifts:</p>' +
+    '<ul>' + [
+      'Technology-labelled missions became problem-led mission hypotheses. AI, quantum, synthetic biology and advanced materials are now shown as a shared enabling stack, not as mission names in themselves.',
+      'An assumed \u201caround two-thirds committed\u201d and a \u201c$58m deployable per year\u201d figure were removed and replaced with an inherited-commitments baseline requirement, built from an authoritative capital schedule rather than public announcements.',
+      'The four example missions are now explicitly labelled as hypotheses to test, not a pre-selected or approved portfolio.',
+      'Mission Director numbers were reconciled: two to three are appointed initially as missions are validated, scaling to four only on Board confirmation \u2014 replacing an internal contradiction between two-to-three and four.',
+      'AI-enhanced decision support was added as a named capability, described throughout as accountable support for human judgement, never as an automated funding decision.',
+      'The organisation moved from a single 44-FTE, fully hired structure to a phased capability model, with 44 FTE retained only as an upper-scenario assumption to test.'
+    ].map(x => '<li>' + x + '</li>').join('') + '</ul>' +
 
     '<h3><span class="tier t1">Tier one</span> The published evidence base</h3>' +
     '<p>Ten sources, concentrated on the ARPA family, the UK\u2019s ARIA, and the mission-oriented innovation policy literature.</p>' +
@@ -968,7 +1191,7 @@ function viewEvidence() {
     '<p>Approximately $231 million over four years; an Auckland hub with a national network; priorities guided by the Prime Minister\u2019s Science, Innovation and Technology Advisory Council; and inherited commitments including a magnetics and materials platform, an AI platform, a completed quantum discovery process, and the Deep Tech Incubator transferring from the former Callaghan Innovation. Treat these as planning assumptions to re-verify against current MBIE and NZIAT sources.</p>' +
 
     '<h3><span class="tier t3">Tier three</span> Designed mechanics</h3>' +
-    '<p>Most of what appears on the page is institutional design work: calibrated to a fund of roughly $58 million a year, offered as recommendations.</p>' +
+    '<p>Most of what appears on the page is institutional design work: calibrated to the scale of NZIAT’s $231m first mandate, offered as recommendations pending an authoritative inherited-commitments baseline.</p>' +
     '<div class="tablewrap"><table><caption>Designed elements and the reasoning behind them</caption>' +
       '<thead><tr><th scope="col">Designed element</th><th scope="col">Reasoning, and what it is sensitive to</th></tr></thead><tbody>' +
       DESIGNED.map(d => '<tr><th scope="row">' + d[0] + '</th><td>' + d[1] + '</td></tr>').join('') +
@@ -976,6 +1199,71 @@ function viewEvidence() {
 
     '<h3>Using this material</h3>' +
     '<p>The frameworks are drafted as though already in force, to demonstrate how the institution would operate. They remain a candidate\u2019s working proposal \u2014 every threshold is a recommendation for the Board to test, and the intellectual property positions require legal review before adoption.</p>' +
+    '<p><a class="btn ghost" href="#/">Back to overview</a></p>' +
+  '</section></div>';
+}
+
+/* ============================================================
+   VIEW — MISSION HYPOTHESES
+   ============================================================ */
+function viewMissions() {
+  return '<div class="wrap"><section class="view" aria-labelledby="h-mh">' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>Mission hypotheses</nav>' +
+    '<div class="section-head"><p class="eyebrow">Strategy · Candidate examples, not a decided portfolio</p><h2 id="h-mh" tabindex="-1">Mission hypotheses</h2>' +
+    '<p>Four examples of the ambition and structure the mission-development process should test. They are not commitments, and should not be read as the Chief Executive arriving with the Board’s strategy already decided. Each must still pass discovery, New Zealand-advantage and Board tests before it could become an approved mission.</p></div>' +
+    '<div class="note"><strong>How to read this page.</strong> Every hypothesis below carries a “hypothesis to test” status. None has been through discovery. None is an approved mission. See the <a href="#/c/missiondev">Mission Development Framework</a> for how a hypothesis would actually be tested and approved.</div>' +
+    MISSION_HYPOTHESES.map(function (h) {
+      return '<article class="flowcard">' +
+        '<div class="meta-row" style="margin-top:0"><span class="cnum">Hypothesis ' + h.num + '</span>' + statusTag(h.status) + '</div>' +
+        '<h3 style="font-size:1.35rem;margin:.4rem 0 .7rem">' + esc(h.title) + '</h3>' +
+        '<p><strong>Mission objective.</strong> ' + esc(h.objective) + '</p>' +
+        '<p><strong>Sub-challenges.</strong> ' + h.subChallenges.map(esc).join(' · ') + '</p>' +
+        '<p><strong>Why New Zealand could matter.</strong> ' + esc(h.nzRationale) + '</p>' +
+        '<p><strong>Enabling technology stack.</strong> ' + h.technologyStack.map(esc).join(' · ') + ' <span class="hint" style="display:inline">— shared tools, not the mission itself.</span></p>' +
+        '<p><strong>Commercial and strategic pathways.</strong> ' + h.pathways.map(esc).join(' · ') + '</p>' +
+        '<div class="callout"><strong>Discovery question.</strong> ' + h.discoveryQuestions.map(esc).join(' ') + '</div>' +
+        '<p class="hint">' + esc(h.safeguards) + '</p>' +
+      '</article>';
+    }).join('') +
+    '<div class="note"><strong>Mission selection rule.</strong> ' + esc(MISSION_SELECTION_RULE) + '</div>' +
+    '<p><a class="btn ghost" href="#/">Back to overview</a></p>' +
+  '</section></div>';
+}
+
+/* ============================================================
+   VIEW — LEADERSHIP APPROACH
+   ============================================================ */
+function viewLeadership() {
+  const points = [
+    'Present a clear point of view, but treat the Board’s mandate and existing work as the starting point rather than an obstacle.',
+    'Listen to understand the system before making irreversible changes; move quickly once the decision basis is sound.',
+    'Own hard calls, including stopping or reshaping work, without treating technical uncertainty as personal failure.',
+    'Use specialists and independent challenge rather than trying to be the deepest scientist, investor and Crown operator simultaneously.',
+    'Communicate complex choices plainly enough for ministers, researchers, investors, dignitaries and the public to trust the institution.',
+    'Build a culture where curiosity is disciplined, dissent is recorded and evidence can change the answer.'
+  ];
+  return '<div class="wrap"><section class="view" aria-labelledby="h-lead">' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>Leadership approach</nav>' +
+    '<div class="section-head"><p class="eyebrow">How the institution would be led</p><h2 id="h-lead" tabindex="-1">Leadership: ambitious, evidence-led and institutionally grounded</h2>' +
+    '<p>The first Chief Executive must build the institution while it is already moving. The leadership task is to create coherence across actors that do not naturally share incentives or time horizons — then turn that coherence into better choices, disciplined capital and visible national value.</p></div>' +
+    '<ul>' + points.map(p => '<li>' + esc(p) + '</li>').join('') + '</ul>' +
+    '<div class="callout"><strong>Opportunity Discovery is curiosity with discipline.</strong> Its purpose is learning before funding, and a valid outcome is deciding not to proceed.</div>' +
+    '<div class="callout"><strong>Missions are national commitments, not large projects.</strong> They should end when their purpose is fulfilled, invalidated or superseded — not become permanent organisational territories.</div>' +
+    '<p><a class="btn ghost" href="#/s/organisation">See the organisation this leadership approach is built on &rarr;</a></p>' +
+  '</section></div>';
+}
+
+/* ============================================================
+   VIEW — GLOSSARY
+   ============================================================ */
+function viewGlossary() {
+  return '<div class="wrap"><section class="view" aria-labelledby="h-gloss">' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>Glossary</nav>' +
+    '<div class="section-head"><p class="eyebrow">Definitions</p><h2 id="h-gloss" tabindex="-1">Glossary</h2>' +
+    '<p>Terms used consistently across the operating model, defined once here.</p></div>' +
+    '<div class="tablewrap"><table><caption>Glossary of operating-model terms</caption><thead><tr><th scope="col">Term</th><th scope="col">Definition</th></tr></thead><tbody>' +
+    GLOSSARY.map(g => '<tr><th scope="row">' + esc(g[0]) + '</th><td>' + esc(g[1]) + '</td></tr>').join('') +
+    '</tbody></table></div>' +
     '<p><a class="btn ghost" href="#/">Back to overview</a></p>' +
   '</section></div>';
 }
@@ -1001,6 +1289,9 @@ function parseHash() {
   if (parts[0] === 'c' && parts[1]) return { name: 'component', id: parts[1] };
   if (parts[0] === 'all') return { name: 'all' };
   if (parts[0] === 'evidence') return { name: 'evidence' };
+  if (parts[0] === 'missions') return { name: 'missions' };
+  if (parts[0] === 'leadership') return { name: 'leadership' };
+  if (parts[0] === 'glossary') return { name: 'glossary' };
   return { name: 'home' };
 }
 
@@ -1020,6 +1311,9 @@ function render() {
     }
     case 'all': html = viewAll(); label = 'All frameworks'; navKey = '__all'; break;
     case 'evidence': html = viewEvidence(); label = 'Evidence, assumptions and design choices'; navKey = '__evidence'; break;
+    case 'missions': html = viewMissions(); label = 'Mission hypotheses'; navKey = '/missions'; break;
+    case 'leadership': html = viewLeadership(); label = 'Leadership approach'; navKey = '/leadership'; break;
+    case 'glossary': html = viewGlossary(); label = 'Glossary'; navKey = '__glossary'; break;
     default: html = viewHome(); label = 'Overview'; navKey = '/';
   }
 

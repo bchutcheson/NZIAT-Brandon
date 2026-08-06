@@ -101,6 +101,8 @@ main{padding-bottom:4rem;}
 .status-hypothesis{background:#E7ECF3;border-color:#C3D0E0;color:#2D4A6B;}
 .status-board{background:var(--gold-bg);border-color:var(--gold-line);color:var(--gold);}
 .status-legal{background:#FBEFEF;border-color:#E9C9C9;color:#9A3E3E;}
+.chips{display:flex;flex-wrap:wrap;gap:.35rem;margin:0 0 .9rem;}
+.chips span{font-size:.76rem;background:var(--tint);color:var(--teal-d);border-radius:var(--r-pill);padding:.2rem .6rem;}
 .statuslegend{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;align-items:center;font-size:.85rem;color:var(--muted);margin:1rem 0 1.5rem;}
 .statuslegend .tag{margin-right:.35rem;}
 .statusstrip{background:var(--gold-bg);border-bottom:1px solid var(--gold-line);color:#6B4E0F;font-size:.86rem;padding:.7rem 0;}
@@ -253,16 +255,15 @@ svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
     </a>
     <nav class="primary" id="primaryNav" aria-label="Primary">
       <ul>
-        <li><a href="#/c/vision">Vision</a></li>
-        <li><a href="#/">What can NZIAT Achieve</a></li>
-        <li><a href="#/c/first100">First 100 days</a></li>
+        <li><a href="#/c/vision" data-route="/c/vision">Vision</a></li>
+        <li><a href="#/" data-route="/">What can NZIAT Achieve</a></li>
+        <li><a href="#/c/first100" data-route="/c/first100">First 100 days</a></li>
       </ul>
       <ul>
         <li><a href="#/" data-route="/">Overview</a></li>
-        <li><a href="#/s/strategy/missions">Missions</a></li>
         <li><a href="#/s/strategy" data-route="/s/strategy">Strategy</a></li>
-        <li><a href="#/missions" data-route="/missions">Mission hypotheses</a></li>
-        <li><a href="#/c/investment">Investment Framework</a></li>
+        <li><a href="#/missions" data-route="/missions">Missions</a></li>
+        <li><a href="#/c/investment" data-route="/c/investment">Investment Framework</a></li>
         <li><a href="#/s/capital" data-route="/s/capital">Capital</a></li>
         <li><a href="#/s/organisation" data-route="/s/organisation">Organisation</a></li>
         <li><a href="#/leadership" data-route="/leadership">Leadership approach</a></li>
@@ -289,9 +290,8 @@ svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
               <li><a href="#/">What can NZIAT Achieve</a></li>
               <li><a href="#/c/first100">First 100 days</a></li>
               <li><a href="#/">Overview</a></li>
-              <li><a href="#/s/strategy/missions">Missions</a></li>
               <li><a href="#/s/strategy">Strategy</a></li>
-              <li><a href="#/missions">Mission hypotheses</a></li>
+              <li><a href="#/missions">Missions</a></li>
               <li><a href="#/c/investment">Investment Framework</a></li>
               <li><a href="#/s/capital">Capital</a></li>
               <li><a href="#/s/organisation">Organisation</a></li>
@@ -1207,25 +1207,37 @@ function viewEvidence() {
    VIEW — MISSION HYPOTHESES
    ============================================================ */
 function viewMissions() {
+  const missionDomain = DOMAIN_BY_ID['missions'];
   return '<div class="wrap"><section class="view" aria-labelledby="h-mh">' +
-    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>Mission hypotheses</nav>' +
-    '<div class="section-head"><p class="eyebrow">Strategy · Candidate examples, not a decided portfolio</p><h2 id="h-mh" tabindex="-1">Mission hypotheses</h2>' +
-    '<p>Four examples of the ambition and structure the mission-development process should test. They are not commitments, and should not be read as the Chief Executive arriving with the Board’s strategy already decided. Each must still pass discovery, New Zealand-advantage and Board tests before it could become an approved mission.</p></div>' +
-    '<div class="note"><strong>How to read this page.</strong> Every hypothesis below carries a “hypothesis to test” status. None has been through discovery. None is an approved mission. See the <a href="#/c/missiondev">Mission Development Framework</a> for how a hypothesis would actually be tested and approved.</div>' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>Missions</nav>' +
+    '<div class="section-head"><p class="eyebrow">Strategy · How missions are chosen, and what they could be</p><h2 id="h-mh" tabindex="-1">Missions</h2>' +
+    '<p>This page brings together how NZIAT would select a mission and what a mission could actually look like. The four examples below are candidates to test the process against, not commitments — each must still pass discovery, New Zealand-advantage and Board tests before it could become an approved mission.</p></div>' +
+
+    '<h3 id="mh-process">How missions get selected</h3>' +
+    '<p>' + esc(missionDomain.blurb) + '</p>' +
+    '<ul class="complist">' + missionDomain.children.map(function (cid) {
+      const c = COMPONENT_BY_ID[cid], m = META[cid];
+      return '<li><a class="ccard" href="#/c/' + cid + '">' +
+        '<span class="cnum">' + m.number + '</span><h4>' + esc(c.title) + '</h4><p>' + esc(c.sub) + '</p>' +
+        statusTag(c.status) + '</a></li>';
+    }).join('') + '</ul>' +
+    '<div class="note"><strong>Mission selection rule.</strong> ' + esc(MISSION_SELECTION_RULE) + '</div>' +
+
+    '<h3 id="mh-hypotheses">Four hypotheses being tested</h3>' +
+    '<p>Every hypothesis below carries a “hypothesis to test” status. None has been through discovery. None is an approved mission.</p>' +
     MISSION_HYPOTHESES.map(function (h) {
       return '<article class="flowcard">' +
         '<div class="meta-row" style="margin-top:0"><span class="cnum">Hypothesis ' + h.num + '</span>' + statusTag(h.status) + '</div>' +
-        '<h3 style="font-size:1.35rem;margin:.4rem 0 .7rem">' + esc(h.title) + '</h3>' +
-        '<p><strong>Mission objective.</strong> ' + esc(h.objective) + '</p>' +
-        '<p><strong>Sub-challenges.</strong> ' + h.subChallenges.map(esc).join(' · ') + '</p>' +
+        '<h4 style="font-size:1.35rem;margin:.4rem 0 .5rem;color:var(--navy);font-family:var(--display);font-weight:700">' + esc(h.title) + '</h4>' +
+        '<p>' + esc(h.objective) + '</p>' +
+        '<p class="hint" style="margin-bottom:.3rem">Sub-challenges</p><div class="chips">' + h.subChallenges.map(x => '<span>' + esc(x) + '</span>').join('') + '</div>' +
         '<p><strong>Why New Zealand could matter.</strong> ' + esc(h.nzRationale) + '</p>' +
-        '<p><strong>Enabling technology stack.</strong> ' + h.technologyStack.map(esc).join(' · ') + ' <span class="hint" style="display:inline">— shared tools, not the mission itself.</span></p>' +
-        '<p><strong>Commercial and strategic pathways.</strong> ' + h.pathways.map(esc).join(' · ') + '</p>' +
+        '<p class="hint" style="margin-bottom:.3rem">Enabling technology stack — shared tools, not the mission itself</p><div class="chips">' + h.technologyStack.map(x => '<span>' + esc(x) + '</span>').join('') + '</div>' +
+        '<p class="hint" style="margin-bottom:.3rem">Commercial and strategic pathways</p><div class="chips">' + h.pathways.map(x => '<span>' + esc(x) + '</span>').join('') + '</div>' +
         '<div class="callout"><strong>Discovery question.</strong> ' + h.discoveryQuestions.map(esc).join(' ') + '</div>' +
         '<p class="hint">' + esc(h.safeguards) + '</p>' +
       '</article>';
     }).join('') +
-    '<div class="note"><strong>Mission selection rule.</strong> ' + esc(MISSION_SELECTION_RULE) + '</div>' +
     '<p><a class="btn ghost" href="#/">Back to overview</a></p>' +
   '</section></div>';
 }
@@ -1298,29 +1310,29 @@ function parseHash() {
 function render() {
   const route = parseHash();
   const root = $('#viewRoot');
-  let html = '', label = '', navKey = '/';
+  let html = '', label = '', navKeys = ['/'];
 
   switch (route.name) {
     case 'section':
       html = viewSection(route.id); label = SECTION_BY_ID[route.id] ? SECTION_BY_ID[route.id].name : 'Section';
-      navKey = '/s/' + route.id; break;
+      navKeys = ['/s/' + route.id]; break;
     case 'component': {
       const c = COMPONENT_BY_ID[route.id];
       html = viewComponent(route.id); label = c ? c.title : 'Component not found';
-      navKey = c ? '/s/' + META[c.id].section.id : '/'; break;
+      navKeys = c ? ['/s/' + META[c.id].section.id, '/c/' + c.id] : ['/']; break;
     }
-    case 'all': html = viewAll(); label = 'All frameworks'; navKey = '__all'; break;
-    case 'evidence': html = viewEvidence(); label = 'Evidence, assumptions and design choices'; navKey = '__evidence'; break;
-    case 'missions': html = viewMissions(); label = 'Mission hypotheses'; navKey = '/missions'; break;
-    case 'leadership': html = viewLeadership(); label = 'Leadership approach'; navKey = '/leadership'; break;
-    case 'glossary': html = viewGlossary(); label = 'Glossary'; navKey = '__glossary'; break;
-    default: html = viewHome(); label = 'Overview'; navKey = '/';
+    case 'all': html = viewAll(); label = 'All frameworks'; navKeys = ['__all']; break;
+    case 'evidence': html = viewEvidence(); label = 'Evidence, assumptions and design choices'; navKeys = ['__evidence']; break;
+    case 'missions': html = viewMissions(); label = 'Missions'; navKeys = ['/missions']; break;
+    case 'leadership': html = viewLeadership(); label = 'Leadership approach'; navKeys = ['/leadership']; break;
+    case 'glossary': html = viewGlossary(); label = 'Glossary'; navKeys = ['__glossary']; break;
+    default: html = viewHome(); label = 'Overview'; navKeys = ['/'];
   }
 
   root.innerHTML = html;
 
   $$('nav.primary a').forEach(function (a) {
-    if (a.getAttribute('data-route') === navKey) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    if (navKeys.indexOf(a.getAttribute('data-route')) !== -1) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
   });
 
   if (route.name === 'all') {

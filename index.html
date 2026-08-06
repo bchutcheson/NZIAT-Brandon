@@ -101,6 +101,22 @@ main{padding-bottom:4rem;}
 .status-hypothesis{background:#FFF8F5;border-color:#FDDFD0;color:#D1442C;}
 .status-board{background:#EAF4F7;border-color:#A8D6E5;color:#095167;}
 .status-legal{background:#FACCCC;border-color:#F59999;color:#890000;}
+.quotebox{background:var(--navy);color:#fff;border-radius:var(--r-l);padding:2rem 2.2rem;margin:1.4rem 0;font-family:var(--display);font-weight:700;font-size:clamp(1.35rem,3vw,2rem);line-height:1.35;}
+details.longvision{margin:1.2rem 0 1.6rem;}
+details.longvision > div{margin-top:1rem;}
+.mustcan{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;border-radius:var(--r-l);overflow:hidden;margin:1.4rem 0;border:1px solid var(--line);}
+.mustcan .col h3{padding:1rem 1.3rem;margin:0;font-size:1.25rem;color:#fff;}
+.mustcan .col.must h3{background:var(--navy);}
+.mustcan .col.can h3{background:var(--teal-d);}
+.mustcan .col ul{list-style:none;margin:0;padding:0;}
+.mustcan .col li{padding:1rem 1.3rem;border-top:1px solid var(--line);font-size:.94rem;margin:0;}
+.mustcan .col.must li{background:#F0F1F3;}
+.mustcan .col.can li{background:var(--tint);}
+.missiongrid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin:1.4rem 0;}
+.missionbox{border:1px solid var(--line);border-radius:var(--r-l);padding:1.4rem 1.5rem;background:var(--paper);box-shadow:var(--shadow);}
+.missionbox .mnum{display:inline-block;font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.14em;color:#fff;background:var(--teal-d);border-radius:var(--r-pill);padding:.25rem .75rem;margin-bottom:.7rem;}
+.missionbox h3{font-size:1.28rem;margin:0 0 .6rem;}
+.missionbox p{font-size:.95rem;color:var(--body);margin:0;}
 .chips{display:flex;flex-wrap:wrap;gap:.35rem;margin:0 0 .9rem;}
 .chips span{font-size:.76rem;background:var(--tint);color:var(--teal-d);border-radius:var(--r-pill);padding:.2rem .6rem;}
 .statuslegend{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;align-items:center;font-size:.85rem;color:var(--muted);margin:1rem 0 1.5rem;}
@@ -255,9 +271,9 @@ svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
     </a>
     <nav class="primary" id="primaryNav" aria-label="Primary">
       <ul>
-        <li><a href="#/c/vision" data-route="/c/vision">Vision</a></li>
-        <li><a href="#/" data-route="/">What can NZIAT Achieve</a></li>
-        <li><a href="#/c/first100" data-route="/c/first100">First 100 days</a></li>
+        <li><a href="#/vision" data-route="/vision">Vision</a></li>
+        <li><a href="#/achieve" data-route="/achieve">What can NZIAT Achieve</a></li>
+        <li><a href="#/first100days" data-route="/first100days">First 100 days</a></li>
       </ul>
       <ul>
         <li><a href="#/" data-route="/">Overview</a></li>
@@ -286,9 +302,9 @@ svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
           <div>
             <h4>Navigate</h4>
             <ul>
-              <li><a href="#/c/vision">Vision</a></li>
-              <li><a href="#/">What can NZIAT Achieve</a></li>
-              <li><a href="#/c/first100">First 100 days</a></li>
+              <li><a href="#/vision">Vision</a></li>
+              <li><a href="#/achieve">What can NZIAT Achieve</a></li>
+              <li><a href="#/first100days">First 100 days</a></li>
               <li><a href="#/">Overview</a></li>
               <li><a href="#/s/strategy">Strategy</a></li>
               <li><a href="#/missions">Missions</a></li>
@@ -669,47 +685,36 @@ const DESIGNED = [
 ];
 
 /* ============================================================
-   DATA \u2014 MISSION HYPOTHESES (examples, not approved missions)
+   DATA \u2014 MISSIONS (simplified \u2014 title and description only)
    ============================================================ */
-const MISSION_HYPOTHESES = [
-  { id:'space', num:'1', title:'Space and off-world systems', status:'hypothesis',
-    objective:'Enable people, machines and industry to operate reliably in space and other remote, resource-constrained environments.',
-    subChallenges:['Closed-loop life support','Lightweight radiation-resistant materials','Autonomous maintenance','Power and thermal systems','Sensing and communications','In-situ production','Remote logistics'],
-    nzRationale:'New Zealand aerospace, Antarctic, marine, remote-operations and materials capabilities; strong dual-use pathways on Earth.',
-    technologyStack:['Advanced materials','AI','Autonomous systems'],
-    pathways:['Space agencies','Aerospace primes','Remote infrastructure','Defence','Mining','Emergency response','Oceans and agriculture'],
-    discoveryQuestions:['Does New Zealand have a specific capability or test environment that can become globally indispensable, rather than merely participating in a fashionable space theme?'],
-    safeguards:'Discovery must establish a defensible New Zealand-specific advantage before this proceeds beyond hypothesis.'
-  },
-  { id:'humanmachine', num:'2', title:'Human\u2013machine partnership and neural interfaces', status:'hypothesis',
-    objective:'Create safe, trusted and high-performance ways for humans, intelligent machines and robotic systems to work together \u2014 including selected neural and assistive interfaces.',
-    subChallenges:['Neural sensing and stimulation','Prosthetics','Rehabilitation','Human-robot teaming','Autonomous collaboration','Safety and assurance','Data rights','Adaptive interfaces','Workforce integration'],
-    nzRationale:'Potential as a high-trust testbed, with strengths in AI, health, robotics and regulation \u2014 but clinical infrastructure and New Zealand advantage require proof.',
-    technologyStack:['AI','Robotics','Synthetic biology'],
-    pathways:['Assistive technology','Health','Hazardous work','Manufacturing','Agriculture','Defence','Logistics','Ageing populations'],
-    discoveryQuestions:['Is this best treated as one mission, a smaller frontier programme, or a cross-cutting capability supporting several missions?'],
-    safeguards:'Clinical and regulatory pathways, data rights and safety assurance are tested in discovery before any mission case is brought forward.'
-  },
-  { id:'climate', num:'3', title:'Planetary climate intervention and carbon removal systems', status:'hypothesis',
-    objective:'Develop verifiable, governable and scalable methods to remove greenhouse gases or increase climate resilience where conventional mitigation alone is insufficient.',
-    subChallenges:['Engineered carbon-capturing organisms','Ocean and mineral pathways','Advanced sorbent materials','Measurement and verification','Climate modelling','Ecological safeguards','Reversibility','Governance and international coordination'],
-    nzRationale:'New Zealand\u2019s geothermal, biological, ocean, materials and environmental-science base may create niches, but legitimacy and overlap with existing organisations must be tested carefully.',
-    technologyStack:['Synthetic biology','Advanced materials','AI'],
-    pathways:['Carbon removal','Industrial emissions','Environmental monitoring','Engineered biology','Materials','Verification platforms','International climate partnerships'],
-    discoveryQuestions:['Can NZIAT define a technically frontier intervention that is safe, additional, globally relevant and complementary to existing climate institutions?'],
-    safeguards:'Governance, reversibility, ecological safety, M\u0101ori perspectives and international legitimacy are embedded from discovery onward, not added later. Framed as planetary climate intervention and carbon removal, not open-ended geoengineering.'
-  },
-  { id:'foodsystems', num:'4', title:'Food systems for extreme and closed environments', status:'hypothesis',
-    objective:'Create complete food-production systems that operate with minimal water, land, inputs and waste in deserts, disaster zones, remote sites and off-world environments.',
-    subChallenges:['Closed-loop ecosystems','Engineered crops and microbes','Waste-to-nutrition','Compact cultivation','Autonomous control','Novel proteins','Nutrient recycling','Resilient packaging and storage'],
-    nzRationale:'Builds on national food and biological capability while requiring a frontier boundary that does not duplicate the Bioeconomy Science Institute or Plant &amp; Food Research.',
-    technologyStack:['Synthetic biology','AI','Advanced materials'],
-    pathways:['Remote communities','Humanitarian response','Defence','Controlled-environment agriculture','Space','Mining','Climate-exposed regions'],
-    discoveryQuestions:['Does existing New Zealand capability leave a genuine coordination and frontier-technology gap for NZIAT, or should this become a programme inside the off-world mission?'],
-    safeguards:'Discovery must show a genuine frontier-technology and coordination gap beyond the mandates of existing food-science institutions before this proceeds.'
-  }
+const MISSIONS_SIMPLE = [
+  { num:'1', title:'Space and Off-World Systems',
+    description:'Technologies that enable people, machines and industries to operate beyond Earth \u2014 developing resilient, autonomous and resource-efficient systems that unlock new economic opportunities in space and strengthen life in extreme environments on Earth.' },
+  { num:'2', title:'Human\u2013Machine Partnership',
+    description:'Transformative ways for humans and intelligent machines to think, decide and act together \u2014 developing safe, intuitive and high-performance partnerships that extend human capability beyond today\u2019s physical and cognitive limits.' },
+  { num:'3', title:'Radical Geoengineering',
+    description:'Technologies that deliberately influence Earth\u2019s natural systems \u2014 developing safe, measurable and governable interventions capable of addressing climate risks beyond the reach of conventional solutions.' },
+  { num:'4', title:'Mission 4 title \u2014 placeholder',
+    description:'Placeholder description \u2014 content for Mission 4 has not been written yet. Replace this text once it is available.' }
 ];
-const MISSION_SELECTION_RULE = 'A mission should proceed only where six tests are passed: the future outcome is consequential; the problem is specific enough to organise action; New Zealand has a credible basis to contribute; public investment is additional; multiple capabilities can reinforce one another; and success can produce retained national value. Approval must include end conditions and reasons to stop.';
+
+/* ============================================================
+   DATA \u2014 WHAT CAN NZIAT ACHIEVE (Must / Can)
+   ============================================================ */
+const MUST_LIST = [
+  'Convert public investment into retained national capability, not just funded activity.',
+  'Maintain public trust through transparent, evidence-based decisions.',
+  'Protect probity \u2014 conflicts managed, delegations respected, no surprises to the Board.',
+  'Show the discipline to stop or reshape work that is not working.',
+  'Deliver value proportionate to a $231m mandate, inherited commitments included.'
+];
+const CAN_LIST = [
+  'Rekindle ambitious, frontier-scale thinking across New Zealand\u2019s research system.',
+  'Attract international scientists, entrepreneurs and capital to New Zealand missions.',
+  'Build entire new industries around problems no single institution could solve alone.',
+  'Create durable IP, firms and high-value jobs that outlast any single mission.',
+  'Position New Zealand as a credible partner in frontier technologies globally.'
+];
 
 /* ============================================================
    DATA \u2014 GLOSSARY
@@ -1207,37 +1212,70 @@ function viewEvidence() {
    VIEW — MISSION HYPOTHESES
    ============================================================ */
 function viewMissions() {
-  const missionDomain = DOMAIN_BY_ID['missions'];
   return '<div class="wrap"><section class="view" aria-labelledby="h-mh">' +
     '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>Missions</nav>' +
-    '<div class="section-head"><p class="eyebrow">Strategy · How missions are chosen, and what they could be</p><h2 id="h-mh" tabindex="-1">Missions</h2>' +
-    '<p>This page brings together how NZIAT would select a mission and what a mission could actually look like. The four examples below are candidates to test the process against, not commitments — each must still pass discovery, New Zealand-advantage and Board tests before it could become an approved mission.</p></div>' +
-
-    '<h3 id="mh-process">How missions get selected</h3>' +
-    '<p>' + esc(missionDomain.blurb) + '</p>' +
-    '<ul class="complist">' + missionDomain.children.map(function (cid) {
-      const c = COMPONENT_BY_ID[cid], m = META[cid];
-      return '<li><a class="ccard" href="#/c/' + cid + '">' +
-        '<span class="cnum">' + m.number + '</span><h4>' + esc(c.title) + '</h4><p>' + esc(c.sub) + '</p>' +
-        statusTag(c.status) + '</a></li>';
-    }).join('') + '</ul>' +
-    '<div class="note"><strong>Mission selection rule.</strong> ' + esc(MISSION_SELECTION_RULE) + '</div>' +
-
-    '<h3 id="mh-hypotheses">Four hypotheses being tested</h3>' +
-    '<p>Every hypothesis below carries a “hypothesis to test” status. None has been through discovery. None is an approved mission.</p>' +
-    MISSION_HYPOTHESES.map(function (h) {
-      return '<article class="flowcard">' +
-        '<div class="meta-row" style="margin-top:0"><span class="cnum">Hypothesis ' + h.num + '</span>' + statusTag(h.status) + '</div>' +
-        '<h4 style="font-size:1.35rem;margin:.4rem 0 .5rem;color:var(--navy);font-family:var(--display);font-weight:700">' + esc(h.title) + '</h4>' +
-        '<p>' + esc(h.objective) + '</p>' +
-        '<p class="hint" style="margin-bottom:.3rem">Sub-challenges</p><div class="chips">' + h.subChallenges.map(x => '<span>' + esc(x) + '</span>').join('') + '</div>' +
-        '<p><strong>Why New Zealand could matter.</strong> ' + esc(h.nzRationale) + '</p>' +
-        '<p class="hint" style="margin-bottom:.3rem">Enabling technology stack — shared tools, not the mission itself</p><div class="chips">' + h.technologyStack.map(x => '<span>' + esc(x) + '</span>').join('') + '</div>' +
-        '<p class="hint" style="margin-bottom:.3rem">Commercial and strategic pathways</p><div class="chips">' + h.pathways.map(x => '<span>' + esc(x) + '</span>').join('') + '</div>' +
-        '<div class="callout"><strong>Discovery question.</strong> ' + h.discoveryQuestions.map(esc).join(' ') + '</div>' +
-        '<p class="hint">' + esc(h.safeguards) + '</p>' +
+    '<div class="section-head"><p class="eyebrow">Strategy</p><h2 id="h-mh" tabindex="-1">Missions</h2>' +
+    '<p>Missions are the mechanism through which NZIAT turns national priorities into action. Each mission is a concrete, time-bound commitment to a consequential future-world problem — concentrating capital, capability and partnerships behind it until the mission is fulfilled, invalidated or superseded.</p></div>' +
+    '<div class="missiongrid2">' +
+    MISSIONS_SIMPLE.map(function (m) {
+      return '<article class="missionbox">' +
+        '<span class="mnum">Mission ' + m.num + '</span>' +
+        '<h3>' + esc(m.title) + '</h3>' +
+        '<p>' + esc(m.description) + '</p>' +
       '</article>';
     }).join('') +
+    '</div>' +
+    '<p><a class="btn ghost" href="#/">Back to overview</a></p>' +
+  '</section></div>';
+}
+
+/* ============================================================
+   VIEW — VISION (standalone)
+   ============================================================ */
+function viewVisionPage() {
+  return '<div class="wrap"><section class="view" aria-labelledby="h-vision">' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>Vision</nav>' +
+    '<div class="section-head"><p class="eyebrow">Strategy</p><h2 id="h-vision" tabindex="-1">My Vision for NZIAT</h2></div>' +
+    '<blockquote class="quotebox">To secure New Zealand’s place on the new economic frontier through ambitious missions that turn uncertain science into lasting national capability and economic value.</blockquote>' +
+    '<details class="longvision"><summary class="btn">Long Vision</summary>' +
+      '<div class="callout">My vision is for NZIAT to secure New Zealand’s place on the new economic frontier through a small number of ambitious missions. These missions would pursue frontier opportunities beyond the reach of conventional funding and create the pathways through which uncertain science can become lasting national capability, future industries and economic value. In doing so, NZIAT would rekindle ambition across the research system — encouraging researchers to pursue more consequential goals while attracting a broader mix of scientists, technologists, entrepreneurs and unconventional problem-solvers.</div>' +
+    '</details>' +
+    '<p><a class="btn ghost" href="#/">Back to overview</a></p>' +
+  '</section></div>';
+}
+
+/* ============================================================
+   VIEW — WHAT CAN NZIAT ACHIEVE (standalone)
+   ============================================================ */
+function viewAchievePage() {
+  return '<div class="wrap"><section class="view" aria-labelledby="h-achieve">' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>What can NZIAT Achieve</nav>' +
+    '<div class="section-head"><p class="eyebrow">Overview</p><h2 id="h-achieve" tabindex="-1">What can NZIAT Achieve</h2></div>' +
+    '<div class="mustcan">' +
+      '<div class="col must"><h3>Must</h3><ul>' + MUST_LIST.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul></div>' +
+      '<div class="col can"><h3>Can</h3><ul>' + CAN_LIST.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul></div>' +
+    '</div>' +
+    '<p><a class="btn ghost" href="#/">Back to overview</a></p>' +
+  '</section></div>';
+}
+
+/* ============================================================
+   VIEW — FIRST 100 DAYS (standalone)
+   ============================================================ */
+const FIRST100_ROWS = [
+  ['Before Day One', 'Understand the system before acting — map inherited commitments, current staff, legal obligations, active procurements and Board expectations; agree the handover protocol.', 'Prevents the incoming Chief Executive from making an uninformed first move, and builds the trust needed before any mission work can credibly begin.'],
+  ['Days 1–30', 'Confirm mandate, delegations and risk appetite; build an authoritative inherited-capital baseline.', 'NZIAT cannot responsibly commit capital to missions until the Board has approved how decisions get made and how much capital is genuinely available.'],
+  ['Days 31–60', 'Test mission hypotheses with the ecosystem and design the investment decision system — triage, diligence, conflict and stage-gate processes.', 'Missions only succeed if the selection and diligence process is credible before the first mission case is brought forward.'],
+  ['Days 61–100', 'Bring an integrated strategy to the Board, confirm which mission discoveries proceed, and launch the first reversible commitments.', 'This is the point NZIAT actually starts operating its missions — everything before it is preparation for this moment.']
+];
+function viewFirst100DaysPage() {
+  return '<div class="wrap"><section class="view" aria-labelledby="h-100">' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>First 100 Days</nav>' +
+    '<div class="section-head"><p class="eyebrow">Strategy</p><h2 id="h-100" tabindex="-1">First 100 Days</h2>' +
+    '<p>What the first 100 days looks like, and why each phase matters to getting NZIAT ready to start operating its missions.</p></div>' +
+    '<div class="tablewrap"><table><caption>The first 100 days</caption><thead><tr><th scope="col">What the first 100 days looks like</th><th scope="col">High level objectives</th><th scope="col">Why it matters to operating missions</th></tr></thead><tbody>' +
+    FIRST100_ROWS.map(r => '<tr><th scope="row">' + r[0] + '</th><td>' + r[1] + '</td><td>' + r[2] + '</td></tr>').join('') +
+    '</tbody></table></div>' +
     '<p><a class="btn ghost" href="#/">Back to overview</a></p>' +
   '</section></div>';
 }
@@ -1304,6 +1342,9 @@ function parseHash() {
   if (parts[0] === 'missions') return { name: 'missions' };
   if (parts[0] === 'leadership') return { name: 'leadership' };
   if (parts[0] === 'glossary') return { name: 'glossary' };
+  if (parts[0] === 'vision') return { name: 'vision' };
+  if (parts[0] === 'achieve') return { name: 'achieve' };
+  if (parts[0] === 'first100days') return { name: 'first100days' };
   return { name: 'home' };
 }
 
@@ -1326,6 +1367,9 @@ function render() {
     case 'missions': html = viewMissions(); label = 'Missions'; navKeys = ['/missions']; break;
     case 'leadership': html = viewLeadership(); label = 'Leadership approach'; navKeys = ['/leadership']; break;
     case 'glossary': html = viewGlossary(); label = 'Glossary'; navKeys = ['__glossary']; break;
+    case 'vision': html = viewVisionPage(); label = 'My Vision for NZIAT'; navKeys = ['/vision']; break;
+    case 'achieve': html = viewAchievePage(); label = 'What can NZIAT Achieve'; navKeys = ['/achieve']; break;
+    case 'first100days': html = viewFirst100DaysPage(); label = 'First 100 Days'; navKeys = ['/first100days']; break;
     default: html = viewHome(); label = 'Overview'; navKeys = ['/'];
   }
 

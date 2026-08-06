@@ -12,14 +12,14 @@
      ============================================================ -->
 <style>
 :root{
-  --navy:#0B2434; --navy-2:#0F3346; --navy-3:#081B28;
-  --teal:#0FA893; --teal-d:#076F60; --teal-l:#E6F4F1;
-  --ice:#CFE8E3;
-  --ink:#142C39; --body:#33454F; --muted:#5F7580;
-  --line:#D3DFE4; --line-2:#EAF0F2;
-  --paper:#FFFFFF; --paper-2:#F7FAFB; --tint:#EEF6F4;
-  --gold:#8A6414; --gold-bg:#FBF4E4; --gold-line:#E8D5A8;
-  --slate:#54616B; --slate-bg:#EEF1F2; --slate-line:#D7DEE1;
+  --navy:#053B4A; --navy-2:#095167; --navy-3:#021E25;
+  --teal:#FF5804; --teal-d:#D1442C; --teal-l:#FDDFD0;
+  --ice:#A8D6E5;
+  --ink:#20262D; --body:#313A46; --muted:#5D6E85;
+  --line:#E2E0DB; --line-2:#EDECEA;
+  --paper:#FFFFFF; --paper-2:#F7F6F3; --tint:#FFF8F5;
+  --gold:#8C370D; --gold-bg:#FFF8F5; --gold-line:#FDDFD0;
+  --slate:#475569; --slate-bg:#F0F1F3; --slate-line:#E2E4E7;
   --display:"Barlow Condensed","Oswald","Helvetica Neue Condensed",system-ui,-apple-system,"Segoe UI",sans-serif;
   --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --r-s:8px; --r-m:12px; --r-l:16px; --r-pill:999px;
@@ -43,12 +43,12 @@ img,svg{max-width:100%;}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(1rem,4vw,2rem);}
 :focus{outline:none;}
 :focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:4px;}
-.on-dark :focus-visible{outline-color:#7FE0D0;}
+.on-dark :focus-visible{outline-color:#FFA06A;}
 .skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--teal);color:#fff;padding:.75rem 1.25rem;font-weight:600;border-radius:0 0 var(--r-s) 0;text-decoration:none;}
 .skip:focus{left:0;}
 .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
 .eyebrow{font-family:var(--display);font-weight:600;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-d);}
-.foot-rule{margin-top:1.5rem;border-top:1px solid #24485B;padding-top:1rem;}
+.foot-rule{margin-top:1.5rem;border-top:1px solid #095167;padding-top:1rem;}
 .hint{font-size:.8rem;color:var(--muted);margin:.6rem 0 0;}
 .continue{margin-top:2rem;padding-top:1.25rem;border-top:1px solid var(--line);}
 
@@ -56,16 +56,16 @@ img,svg{max-width:100%;}
 .sidebar{background:var(--navy);color:#fff;width:270px;flex:0 0 270px;display:flex;flex-direction:column;}
 .sidebar .eyebrow{color:var(--teal);}
 .content-col{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;}
-.wordmark{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff;padding:1.25rem 1.35rem;border-bottom:1px solid #1c3f4f;}
-.wordmark .glyph{width:34px;height:34px;flex:0 0 34px;border-radius:9px;background:linear-gradient(135deg,var(--teal),#0B6F62);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:1rem;color:#fff;}
+.wordmark{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff;padding:1.25rem 1.35rem;border-bottom:1px solid #095167;}
+.wordmark .glyph{width:34px;height:34px;flex:0 0 34px;border-radius:9px;background:linear-gradient(135deg,var(--teal),#D1442C);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:1rem;color:#fff;}
 .wordmark .wm-t{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:.02em;line-height:1.1;}
 .wordmark .wm-s{font-size:.72rem;color:var(--ice);letter-spacing:.04em;}
 nav.primary ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;}
-nav.primary ul + ul{margin-top:1.1rem;border-top:2px solid #1c3f4f;padding-top:1.1rem;}
-nav.primary li{border-bottom:1px solid #1c3f4f;}
+nav.primary ul + ul{margin-top:1.1rem;border-top:2px solid #095167;padding-top:1.1rem;}
+nav.primary li{border-bottom:1px solid #095167;}
 nav.primary a{display:block;font-family:var(--display);font-weight:600;font-size:1.02rem;letter-spacing:.03em;color:var(--ice);text-decoration:none;padding:1rem 1.35rem;border-left:4px solid transparent;transition:background .14s,color .14s;}
-nav.primary a:hover{background:#12384B;color:#fff;}
-nav.primary a[aria-current="page"]{color:#fff;background:#12384B;border-left-color:var(--teal);}
+nav.primary a:hover{background:#0D6B88;color:#fff;}
+nav.primary a[aria-current="page"]{color:#fff;background:#0D6B88;border-left-color:var(--teal);}
 @media (max-width:880px){
   .app-shell{flex-direction:column;}
   .sidebar{width:100%;flex:0 0 auto;}
@@ -75,9 +75,9 @@ nav.primary a[aria-current="page"]{color:#fff;background:#12384B;border-left-col
 .hero::after{content:"";position:absolute;right:-120px;top:-160px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(15,168,147,.20),rgba(15,168,147,0) 70%);pointer-events:none;}
 .hero h1{font-size:clamp(2rem,5vw,3.15rem);color:#fff;max-width:22ch;margin:.5rem 0 .9rem;}
 .hero .lede{color:var(--ice);font-size:clamp(1rem,1.6vw,1.12rem);max-width:66ch;}
-.hero .byline{margin-top:1.1rem;color:#93AEBB;font-size:.85rem;max-width:70ch;}
+.hero .byline{margin-top:1.1rem;color:#70BDD5;font-size:.85rem;max-width:70ch;}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:.7rem;margin-top:1.6rem;}
-.stat{background:var(--navy-3);border:1px solid #24485B;border-radius:var(--r-m);padding:.85rem 1rem;}
+.stat{background:var(--navy-3);border:1px solid #095167;border-radius:var(--r-m);padding:.85rem 1rem;}
 .stat b{display:block;font-family:var(--display);font-size:1.7rem;color:#fff;line-height:1;}
 .stat span{display:block;font-size:.76rem;color:var(--ice);margin-top:.3rem;}
 
@@ -88,7 +88,7 @@ main{padding-bottom:4rem;}
 .section-head h2{font-size:clamp(1.55rem,3.1vw,2rem);margin:.3rem 0 .5rem;}
 .section-head p{color:var(--muted);}
 .note{background:var(--gold-bg);border:1px solid var(--gold-line);color:var(--gold);border-radius:var(--r-m);padding:1rem 1.15rem;font-size:.94rem;margin:1.2rem 0;}
-.note strong{color:#6B4E0F;}
+.note strong{color:#5F280D;}
 .callout{background:var(--tint);border-left:4px solid var(--teal);border-radius:0 var(--r-m) var(--r-m) 0;padding:1rem 1.15rem;font-size:.96rem;color:var(--teal-d);margin:1.2rem 0;}
 .crumbs{font-size:.84rem;color:var(--muted);margin-bottom:.9rem;}
 .crumbs a{color:var(--teal-d);text-decoration:none;}
@@ -97,22 +97,22 @@ main{padding-bottom:4rem;}
 
 .tag{font-size:.72rem;letter-spacing:.03em;border-radius:var(--r-pill);padding:.2rem .65rem;border:1px solid var(--line);color:var(--muted);background:var(--paper-2);display:inline-block;}
 .status-proposed{background:var(--slate-bg);border-color:var(--slate-line);color:var(--slate);}
-.status-evidence{background:var(--tint);border-color:#BFE3DB;color:var(--teal-d);}
-.status-hypothesis{background:#E7ECF3;border-color:#C3D0E0;color:#2D4A6B;}
-.status-board{background:var(--gold-bg);border-color:var(--gold-line);color:var(--gold);}
-.status-legal{background:#FBEFEF;border-color:#E9C9C9;color:#9A3E3E;}
+.status-evidence{background:#E6F4F5;border-color:#C4E6E8;color:#075056;}
+.status-hypothesis{background:#FFF8F5;border-color:#FDDFD0;color:#D1442C;}
+.status-board{background:#EAF4F7;border-color:#A8D6E5;color:#095167;}
+.status-legal{background:#FACCCC;border-color:#F59999;color:#890000;}
 .chips{display:flex;flex-wrap:wrap;gap:.35rem;margin:0 0 .9rem;}
 .chips span{font-size:.76rem;background:var(--tint);color:var(--teal-d);border-radius:var(--r-pill);padding:.2rem .6rem;}
 .statuslegend{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;align-items:center;font-size:.85rem;color:var(--muted);margin:1rem 0 1.5rem;}
 .statuslegend .tag{margin-right:.35rem;}
-.statusstrip{background:var(--gold-bg);border-bottom:1px solid var(--gold-line);color:#6B4E0F;font-size:.86rem;padding:.7rem 0;}
+.statusstrip{background:var(--gold-bg);border-bottom:1px solid var(--gold-line);color:#5F280D;font-size:.86rem;padding:.7rem 0;}
 .statusstrip .wrap{display:flex;gap:.5rem;align-items:baseline;}
 .statusstrip strong{font-family:var(--display);letter-spacing:.03em;flex:0 0 auto;}
 
 .flowcard{border:1px solid var(--line);border-radius:var(--r-l);padding:1.1rem 1rem .6rem;background:var(--paper);box-shadow:var(--shadow);margin:1.4rem 0;}
 .domaingrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;list-style:none;padding:0;margin:0;}
 .dcard{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-l);padding:1.15rem 1.25rem;transition:transform .14s,box-shadow .14s,border-color .14s;}
-.dcard:hover{transform:translateY(-3px);box-shadow:var(--shadow-h);border-color:#BFE3DB;}
+.dcard:hover{transform:translateY(-3px);box-shadow:var(--shadow-h);border-color:#FFC5A0;}
 .dcard .dnum{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.16em;color:var(--teal-d);}
 .dcard h3{font-size:1.24rem;margin:.3rem 0 .4rem;}
 .dcard p{font-size:.88rem;color:var(--muted);margin:0 0 .7rem;}
@@ -161,7 +161,7 @@ main{padding-bottom:4rem;}
 .figlist li:last-child{border-bottom:none;}
 .figlist b{font-family:var(--display);font-size:1.03rem;color:var(--navy);white-space:nowrap;}
 .btn{display:inline-flex;align-items:center;gap:.5rem;justify-content:center;background:var(--teal-d);color:#fff;text-decoration:none;font-weight:600;font-size:.92rem;border:1px solid var(--teal-d);border-radius:var(--r-s);padding:.65rem 1.1rem;transition:background .14s;}
-.btn:hover{background:#055A4D;}
+.btn:hover{background:#8C370D;}
 .btn.ghost{background:transparent;color:var(--teal-d);}
 .btn.ghost:hover{background:var(--tint);}
 ol.contents{list-style:none;padding:0;counter-reset:c;}
@@ -187,7 +187,7 @@ ol.contents li::before{content:counter(c,decimal-leading-zero);position:absolute
 .search input:hover{border-color:var(--teal);}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;list-style:none;padding:0;margin:0;}
 .card{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-l);padding:1.2rem 1.3rem;transition:transform .14s,box-shadow .14s,border-color .14s;}
-.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-h);border-color:#BFE3DB;}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-h);border-color:#FFC5A0;}
 .card-top{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem;}
 .card .cnum{font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:.14em;color:var(--teal-d);}
 .card h3{font-size:1.2rem;margin:.35rem 0 .4rem;}
@@ -208,10 +208,10 @@ td a{word-break:break-word;font-size:.82rem;}
 td.lands{color:var(--teal-d);}
 .tier{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.06em;border-radius:var(--r-pill);padding:.15rem .6rem;}
 .tier.t1{background:var(--teal-l);color:var(--teal-d);}
-.tier.t2{background:#E9F0F4;color:#3A5A6B;}
+.tier.t2{background:#F0F1F3;color:#475569;}
 .tier.t3{background:var(--gold-bg);color:var(--gold);}
 
-footer{background:var(--navy);color:#93AEBB;padding:2rem 0 2.5rem;font-size:.85rem;}
+footer{background:var(--navy);color:#70BDD5;padding:2rem 0 2.5rem;font-size:.85rem;}
 footer .eyebrow{color:var(--teal);}
 footer p{max-width:88ch;margin:.6rem 0 0;}
 footer a{color:var(--ice);}
@@ -731,7 +731,7 @@ const GLOSSARY = [
    ============================================================ */
 const DIA = {};
 const svgWrap = (h, vb, label, caption) => '<figure class="dia"><svg viewBox="' + vb + '" width="100%" role="img" aria-label="' + label + '">' + h + '</svg><figcaption>' + caption + '</figcaption></figure>';
-const arrowDef = '<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#5F7580" stroke-width="1.6" stroke-linecap="round"/></marker></defs>';
+const arrowDef = '<defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#5D6E85" stroke-width="1.6" stroke-linecap="round"/></marker></defs>';
 
 DIA.flow = () => svgWrap(
   ['National priorities','Missions','Programmes|and investments','Commercialisation|pathways','Retained national|value'].map(function (s, i) {
@@ -742,136 +742,136 @@ DIA.flow = () => svgWrap(
       const y = parts.length > 1 ? (48 + li * 20) : 58;
       return '<text class="' + cls + '" x="' + (x + 16) + '" y="' + y + '" font-size="12.5">' + ln + '</text>';
     }).join('');
-    return '<rect x="' + x + '" y="16" width="172" height="76" rx="10" fill="' + (last ? '#0FA893' : (i === 1 ? '#0B2434' : '#F7FAFB')) + '" stroke="' + (i === 1 || last ? 'none' : '#D3DFE4') + '"/>' +
+    return '<rect x="' + x + '" y="16" width="172" height="76" rx="10" fill="' + (last ? '#D1442C' : (i === 1 ? '#053B4A' : '#F7F6F3')) + '" stroke="' + (i === 1 || last ? 'none' : '#E2E0DB') + '"/>' +
       lines +
-      (i < 4 ? '<line x1="' + (x + 174) + '" y1="54" x2="' + (x + 200) + '" y2="54" stroke="#5F7580" marker-end="url(#ar)"/>' : '');
+      (i < 4 ? '<line x1="' + (x + 174) + '" y1="54" x2="' + (x + 200) + '" y2="54" stroke="#5D6E85" marker-end="url(#ar)"/>' : '');
   }).join('') + '<text class="cap" x="10" y="118">Each stage is supported by a defined decision-making framework, covering mission selection, investment decisions, commercialisation pathways and governance.</text>' + arrowDef,
   '0 0 970 130', 'National priorities are translated into missions, delivered through programmes and investment, converted through commercialisation pathways, and retained as national value',
   'This sequence summarises how NZIAT would move from national priorities to long-term value for New Zealand.');
 
 DIA.vision = () => svgWrap(
-  '<rect x="10" y="14" width="240" height="92" rx="10" fill="#0B2434"/><text class="tw" x="30" y="46">Frontier research</text><text class="sw" x="30" y="68">Universities, PROs, firms,</text><text class="sw" x="30" y="84">independents, partners</text>' +
-  '<rect x="300" y="14" width="240" height="92" rx="10" fill="#0FA893"/><text class="tw" x="320" y="46">NZIAT</text><text class="sw" x="320" y="68">Orchestrate \u00B7 invest \u00B7</text><text class="sw" x="320" y="84">convert \u00B7 retain</text>' +
-  '<rect x="590" y="14" width="240" height="92" rx="10" fill="#EEF6F4" stroke="#0FA893"/><text class="t" x="610" y="46">National capability</text><text class="s" x="610" y="68">Firms, IP, talent, exports,</text><text class="s" x="610" y="84">retained economic value</text>' +
-  '<line x1="252" y1="60" x2="296" y2="60" stroke="#5F7580" marker-end="url(#ar)"/><line x1="542" y1="60" x2="586" y2="60" stroke="#5F7580" marker-end="url(#ar)"/>' +
+  '<rect x="10" y="14" width="240" height="92" rx="10" fill="#053B4A"/><text class="tw" x="30" y="46">Frontier research</text><text class="sw" x="30" y="68">Universities, PROs, firms,</text><text class="sw" x="30" y="84">independents, partners</text>' +
+  '<rect x="300" y="14" width="240" height="92" rx="10" fill="#D1442C"/><text class="tw" x="320" y="46">NZIAT</text><text class="sw" x="320" y="68">Orchestrate \u00B7 invest \u00B7</text><text class="sw" x="320" y="84">convert \u00B7 retain</text>' +
+  '<rect x="590" y="14" width="240" height="92" rx="10" fill="#FFF8F5" stroke="#FF5804"/><text class="t" x="610" y="46">National capability</text><text class="s" x="610" y="68">Firms, IP, talent, exports,</text><text class="s" x="610" y="84">retained economic value</text>' +
+  '<line x1="252" y1="60" x2="296" y2="60" stroke="#5D6E85" marker-end="url(#ar)"/><line x1="542" y1="60" x2="586" y2="60" stroke="#5D6E85" marker-end="url(#ar)"/>' +
   '<text class="cap" x="10" y="132">Investment-led \u00B7 intelligence-informed \u00B7 partnership-delivered \u00B7 publicly accountable</text>' + arrowDef,
   '0 0 840 145', 'Frontier research converted by NZIAT into national capability', 'The conversion function NZIAT exists to perform.');
 
 DIA.first100 = () => svgWrap(
-  ['Transition|Listen, diagnose, handover|#EEF6F4|#0FA893|no','Days 1\u201330|Truth and mandate|#EEF6F4|#0FA893|no','Days 31\u201360|Test and design|#EEF6F4|#0FA893|no','Days 61\u2013100|Decide and move visibly|#0B2434|#0B2434|yes'].map(function (b, i) {
+  ['Transition|Listen, diagnose, handover|#FFF8F5|#FF5804|no','Days 1\u201330|Truth and mandate|#FFF8F5|#FF5804|no','Days 31\u201360|Test and design|#FFF8F5|#FF5804|no','Days 61\u2013100|Decide and move visibly|#053B4A|#053B4A|yes'].map(function (b, i) {
     const p = b.split('|'), x = 10 + i * 208, dark = p[4] === 'yes';
     return '<rect x="' + x + '" y="16" width="188" height="76" rx="10" fill="' + p[2] + '" stroke="' + p[3] + '"/>' +
-      '<text class="n" x="' + (x + 16) + '" y="44" ' + (dark ? 'fill="#CFE8E3"' : '') + '>' + p[0] + '</text>' +
+      '<text class="n" x="' + (x + 16) + '" y="44" ' + (dark ? 'fill="#A8D6E5"' : '') + '>' + p[0] + '</text>' +
       '<text class="' + (dark ? 'tw' : 't') + '" x="' + (x + 16) + '" y="68" font-size="12">' + p[1] + '</text>' +
-      (i < 3 ? '<line x1="' + (x + 190) + '" y1="54" x2="' + (x + 214) + '" y2="54" stroke="#5F7580" marker-end="url(#ar)"/>' : '');
+      (i < 3 ? '<line x1="' + (x + 190) + '" y1="54" x2="' + (x + 214) + '" y2="54" stroke="#5D6E85" marker-end="url(#ar)"/>' : '');
   }).join('') + '<text class="cap" x="10" y="118">Deliberately reversible before day one \u00B7 decisively committed by day 100</text>' + arrowDef,
   '0 0 840 130', 'Four phases across the transition and first hundred days', 'Pace without premature lock-in.');
 
 DIA.roadmap = () => svgWrap(
   ['Q1|Confirm, design, commit','Q2|Stand up the machine','Q3|First disciplined capital','Q4|Prove the system'].map(function (b, i) {
     const p = b.split('|'), x = 10 + i * 208;
-    return '<rect x="' + x + '" y="16" width="188" height="74" rx="10" fill="' + (i === 3 ? '#0B2434' : '#F7FAFB') + '" stroke="' + (i === 3 ? '#0B2434' : '#D3DFE4') + '"/>' +
-      '<text class="n" x="' + (x + 18) + '" y="42" ' + (i === 3 ? 'fill="#CFE8E3"' : '') + '>' + p[0] + '</text>' +
+    return '<rect x="' + x + '" y="16" width="188" height="74" rx="10" fill="' + (i === 3 ? '#053B4A' : '#F7F6F3') + '" stroke="' + (i === 3 ? '#053B4A' : '#E2E0DB') + '"/>' +
+      '<text class="n" x="' + (x + 18) + '" y="42" ' + (i === 3 ? 'fill="#A8D6E5"' : '') + '>' + p[0] + '</text>' +
       '<text class="' + (i === 3 ? 'tw' : 't') + '" x="' + (x + 18) + '" y="66" font-size="12">' + p[1] + '</text>' +
-      (i < 3 ? '<line x1="' + (x + 190) + '" y1="53" x2="' + (x + 214) + '" y2="53" stroke="#5F7580" marker-end="url(#ar)"/>' : '');
+      (i < 3 ? '<line x1="' + (x + 190) + '" y1="53" x2="' + (x + 214) + '" y2="53" stroke="#5D6E85" marker-end="url(#ar)"/>' : '');
   }).join('') + '<text class="cap" x="10" y="116">The milestone that matters most: the first evidence-based stop, executed respectfully and explained publicly</text>' + arrowDef,
   '0 0 840 128', 'Four quarters of the year-one roadmap', 'Each quarter carries accountable milestones \u2014 deliberately few and verifiable.');
 
 DIA.org = () => svgWrap(
-  '<rect x="330" y="8" width="180" height="40" rx="9" fill="#0B2434"/><text class="tw" x="420" y="33" text-anchor="middle">Board</text>' +
-  '<line x1="420" y1="48" x2="420" y2="66" stroke="#5F7580" marker-end="url(#ar)"/>' +
-  '<rect x="330" y="70" width="180" height="40" rx="9" fill="#0B2434"/><text class="tw" x="420" y="95" text-anchor="middle">Chief executive</text>' +
-  '<path d="M420 110 L420 128 M150 128 L690 128" stroke="#5F7580" fill="none"/>' +
-  '<line x1="150" y1="128" x2="150" y2="146" stroke="#5F7580" marker-end="url(#ar)"/><line x1="690" y1="128" x2="690" y2="146" stroke="#5F7580" marker-end="url(#ar)"/>' +
+  '<rect x="330" y="8" width="180" height="40" rx="9" fill="#053B4A"/><text class="tw" x="420" y="33" text-anchor="middle">Board</text>' +
+  '<line x1="420" y1="48" x2="420" y2="66" stroke="#5D6E85" marker-end="url(#ar)"/>' +
+  '<rect x="330" y="70" width="180" height="40" rx="9" fill="#053B4A"/><text class="tw" x="420" y="95" text-anchor="middle">Chief executive</text>' +
+  '<path d="M420 110 L420 128 M150 128 L690 128" stroke="#5D6E85" fill="none"/>' +
+  '<line x1="150" y1="128" x2="150" y2="146" stroke="#5D6E85" marker-end="url(#ar)"/><line x1="690" y1="128" x2="690" y2="146" stroke="#5D6E85" marker-end="url(#ar)"/>' +
   '<text class="n" x="20" y="166">MISSION TEAMS \u2014 PHASED, NOT DAY-ONE COMPLETE</text>' +
   ['Mission A \u2014 small team, validated first','Mission B \u2014 small team, validated first','Mission C \u2014 small team, phased'].map(function (m, i) {
-    return '<rect x="20" y="' + (176 + i * 42) + '" width="380" height="34" rx="8" fill="#EEF6F4" stroke="#0FA893"/><text class="t" x="38" y="' + (198 + i * 42) + '" font-size="12">' + m + '</text>';
+    return '<rect x="20" y="' + (176 + i * 42) + '" width="380" height="34" rx="8" fill="#FFF8F5" stroke="#FF5804"/><text class="t" x="38" y="' + (198 + i * 42) + '" font-size="12">' + m + '</text>';
   }).join('') +
-  '<rect x="20" y="302" width="380" height="34" rx="8" fill="#fff" stroke="#D3DFE4" stroke-dasharray="4 4"/><text class="s" x="38" y="324" font-size="11.5">Mission D \u2014 added only if the Board confirms a fourth mission</text>' +
+  '<rect x="20" y="302" width="380" height="34" rx="8" fill="#fff" stroke="#E2E0DB" stroke-dasharray="4 4"/><text class="s" x="38" y="324" font-size="11.5">Mission D \u2014 added only if the Board confirms a fourth mission</text>' +
   '<text class="n" x="440" y="166">PHASE 1 \u2014 CRITICAL CONTROL AND JUDGEMENT</text>' +
   ['Chief of Staff / Strategy &amp; Intelligence','Chief Investment Officer','Crown Operations &amp; Governance lead','Science &amp; Technical Challenge lead','Commercialisation &amp; Partnerships lead','M\u0101ori Partnership executive'].map(function (m, i) {
-    return '<rect x="440" y="' + (176 + i * 42) + '" width="380" height="34" rx="8" fill="#F7FAFB" stroke="#D3DFE4"/><text class="t" x="458" y="' + (198 + i * 42) + '" font-size="12">' + m + '</text>';
+    return '<rect x="440" y="' + (176 + i * 42) + '" width="380" height="34" rx="8" fill="#F7F6F3" stroke="#E2E0DB"/><text class="t" x="458" y="' + (198 + i * 42) + '" font-size="12">' + m + '</text>';
   }).join('') +
-  '<rect x="20" y="440" width="800" height="40" rx="9" fill="#0B2434"/><text class="tw" x="40" y="464" font-size="12">Enabling technology stack \u2014 AI \u00b7 quantum \u00b7 synthetic biology \u00b7 advanced materials &amp; magnetics \u2014 shared across missions, not a mission itself</text>' +
+  '<rect x="20" y="440" width="800" height="40" rx="9" fill="#053B4A"/><text class="tw" x="40" y="464" font-size="12">Enabling technology stack \u2014 AI \u00b7 quantum \u00b7 synthetic biology \u00b7 advanced materials &amp; magnetics \u2014 shared across missions, not a mission itself</text>' +
   '<text class="cap" x="20" y="500">Every box is a direct report to the Chief Executive \u2014 nothing reports through a mission. Mission Directors are added as missions are validated.</text>' + arrowDef,
   '0 0 840 512', 'Organisation chart with phased mission teams, Phase 1 executive roles and a shared enabling technology stack, all reporting to the chief executive', 'Mission teams are added in phases as missions are validated; the technology stack is shared infrastructure, not a set of missions.');
 
 DIA.gates = () => svgWrap(
   [['G0','Entry'],['G1','Feasibility'],['G2','Progress'],['G3','Pathway'],['G4','Exit']].map(function (g, i) {
     const x = 10 + i * 166;
-    return '<rect x="' + x + '" y="16" width="146" height="62" rx="9" fill="#0B2434"/><text class="tw" x="' + (x + 73) + '" y="42" text-anchor="middle" font-size="15">' + g[0] + '</text><text class="sw" x="' + (x + 73) + '" y="62" text-anchor="middle">' + g[1] + '</text>' +
-      (i < 4 ? '<line x1="' + (x + 148) + '" y1="47" x2="' + (x + 162) + '" y2="47" stroke="#5F7580" marker-end="url(#ar)"/>' : '');
+    return '<rect x="' + x + '" y="16" width="146" height="62" rx="9" fill="#053B4A"/><text class="tw" x="' + (x + 73) + '" y="42" text-anchor="middle" font-size="15">' + g[0] + '</text><text class="sw" x="' + (x + 73) + '" y="62" text-anchor="middle">' + g[1] + '</text>' +
+      (i < 4 ? '<line x1="' + (x + 148) + '" y1="47" x2="' + (x + 162) + '" y2="47" stroke="#5D6E85" marker-end="url(#ar)"/>' : '');
   }).join('') + '<text class="n" x="10" y="106">FOUR OUTCOMES \u2014 EQUALLY LEGITIMATE</text>' +
   ['Continue','Reshape','Stop','Scale'].map(function (o, i) {
     const x = 10 + i * 208;
-    return '<rect x="' + x + '" y="118" width="188" height="38" rx="9" fill="#fff" stroke="' + (o === 'Stop' ? '#8A6414' : '#0FA893') + '" stroke-width="1.5"/><text class="t" x="' + (x + 94) + '" y="142" text-anchor="middle">' + o + '</text>';
+    return '<rect x="' + x + '" y="118" width="188" height="38" rx="9" fill="#fff" stroke="' + (o === 'Stop' ? '#8C370D' : '#FF5804') + '" stroke-width="1.5"/><text class="t" x="' + (x + 94) + '" y="142" text-anchor="middle">' + o + '</text>';
   }).join('') + '<text class="cap" x="10" y="180">A stop on good evidence is a success of the decision system, not a failure of the team</text>' + arrowDef,
   '0 0 840 190', 'Five gates from entry to exit, each with four possible outcomes', 'Gates are scheduled decisions with evidence prepared beforehand.');
 
 DIA.delegations = () => svgWrap(
-  [['Mission Director','Up to $500k within envelope \u00B7 project selection \u00B7 15% reallocation','#EEF6F4','#0FA893',false],
-   ['Executive Investment Committee','$500k \u2013 $5m \u00B7 continue and reshape \u00B7 seeds to $250k','#F7FAFB','#D3DFE4',false],
-   ['Board','Above $5m \u00B7 all equity \u00B7 stop and scale \u00B7 mission envelopes','#0B2434','#0B2434',true]].map(function (t, i) {
+  [['Mission Director','Up to $500k within envelope \u00B7 project selection \u00B7 15% reallocation','#FFF8F5','#FF5804',false],
+   ['Executive Investment Committee','$500k \u2013 $5m \u00B7 continue and reshape \u00B7 seeds to $250k','#F7F6F3','#E2E0DB',false],
+   ['Board','Above $5m \u00B7 all equity \u00B7 stop and scale \u00B7 mission envelopes','#053B4A','#053B4A',true]].map(function (t, i) {
     const y = 12 + i * 60;
     return '<rect x="10" y="' + y + '" width="820" height="50" rx="9" fill="' + t[2] + '" stroke="' + t[3] + '"/><text class="' + (t[4] ? 'tw' : 't') + '" x="30" y="' + (y + 22) + '">' + t[0] + '</text><text class="' + (t[4] ? 'sw' : 's') + '" x="30" y="' + (y + 40) + '">' + t[1] + '</text>';
   }).join('') + '<text class="cap" x="10" y="208">No single point of unreviewed judgement \u2014 each level is visible one level up within a single cycle</text>',
   '0 0 840 218', 'Three-tier delegation ladder by commitment value', 'Decision-making authority is delegated to the appropriate level, with clear limits at each stage.');
 
 DIA.tiers = () => svgWrap(
-  [['Platform','Above $5m','Board-visible \u00B7 scheduled gates \u00B7 external validation','#0B2434',true,420],
-   ['Programme','$500k \u2013 $5m','Committee-visible \u00B7 annual gates','#166B5E',true,540],
-   ['Project','Under $500k','Managed within programme \u00B7 exception reporting','#0FA893',true,660],
-   ['Seed','Under $250k','Cohort-managed \u00B7 reported in aggregate','#EEF6F4',false,780]].map(function (t, i) {
+  [['Platform','Above $5m','Board-visible \u00B7 scheduled gates \u00B7 external validation','#053B4A',true,420],
+   ['Programme','$500k \u2013 $5m','Committee-visible \u00B7 annual gates','#8C370D',true,540],
+   ['Project','Under $500k','Managed within programme \u00B7 exception reporting','#D1442C',true,660],
+   ['Seed','Under $250k','Cohort-managed \u00B7 reported in aggregate','#FFF8F5',false,780]].map(function (t, i) {
     const y = 12 + i * 52;
     return '<rect x="10" y="' + y + '" width="' + t[5] + '" height="42" rx="8" fill="' + t[3] + '"/><text class="' + (t[4] ? 'tw' : 't') + '" x="28" y="' + (y + 26) + '">' + t[0] + '</text><text class="' + (t[4] ? 'sw' : 's') + '" x="120" y="' + (y + 26) + '">' + t[1] + '</text><text class="s" x="' + (t[5] + 22) + '" y="' + (y + 26) + '">' + t[2] + '</text>';
   }).join('') + '<text class="cap" x="10" y="238">Attention is allocated by materiality and risk \u2014 volume rises as governance intensity falls</text>',
   '0 0 840 248', 'Four oversight tiers from platform to seed', 'A central team maintains oversight across a large number of active investments, with attention concentrated where materiality and risk are highest.');
 
 DIA.lenses = () => svgWrap(
-  '<circle cx="330" cy="112" r="96" fill="#0FA893" fill-opacity="0.13" stroke="#0FA893"/><circle cx="500" cy="112" r="96" fill="#0FA893" fill-opacity="0.13" stroke="#0FA893"/><circle cx="415" cy="190" r="96" fill="#0FA893" fill-opacity="0.13" stroke="#0FA893"/>' +
+  '<circle cx="330" cy="112" r="96" fill="#FF5804" fill-opacity="0.13" stroke="#FF5804"/><circle cx="500" cy="112" r="96" fill="#FF5804" fill-opacity="0.13" stroke="#FF5804"/><circle cx="415" cy="190" r="96" fill="#FF5804" fill-opacity="0.13" stroke="#FF5804"/>' +
   '<text class="t" x="286" y="66" text-anchor="middle">Where the world</text><text class="t" x="286" y="84" text-anchor="middle">is going</text>' +
   '<text class="t" x="548" y="66" text-anchor="middle">What New</text><text class="t" x="548" y="84" text-anchor="middle">Zealand has</text>' +
   '<text class="t" x="415" y="262" text-anchor="middle">What New Zealand needs</text>' +
-  '<circle cx="415" cy="140" r="30" fill="#0B2434"/><text class="tw" x="415" y="145" text-anchor="middle" font-size="12">Mission</text>' +
+  '<circle cx="415" cy="140" r="30" fill="#053B4A"/><text class="tw" x="415" y="145" text-anchor="middle" font-size="12">Mission</text>' +
   '<text class="cap" x="10" y="292">Fields where New Zealand would be a marginal, replaceable contributor are deliberately not pursued</text>',
   '0 0 840 302', 'Three enquiries intersecting to identify a candidate mission', 'Candidates emerge only where all three overlap.');
 
 DIA.prog = () => svgWrap(
   ['Create','Plan','Execute','Review','Close'].map(function (s, i) {
     const x = 10 + i * 166;
-    return '<rect x="' + x + '" y="16" width="146" height="54" rx="9" fill="' + (i === 3 ? '#EEF6F4' : '#F7FAFB') + '" stroke="' + (i === 3 ? '#0FA893' : '#D3DFE4') + '"/><text class="t" x="' + (x + 73) + '" y="48" text-anchor="middle">' + s + '</text>' +
-      (i < 4 ? '<line x1="' + (x + 148) + '" y1="43" x2="' + (x + 162) + '" y2="43" stroke="#5F7580" marker-end="url(#ar)"/>' : '');
-  }).join('') + '<path d="M83 70 L83 100 L747 100 L747 70" stroke="#0FA893" stroke-dasharray="4 4" fill="none" marker-end="url(#ar)"/>' +
+    return '<rect x="' + x + '" y="16" width="146" height="54" rx="9" fill="' + (i === 3 ? '#FFF8F5' : '#F7F6F3') + '" stroke="' + (i === 3 ? '#FF5804' : '#E2E0DB') + '"/><text class="t" x="' + (x + 73) + '" y="48" text-anchor="middle">' + s + '</text>' +
+      (i < 4 ? '<line x1="' + (x + 148) + '" y1="43" x2="' + (x + 162) + '" y2="43" stroke="#5D6E85" marker-end="url(#ar)"/>' : '');
+  }).join('') + '<path d="M83 70 L83 100 L747 100 L747 70" stroke="#FF5804" stroke-dasharray="4 4" fill="none" marker-end="url(#ar)"/>' +
   '<text class="cap" x="415" y="122" text-anchor="middle">Reshape \u2014 returning a programme to planning rather than ending it</text>' + arrowDef,
   '0 0 840 134', 'Programme lifecycle with a reshape loop returning to planning', 'Reshaping is frequently the highest-value gate outcome.');
 
 DIA.pathways = () => svgWrap(
-  '<rect x="300" y="10" width="240" height="46" rx="9" fill="#0B2434"/><text class="tw" x="420" y="30" text-anchor="middle">G3 \u2014 pathway decision</text><text class="sw" x="420" y="48" text-anchor="middle">Mission Director with Commercialisation &amp; Partnerships lead</text>' +
+  '<rect x="300" y="10" width="240" height="46" rx="9" fill="#053B4A"/><text class="tw" x="420" y="30" text-anchor="middle">G3 \u2014 pathway decision</text><text class="sw" x="420" y="48" text-anchor="middle">Mission Director with Commercialisation &amp; Partnerships lead</text>' +
   ['Licence','Venture creation','Joint venture','Corporate adoption','Public procurement','Strategic platform'].map(function (p, i) {
     const col = i % 3, row = Math.floor(i / 3), x = 10 + col * 278, y = 100 + row * 62;
-    return '<line x1="420" y1="56" x2="' + (x + 129) + '" y2="' + (y - 6) + '" stroke="#D3DFE4" marker-end="url(#ar)"/><rect x="' + x + '" y="' + y + '" width="258" height="46" rx="9" fill="#EEF6F4" stroke="#0FA893"/><text class="t" x="' + (x + 129) + '" y="' + (y + 29) + '" text-anchor="middle" font-size="12">' + p + '</text>';
+    return '<line x1="420" y1="56" x2="' + (x + 129) + '" y2="' + (y - 6) + '" stroke="#E2E0DB" marker-end="url(#ar)"/><rect x="' + x + '" y="' + y + '" width="258" height="46" rx="9" fill="#FFF8F5" stroke="#FF5804"/><text class="t" x="' + (x + 129) + '" y="' + (y + 29) + '" text-anchor="middle" font-size="12">' + p + '</text>';
   }).join('') + '<text class="cap" x="415" y="238" text-anchor="middle">Selected on evidence, not preference</text>' + arrowDef,
   '0 0 840 248', 'Six exit pathways fanning from the pathway decision', 'Pathway selection happens while NZIAT still holds leverage.');
 
 DIA.channels = () => svgWrap(
   ['Universities','Public Research Orgs','Start-ups &amp; scale-ups','Industry','Defence &amp; security','International','Crown agencies','M\u0101ori organisations','Venture capital','Overseas intelligence'].map(function (c, i) {
     const col = i % 2, row = Math.floor(i / 2), x = 10 + col * 212, y = 12 + row * 38;
-    return '<rect x="' + x + '" y="' + y + '" width="198" height="30" rx="7" fill="#EEF6F4" stroke="#0FA893"/><text class="t" x="' + (x + 14) + '" y="' + (y + 20) + '" font-size="11.5">' + c + '</text>';
-  }).join('') + '<path d="M424 106 L470 106 L470 130" stroke="#5F7580" fill="none" marker-end="url(#ar)"/>' +
-  '<rect x="470" y="134" width="360" height="42" rx="9" fill="#0B2434"/><text class="tw" x="490" y="160">One intake \u2014 everything logged</text>' +
-  '<line x1="650" y1="176" x2="650" y2="192" stroke="#5F7580" marker-end="url(#ar)"/>' +
-  '<rect x="470" y="196" width="360" height="42" rx="9" fill="#F7FAFB" stroke="#D3DFE4"/><text class="t" x="490" y="215">Triage \u2014 five criteria, tier assigned</text><text class="s" x="490" y="231">Response within 15 working days</text>' +
+    return '<rect x="' + x + '" y="' + y + '" width="198" height="30" rx="7" fill="#FFF8F5" stroke="#FF5804"/><text class="t" x="' + (x + 14) + '" y="' + (y + 20) + '" font-size="11.5">' + c + '</text>';
+  }).join('') + '<path d="M424 106 L470 106 L470 130" stroke="#5D6E85" fill="none" marker-end="url(#ar)"/>' +
+  '<rect x="470" y="134" width="360" height="42" rx="9" fill="#053B4A"/><text class="tw" x="490" y="160">One intake \u2014 everything logged</text>' +
+  '<line x1="650" y1="176" x2="650" y2="192" stroke="#5D6E85" marker-end="url(#ar)"/>' +
+  '<rect x="470" y="196" width="360" height="42" rx="9" fill="#F7F6F3" stroke="#E2E0DB"/><text class="t" x="490" y="215">Triage \u2014 five criteria, tier assigned</text><text class="s" x="490" y="231">Response within 15 working days</text>' +
   '<text class="cap" x="10" y="228">Relationship-sourced opportunities face</text><text class="cap" x="10" y="244">identical diligence, flagged as such.</text>' + arrowDef,
   '0 0 840 254', 'Ten origination channels feeding one common intake and triage', 'One intake for all ten channels.');
 
 DIA.committee = () => svgWrap(
-  '<rect x="10" y="10" width="820" height="88" rx="12" fill="#F7FAFB" stroke="#D3DFE4"/><text class="n" x="30" y="34">EXECUTIVE INVESTMENT COMMITTEE \u2014 FORTNIGHTLY \u00B7 QUORUM 4</text>' +
+  '<rect x="10" y="10" width="820" height="88" rx="12" fill="#F7F6F3" stroke="#E2E0DB"/><text class="n" x="30" y="34">EXECUTIVE INVESTMENT COMMITTEE \u2014 FORTNIGHTLY \u00B7 QUORUM 4</text>' +
   [['CEO','Chair'],['CIO','Deputy'],['MDs (phased)','Voting'],['Crown Ops','Voting'],['Comm. &amp; Ptnr','Voting'],['M\u0101ori Ptnr','Voting']].map(function (m, i) {
     const x = 30 + i * 133;
-    return '<rect x="' + x + '" y="44" width="120" height="40" rx="8" fill="#EEF6F4" stroke="#0FA893"/><text class="t" x="' + (x + 60) + '" y="62" text-anchor="middle" font-size="12">' + m[0] + '</text><text class="s" x="' + (x + 60) + '" y="77" text-anchor="middle">' + m[1] + '</text>';
+    return '<rect x="' + x + '" y="44" width="120" height="40" rx="8" fill="#FFF8F5" stroke="#FF5804"/><text class="t" x="' + (x + 60) + '" y="62" text-anchor="middle" font-size="12">' + m[0] + '</text><text class="s" x="' + (x + 60) + '" y="77" text-anchor="middle">' + m[1] + '</text>';
   }).join('') +
-  '<rect x="10" y="112" width="400" height="52" rx="9" fill="#EEF6F4" stroke="#0FA893"/><text class="t" x="30" y="134">Consensus where possible</text><text class="s" x="30" y="152">Otherwise the Chair decides \u2014 dissent recorded</text>' +
-  '<rect x="430" y="112" width="400" height="52" rx="9" fill="#0B2434"/><text class="tw" x="450" y="134">Any two voting members may escalate</text><text class="sw" x="450" y="152">to the Board, without the Chair\u2019s agreement</text>' +
+  '<rect x="10" y="112" width="400" height="52" rx="9" fill="#FFF8F5" stroke="#FF5804"/><text class="t" x="30" y="134">Consensus where possible</text><text class="s" x="30" y="152">Otherwise the Chair decides \u2014 dissent recorded</text>' +
+  '<rect x="430" y="112" width="400" height="52" rx="9" fill="#053B4A"/><text class="tw" x="450" y="134">Any two voting members may escalate</text><text class="sw" x="450" y="152">to the Board, without the Chair\u2019s agreement</text>' +
   '<text class="cap" x="10" y="186">A Mission Director may not form quorum for a decision on their own mission</text>',
   '0 0 840 196', 'Investment Committee composition, decision rule and escalation right', 'The Committee tests recommendations; it does not absorb accountability.');
 

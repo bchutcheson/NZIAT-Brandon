@@ -105,8 +105,6 @@ main{padding-bottom:4rem;}
 .status-board{background:#EAF4F7;border-color:#A8D6E5;color:#095167;}
 .status-legal{background:#FACCCC;border-color:#F59999;color:#890000;}
 .quotebox{background:var(--navy);color:#fff;border-radius:var(--r-l);padding:2rem 2.2rem;margin:1.4rem 0;font-family:var(--display);font-weight:700;font-size:clamp(1.35rem,3vw,2rem);line-height:1.35;}
-details.longvision{margin:1.2rem 0 1.6rem;}
-details.longvision > div{margin-top:1rem;}
 .mustcan{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;border-radius:var(--r-l);overflow:hidden;margin:1.4rem 0;border:1px solid var(--line);}
 .mustcan .col h3{padding:1rem 1.3rem;margin:0;font-size:1.25rem;color:#fff;}
 .mustcan .col.must h3{background:var(--navy);}
@@ -124,9 +122,6 @@ details.longvision > div{margin-top:1rem;}
 .chips span{font-size:.76rem;background:var(--tint);color:var(--teal-d);border-radius:var(--r-pill);padding:.2rem .6rem;}
 .statuslegend{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;align-items:center;font-size:.85rem;color:var(--muted);margin:1rem 0 1.5rem;}
 .statuslegend .tag{margin-right:.35rem;}
-.statusstrip{background:var(--gold-bg);border-bottom:1px solid var(--gold-line);color:#5F280D;font-size:.86rem;padding:.7rem 0;}
-.statusstrip .wrap{display:flex;gap:.5rem;align-items:baseline;}
-.statusstrip strong{font-family:var(--display);letter-spacing:.03em;flex:0 0 auto;}
 
 .flowcard{border:1px solid var(--line);border-radius:var(--r-l);padding:1.1rem 1rem .6rem;background:var(--paper);box-shadow:var(--shadow);margin:1.4rem 0;}
 .domaingrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;list-style:none;padding:0;margin:0;}
@@ -241,7 +236,7 @@ svg .n{font-size:11px;font-weight:700;fill:var(--teal-d);}
 svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
 
 @media print{
-  .sidebar nav,.toolbar,.skip,.side,.pagernav,.statusstrip{display:none!important;}
+  .sidebar nav,.toolbar,.skip,.side,.pagernav{display:none!important;}
   .view[hidden]{display:block!important;}
   .hero{background:#fff;color:#000;}
   .hero h1,.hero .lede,.hero .byline{color:#000;}
@@ -287,8 +282,6 @@ svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
 
   <div class="content-col">
     <p class="sr" role="status" aria-live="polite" id="announcer"></p>
-
-    <div class="statusstrip"><div class="wrap"><strong>Candidate working proposition.</strong> Hypotheses and design choices on this site are subject to Board mandate, inherited commitments, legal review and evidence.</div></div>
 
     <main id="main"><div id="viewRoot"></div></main>
   </div>
@@ -1196,11 +1189,7 @@ function viewMissions() {
 function viewVisionPage() {
   return '<div class="wrap"><section class="view" aria-labelledby="h-vision">' +
     '<div class="section-head"><p class="eyebrow">Strategy</p><h2 id="h-vision" tabindex="-1">My Vision for NZIAT</h2></div>' +
-    '<blockquote class="quotebox">To secure New Zealand’s place on the new economic frontier through ambitious missions that turn uncertain science into lasting national capability and economic value.</blockquote>' +
-    '<details class="longvision"><summary class="btn">Long Vision</summary>' +
-      '<div class="callout">My vision is for NZIAT to secure New Zealand’s place on the new economic frontier through a small number of ambitious missions. These missions would pursue frontier opportunities beyond the reach of conventional funding and create the pathways through which uncertain science can become lasting national capability, future industries and economic value. In doing so, NZIAT would rekindle ambition across the research system, encouraging researchers to pursue more consequential goals while attracting a broader mix of scientists, technologists, entrepreneurs and unconventional problem-solvers.</div>' +
-    '</details>' +
-    '<p><a class="btn ghost" href="#/">Back to overview</a></p>' +
+    '<blockquote class="quotebox">My vision is for NZIAT to secure New Zealand’s place on the new economic frontier through a small number of ambitious missions. These missions would pursue frontier opportunities beyond the reach of conventional funding and create the pathways through which uncertain science can become lasting national capability, future industries and economic value. In doing so, NZIAT would rekindle ambition across the research system encouraging researchers to pursue more consequential goals while attracting a broader mix of scientists, technologists, entrepreneurs and unconventional problem-solvers.</blockquote>' +
   '</section></div>';
 }
 

@@ -112,7 +112,8 @@ main{padding-bottom:4rem;}
 .vision-callout p{font-size:1rem;line-height:1.62;color:var(--ice);margin:0;max-width:56ch;}
 .vision-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,320px);gap:2.5rem;align-items:start;margin:0 0 1.8rem;}
 .vision-missions{padding-top:.3rem;}
-.vision-missions > .eyebrow{margin:0 0 1rem;}
+.vision-missions > .eyebrow{margin:0 0 .5rem;}
+.vision-missions > .vm-intro{font-size:.83rem;line-height:1.45;font-style:italic;color:var(--muted);margin:0 0 1.2rem;}
 .vm-list{display:flex;flex-direction:column;gap:1rem;}
 .vm-card{background:var(--paper);border:1px solid var(--ice);border-radius:var(--r-m);padding:1.1rem 1.25rem;}
 .vm-card .vm-label{font-family:var(--display);font-weight:600;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);display:inline-block;margin:0 0 .55rem;padding-bottom:.4rem;border-bottom:2px solid var(--teal);}
@@ -1216,6 +1217,7 @@ function viewVisionPage() {
       '</div>' +
       '<div class="vision-missions">' +
         '<p class="eyebrow">Proposed mission portfolio</p>' +
+        '<p class="vm-intro">Missions define the challenge; technologies such as AI, quantum, advanced materials and synthetic biology provide the tools.</p>' +
         '<div class="vm-list">' +
           VISION_MISSIONS.map(function (m) {
             return '<article class="vm-card">' +

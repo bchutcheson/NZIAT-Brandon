@@ -120,6 +120,39 @@ main{padding-bottom:4rem;}
 .vm-card h3{font-family:var(--display);font-weight:700;font-size:1.02rem;color:var(--navy);margin:0 0 .35rem;line-height:1.3;}
 .vm-card p{font-size:.87rem;line-height:1.5;color:var(--muted);margin:0;}
 @media (max-width:760px){.vision-hero{grid-template-columns:1fr;}}
+
+.f100-lede{font-family:var(--display);font-weight:600;font-size:1.12rem;color:var(--navy-2);margin:0 0 1.7rem;}
+.f100-quote{background:var(--navy);color:#fff;border-radius:var(--r-l);padding:1.9rem 2.1rem;margin:0 0 2.8rem;}
+.f100-quote blockquote{font-family:var(--display);font-weight:700;font-size:clamp(1.1rem,2.1vw,1.45rem);line-height:1.42;margin:0;}
+.f100-roadmap{display:flex;justify-content:space-between;align-items:flex-start;position:relative;margin:0 0 2.8rem;padding-top:.3rem;}
+.f100-roadmap::before{content:"";position:absolute;top:14px;left:8%;right:8%;height:2px;background:var(--line);}
+.f100-roadmap-stage{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:.5rem;flex:1;text-align:center;}
+.f100-roadmap-stage .node{width:28px;height:28px;border-radius:50%;background:var(--paper);border:2px solid var(--teal);color:var(--teal-d);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:.82rem;}
+.f100-roadmap-stage .lbl{font-family:var(--display);font-weight:600;font-size:.88rem;color:var(--navy);}
+.f100-roadmap-stage .sub{font-size:.76rem;color:var(--muted);}
+.f100-phase{margin:0 0 3.2rem;padding-top:2.2rem;border-top:1px solid var(--line);}
+.f100-phase:first-of-type{padding-top:0;border-top:none;}
+.f100-phase-progress{display:flex;align-items:center;gap:.35rem;margin:0 0 .9rem;}
+.f100-phase-progress .dot{width:7px;height:7px;border-radius:50%;background:var(--line);}
+.f100-phase-progress .dot.active{background:var(--teal);}
+.f100-phase-progress .seg{width:22px;height:2px;background:var(--line);}
+.f100-phase-progress .seg.active{background:var(--teal);}
+.f100-phase-q{font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,3vw,2rem);line-height:1.28;color:var(--navy);margin:0 0 1.7rem;max-width:36ch;}
+.f100-priority{display:grid;grid-template-columns:35% 1fr;gap:1.75rem;padding:1.15rem 0;border-top:1px solid var(--line-2);}
+.f100-priority:first-child{border-top:none;padding-top:0;}
+.f100-priority-head{display:flex;align-items:flex-start;gap:.85rem;}
+.f100-num{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:.82rem;}
+.f100-priority-head h4{font-family:var(--display);font-weight:700;font-size:1.04rem;color:var(--navy);margin:.1rem 0 0;line-height:1.35;}
+.f100-priority-body{font-size:.95rem;line-height:1.62;color:var(--body);margin:0;}
+.f100-outcome{background:var(--tint);border-radius:var(--r-m);padding:1.25rem 1.5rem;margin:1.7rem 0 0;}
+.f100-outcome .lbl{font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);margin:0 0 .5rem;}
+.f100-outcome p{font-family:var(--display);font-weight:700;font-size:1.04rem;line-height:1.42;color:var(--navy);margin:0;}
+@media (max-width:760px){
+  .f100-priority{grid-template-columns:1fr;gap:.5rem;}
+  .f100-roadmap-stage .sub{display:none;}
+  .f100-roadmap-stage .lbl{font-size:.8rem;}
+}
+
 .mustcan{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;border-radius:var(--r-l);overflow:hidden;margin:1.4rem 0;border:1px solid var(--line);}
 .mustcan .col h3{padding:1rem 1.3rem;margin:0;font-size:1.25rem;color:#fff;}
 .mustcan .col.must h3{background:var(--navy);}
@@ -1253,19 +1286,75 @@ function viewAchievePage() {
 /* ============================================================
    VIEW: FIRST 100 DAYS (standalone)
    ============================================================ */
-const FIRST100_ROWS = [
-  ['Before Day One', 'Understand the system before acting: map inherited commitments, current staff, legal obligations, active procurements and Board expectations; agree the handover protocol.', 'Prevents the incoming Chief Executive from making an uninformed first move, and builds the trust needed before any mission work can credibly begin.'],
-  ['Days 1–30', 'Confirm mandate, delegations and risk appetite; build an authoritative inherited-capital baseline.', 'NZIAT cannot responsibly commit capital to missions until the Board has approved how decisions get made and how much capital is genuinely available.'],
-  ['Days 31–60', 'Test mission hypotheses with the ecosystem and design the investment decision system: triage, diligence, conflict and stage-gate processes.', 'Missions only succeed if the selection and diligence process is credible before the first mission case is brought forward.'],
-  ['Days 61–100', 'Bring an integrated strategy to the Board, confirm which mission discoveries proceed, and launch the first reversible commitments.', 'This is the point NZIAT actually starts operating its missions; everything before it is preparation for this moment.']
+const F100_ROADMAP = [
+  ['01', 'Understand', 'Days 1–30'],
+  ['02', 'Build', 'Days 30–60'],
+  ['03', 'Act', 'Days 60–100']
+];
+const F100_PHASES = [
+  {
+    label: 'First 30 days',
+    question: 'Are we solving the right problems?',
+    priorities: [
+      ['Align the mandate', 'Get absolute clarity with the Board on purpose, success, risk appetite, government expectations and the decisions that matter most.'],
+      ['Build stakeholder intelligence', 'Engage the critical research, industry, capital, government and Māori stakeholders, not as a listening tour, but to identify opportunity, constraint and trust.'],
+      ['Understand what we inherited', 'Establish a clear view of people, commitments, finances, legal obligations, current investments, systems and immediate organisational risks.']
+    ],
+    outcome: 'Board alignment, stakeholder intelligence, and a clear picture of the organisation we have inherited.',
+    progress: 1
+  },
+  {
+    label: 'Days 30–60',
+    question: 'Are we built to make the right decisions?',
+    priorities: [
+      ['Define the operating model', 'Translate the mandate into a simple flow from national priorities and Opportunity Discovery through missions, programmes, investments and pathways to impact.'],
+      ['Set investment discipline', 'Define what NZIAT should fund, how uncertainty is treated, how opportunities progress, and when we stop, scale or redirect.'],
+      ['Build leadership capability', 'Confirm governance, decision rights and the critical leadership capabilities needed around the CEO; begin recruitment where genuine gaps exist.']
+    ],
+    outcome: 'A proposed operating model, investment philosophy and leadership architecture ready for Board challenge.',
+    progress: 2
+  },
+  {
+    label: 'Days 60–100',
+    question: 'Are we ready to place our first intelligent bets?',
+    priorities: [
+      ['Activate Opportunity Discovery', 'Run disciplined exploration of potential mission areas using global intelligence, New Zealand capability, strategic relevance and additionality.'],
+      ['Test mission hypotheses', 'Build a pipeline of candidate opportunities and test them against significance, technical uncertainty, NZ advantage, ecosystem potential and pathways to value.'],
+      ['Commit the next 12 months', 'Turn priority relationships into partnerships and take an evidence-backed 12-month agenda to the Board, without forcing a mission launch before the evidence is ready.']
+    ],
+    outcome: 'An evidence-backed mission pipeline, active partnerships, and an agreed 12-month agenda with the Board.',
+    progress: 3
+  }
 ];
 function viewFirst100DaysPage() {
   return '<div class="wrap"><section class="view" aria-labelledby="h-100">' +
-    '<div class="section-head"><p class="eyebrow">Strategy</p><h2 id="h-100" tabindex="-1">First 100 Days</h2>' +
-    '<p>What the first 100 days looks like, and why each phase matters to getting NZIAT ready to start operating its missions.</p></div>' +
-    '<div class="tablewrap"><table><caption>The first 100 days</caption><thead><tr><th scope="col">What the first 100 days looks like</th><th scope="col">High level objectives</th><th scope="col">Why it matters to operating missions</th></tr></thead><tbody>' +
-    FIRST100_ROWS.map(r => '<tr><th scope="row">' + r[0] + '</th><td>' + r[1] + '</td><td>' + r[2] + '</td></tr>').join('') +
-    '</tbody></table></div>' +
+    '<div class="section-head"><p class="eyebrow">Strategy</p><h2 id="h-100" tabindex="-1">First 100 Days</h2></div>' +
+    '<p class="f100-lede">Judgement, sequencing and leadership before speed.</p>' +
+    '<div class="f100-quote"><blockquote>“My objective would not be to show how quickly I can make decisions, but to make sure NZIAT can make the right decisions repeatedly.”</blockquote></div>' +
+    '<div class="f100-roadmap">' +
+      F100_ROADMAP.map(function (r) {
+        return '<div class="f100-roadmap-stage"><span class="node">' + r[0] + '</span><span class="lbl">' + r[1] + '</span><span class="sub">' + r[2] + '</span></div>';
+      }).join('') +
+    '</div>' +
+    F100_PHASES.map(function (ph) {
+      return '<div class="f100-phase">' +
+        '<div class="f100-phase-progress">' +
+          [1, 2, 3].map(function (n) {
+            return (n > 1 ? '<span class="seg' + (n <= ph.progress ? ' active' : '') + '"></span>' : '') +
+              '<span class="dot' + (n <= ph.progress ? ' active' : '') + '"></span>';
+          }).join('') +
+        '</div>' +
+        '<p class="eyebrow">' + ph.label + '</p>' +
+        '<h3 class="f100-phase-q">' + ph.question + '</h3>' +
+        ph.priorities.map(function (p, i) {
+          return '<div class="f100-priority">' +
+            '<div class="f100-priority-head"><span class="f100-num">' + (i + 1) + '</span><h4>' + p[0] + '</h4></div>' +
+            '<p class="f100-priority-body">' + p[1] + '</p>' +
+          '</div>';
+        }).join('') +
+        '<div class="f100-outcome"><p class="lbl">By the end of this phase</p><p>' + ph.outcome + '</p></div>' +
+      '</div>';
+    }).join('') +
     '<p><a class="btn ghost" href="#/">Back to overview</a></p>' +
   '</section></div>';
 }

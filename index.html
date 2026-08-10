@@ -57,8 +57,6 @@ img,svg{max-width:100%;}
 .content-col{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;}
 .wordmark{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff;padding:1.25rem 1.35rem;border-bottom:1px solid #095167;}
 .wordmark .glyph{width:34px;height:34px;flex:0 0 34px;border-radius:9px;background:linear-gradient(135deg,var(--teal),#D1442C);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:1rem;color:#fff;}
-.wordmark .wm-t{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:.02em;line-height:1.1;}
-.wordmark .wm-s{font-size:.72rem;color:var(--ice);letter-spacing:.04em;}
 nav.primary ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;}
 nav.primary ul + ul{margin-top:1.1rem;border-top:2px solid #095167;padding-top:1.1rem;}
 nav.primary li{border-bottom:1px solid #095167;}
@@ -320,7 +318,6 @@ svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
   <aside class="sidebar on-dark" aria-label="Site header and primary navigation">
     <a class="wordmark" href="#/" aria-label="NZIAT operating model home">
       <span class="glyph" aria-hidden="true">NZ</span>
-      <span><span class="wm-t">NZIAT</span><br><span class="wm-s">Proposed operating model</span></span>
     </a>
     <nav class="primary" id="primaryNav" aria-label="Primary">
       <ul>
@@ -1292,7 +1289,7 @@ function viewAchievePage() {
     '<div class="section-head"><p class="eyebrow">Strategy</p><h2 id="h-achieve" tabindex="-1">What must and can NZIAT achieve?</h2></div>' +
     '<p class="achieve-lede">NZIAT’s success should ultimately be judged by whether it chooses well, builds something that lasts, and converts that capability into value for New Zealand.</p>' +
     '<p class="eyebrow">What NZIAT must achieve</p>' +
-    '<h3 class="achieve-h3">Three tests of whether the institution is working</h3>' +
+    '<h3 class="achieve-h3">Three tests of whether NZIAT is working</h3>' +
     '<div class="must-grid">' +
       MUST_TESTS.map(function (t, i) {
         return '<article class="must-card">' +
@@ -1318,7 +1315,6 @@ function viewAchievePage() {
       '</div>' +
     '</div>' +
     '<div class="achieve-close"><span class="accent"></span><p>Choose well. Build something that lasts. Turn it into value for New Zealand.</p></div>' +
-    '<p><a class="btn ghost" href="#/">Back to overview</a></p>' +
   '</section></div>';
 }
 

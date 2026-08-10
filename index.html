@@ -49,6 +49,7 @@ img,svg{max-width:100%;}
 :focus{outline:none;}
 :focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:4px;}
 .on-dark :focus-visible{outline-color:#FFA06A;}
+[tabindex="-1"]:focus-visible{outline:none;}
 .skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--teal);color:#fff;padding:.75rem 1.25rem;font-weight:600;border-radius:0 0 var(--r-s) 0;text-decoration:none;}
 .skip:focus{left:0;}
 .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;}
@@ -126,27 +127,22 @@ main{padding-bottom:4rem;}
 .vm-card p{font-size:.87rem;line-height:1.5;color:var(--muted);margin:0;}
 @media (max-width:760px){.vision-hero{grid-template-columns:1fr;}}
 
-.f100-roadmap{display:flex;justify-content:space-between;align-items:flex-start;position:relative;margin:0 0 2.8rem;padding-top:.3rem;}
-.f100-roadmap::before{content:"";position:absolute;top:14px;left:8%;right:8%;height:2px;background:var(--line);}
+.f100-roadmap{display:flex;justify-content:space-between;align-items:flex-start;position:relative;margin:0 0 2.4rem;padding-top:.3rem;}
+.f100-roadmap::before{content:"";position:absolute;top:17px;left:8%;right:8%;height:2px;background:var(--line);}
 .f100-roadmap-stage{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:.5rem;flex:1;text-align:center;}
-.f100-roadmap-stage .node{width:28px;height:28px;border-radius:50%;background:var(--paper);border:2px solid var(--teal);color:var(--teal-d);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:.82rem;}
+.f100-roadmap-stage .node{width:34px;height:34px;border-radius:50%;background:var(--paper);border:2px solid var(--teal);color:var(--teal-d);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:.9rem;}
 .f100-roadmap-stage .lbl{font-family:var(--display);font-weight:600;font-size:.88rem;color:var(--navy);}
 .f100-roadmap-stage .sub{font-size:.76rem;color:var(--muted);}
-.f100-phase{margin:0 0 3.2rem;padding-top:2.2rem;border-top:1px solid var(--line);}
+.f100-phase{margin:0 0 2.4rem;padding-top:1.7rem;border-top:1px solid var(--line);}
 .f100-phase:first-of-type{padding-top:0;border-top:none;}
-.f100-phase-progress{display:flex;align-items:center;gap:.35rem;margin:0 0 .9rem;}
-.f100-phase-progress .dot{width:7px;height:7px;border-radius:50%;background:var(--line);}
-.f100-phase-progress .dot.active{background:var(--teal);}
-.f100-phase-progress .seg{width:22px;height:2px;background:var(--line);}
-.f100-phase-progress .seg.active{background:var(--teal);}
-.f100-phase-q{font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,3vw,2rem);line-height:1.28;color:var(--navy);margin:0 0 1.7rem;max-width:36ch;}
-.f100-priority{display:grid;grid-template-columns:35% 1fr;gap:1.75rem;padding:1.15rem 0;border-top:1px solid var(--line-2);}
+.f100-phase-q{font-family:var(--display);font-weight:700;font-size:clamp(1.4rem,3vw,2rem);line-height:1.28;color:var(--navy);margin:0 0 1.4rem;max-width:36ch;}
+.f100-priority{display:grid;grid-template-columns:minmax(160px,260px) 1fr;gap:1.75rem;padding:.95rem 0;border-top:1px solid var(--line-2);}
 .f100-priority:first-child{border-top:none;padding-top:0;}
 .f100-priority-head{display:flex;align-items:flex-start;gap:.85rem;}
 .f100-num{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:.82rem;}
 .f100-priority-head h4{font-family:var(--display);font-weight:700;font-size:1.04rem;color:var(--navy);margin:.1rem 0 0;line-height:1.35;}
 .f100-priority-body{font-size:.95rem;line-height:1.62;color:var(--body);margin:0;}
-.f100-outcome{background:var(--tint);border-radius:var(--r-m);padding:1.25rem 1.5rem;margin:1.7rem 0 0;}
+.f100-outcome{background:var(--tint);border-radius:var(--r-m);padding:1.1rem 1.4rem;margin:1.3rem 0 0;}
 .f100-outcome .lbl{font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);margin:0 0 .5rem;}
 .f100-outcome p{font-family:var(--display);font-weight:700;font-size:1.04rem;line-height:1.42;color:var(--navy);margin:0;}
 @media (max-width:760px){
@@ -159,10 +155,11 @@ main{padding-bottom:4rem;}
 .achieve-h3{font-family:var(--display);font-weight:700;font-size:clamp(1.3rem,2.6vw,1.8rem);color:var(--navy);line-height:1.3;margin:.4rem 0 2rem;}
 .must-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:stretch;margin:0 0 1.8rem;}
 .must-card{display:flex;flex-direction:column;background:var(--paper-2);border:1px solid var(--ice);border-radius:var(--r-l);padding:1.6rem 1.6rem 1.4rem;}
-.must-card .num{font-family:var(--display);font-weight:700;font-size:.85rem;letter-spacing:.16em;color:var(--teal-d);margin:0 0 1rem;}
-.must-card h4{font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--navy);line-height:1.32;margin:0 0 .9rem;}
-.must-card p{font-size:.92rem;line-height:1.58;color:var(--body);margin:0;flex:1 0 auto;}
-.must-card .test{border-top:1px solid var(--line-2);margin-top:1.3rem;padding-top:1.1rem;font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--navy);}
+.must-card .num{font-family:var(--display);font-weight:700;font-size:.85rem;letter-spacing:.16em;color:#B93A25;margin:0 0 1rem;flex:0 0 auto;}
+.must-card h4{font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--navy);line-height:1.32;margin:0 0 .9rem;flex:0 0 auto;}
+.must-card p{font-size:.92rem;line-height:1.58;color:var(--body);margin:0;}
+.must-card > p:not(.num){flex:1 0 auto;}
+.must-card .test{border-top:1px solid var(--line-2);margin-top:1.3rem;padding-top:1.1rem;font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--navy);flex:0 0 auto;}
 .must-flow{display:flex;align-items:center;justify-content:center;gap:.8rem;margin:0 0 3.6rem;}
 .must-flow .step{font-family:var(--display);font-weight:700;font-size:.86rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);}
 .must-flow .seg{width:44px;height:2px;background:var(--teal);}
@@ -749,7 +746,7 @@ const DESIGNED = [
   ['Organisation shape, 44 FTE and remuneration bands','A phased design: 44 FTE is an upper scenario for a fully built-out institution, not a day-one commitment, tested against portfolio volume and evidence as missions are validated. Remuneration bands are market benchmarks; chief executive remuneration is subject to Public Service Commission consultation.'],
   ['Inherited-commitments baseline categories: legally committed, contracted, provisionally committed, ring-fenced, unallocated','A classification designed to let the Board see how much of the $231m mandate is genuinely discretionary before any capital-allocation claim is made, rather than assuming an even split across four years.'],
   ['AI-enhanced investment intelligence as decision support, not automated funding decisions','Designed so intelligent tooling accelerates evidence-gathering, including duplication scans, landscape monitoring and milestone validation, while every funding decision remains a named, accountable human judgement, visible to the Board.'],
-  ['Four mission hypotheses shown for ambition','A deliberate choice to demonstrate the scale of ambition NZIAT could pursue, while making clear each hypothesis must still pass discovery, New Zealand-advantage and Board tests before becoming an approved mission.']
+  ['Three mission hypotheses shown for ambition','A deliberate choice to demonstrate the scale of ambition NZIAT could pursue, while making clear each hypothesis must still pass discovery, New Zealand-advantage and Board tests before becoming an approved mission.']
 ];
 
 /* ============================================================
@@ -761,9 +758,7 @@ const MISSIONS_SIMPLE = [
   { num:'2', title:'Human\u2013Machine Partnership',
     description:'Transformative ways for humans and intelligent machines to think, decide and act together, developing safe, intuitive and high-performance partnerships that extend human capability beyond today\u2019s physical and cognitive limits.' },
   { num:'3', title:'Radical Geoengineering',
-    description:'Technologies that deliberately influence Earth\u2019s natural systems, developing safe, measurable and governable interventions capable of addressing climate risks beyond the reach of conventional solutions.' },
-  { num:'4', title:'Mission 4 title (placeholder)',
-    description:'Placeholder description: content for Mission 4 has not been written yet. Replace this text once it is available.' }
+    description:'Technologies that deliberately influence Earth\u2019s natural systems, developing safe, measurable and governable interventions capable of addressing climate risks beyond the reach of conventional solutions.' }
 ];
 
 /* ============================================================
@@ -995,7 +990,7 @@ function viewHome() {
     '<div class="stats">' +
       '<div class="stat"><b>$231m</b><span>First mandate over four years</span></div>' +
       '<div class="stat"><b>100 days</b><span>To establish mandate, inherited baseline and decision system</span></div>' +
-      '<div class="stat"><b>4</b><span>Mission hypotheses to test, not a pre-selected portfolio</span></div>' +
+      '<div class="stat"><b>3</b><span>Mission hypotheses to test, not a pre-selected portfolio</span></div>' +
       '<div class="stat"><b>1</b><span>Integrated operating system from discovery to retained value</span></div>' +
     '</div>' +
   '</div></section>' +
@@ -1075,7 +1070,7 @@ const SECTION_EXTRA = {
     '</tbody></table></div>' +
     '<p><strong>Mission ecosystem effect.</strong> A mission does more than fund research. It creates a visible national focal point that can inspire young researchers, attract international collaborators, engage the public, produce spin-offs, shape policy, stimulate start-ups, strengthen educational pipelines, diversify capital, build national pride and leave a durable capability beyond any single investment.</p>' +
     '<p><strong>Commercial ecosystem effect.</strong> A distinctive mission gives global capital and strategic partners a reason to watch New Zealand. Within each mission, customer access, data, test environments, regulatory learning, investors and international relationships can be shared across multiple programmes. One successful partnership should lower the path-to-market friction for the rest of the mission portfolio.</p>' +
-    '<p><a class="btn ghost" href="#/missions">See the four mission hypotheses this thinking would test &rarr;</a></p>',
+    '<p><a class="btn ghost" href="#/missions">See the mission hypotheses this thinking would test &rarr;</a></p>',
   capital:
     '<p>NZIAT should not try to pick every winner at the beginning. It should create options, learn quickly, concentrate behind evidence and protect enough follow-on capacity to scale what proves out. Capital allocation is an ongoing leadership activity, not a once-a-year grant round.</p>' +
     '<h3>A layered capital model</h3>' +
@@ -1291,7 +1286,6 @@ function viewMissions() {
       '</article>';
     }).join('') +
     '</div>' +
-    '<p><a class="btn ghost" href="#/">Back to overview</a></p>' +
   '</section></div>';
 }
 
@@ -1387,8 +1381,7 @@ const F100_PHASES = [
       ['Build stakeholder intelligence', 'Engage the critical research, industry, capital, government and Māori stakeholders, not as a listening tour, but to identify opportunity, constraint and trust.'],
       ['Understand what we inherited', 'Establish a clear view of people, commitments, finances, legal obligations, current investments, systems and immediate organisational risks.']
     ],
-    outcome: 'Board alignment, stakeholder intelligence, and a clear picture of the organisation we have inherited.',
-    progress: 1
+    outcome: 'Board alignment, stakeholder intelligence, and a clear picture of the organisation we have inherited.'
   },
   {
     label: 'Days 30–60',
@@ -1398,8 +1391,7 @@ const F100_PHASES = [
       ['Set investment discipline', 'Define what NZIAT should fund, how uncertainty is treated, how opportunities progress, and when we stop, scale or redirect.'],
       ['Build leadership capability', 'Confirm governance, decision rights and the critical leadership capabilities needed around the CEO; begin recruitment where genuine gaps exist.']
     ],
-    outcome: 'A proposed operating model, investment philosophy and leadership architecture ready for Board challenge.',
-    progress: 2
+    outcome: 'A proposed operating model, investment philosophy and leadership architecture ready for Board challenge.'
   },
   {
     label: 'Days 60–100',
@@ -1409,8 +1401,7 @@ const F100_PHASES = [
       ['Test mission hypotheses', 'Build a pipeline of candidate opportunities and test them against significance, technical uncertainty, NZ advantage, ecosystem potential and pathways to value.'],
       ['Commit the next 12 months', 'Turn priority relationships into partnerships and take an evidence-backed 12-month agenda to the Board, without forcing a mission launch before the evidence is ready.']
     ],
-    outcome: 'An evidence-backed mission pipeline, active partnerships, and an agreed 12-month agenda with the Board.',
-    progress: 3
+    outcome: 'An evidence-backed mission pipeline, active partnerships, and an agreed 12-month agenda with the Board.'
   }
 ];
 function viewFirst100DaysPage() {
@@ -1423,12 +1414,6 @@ function viewFirst100DaysPage() {
     '</div>' +
     F100_PHASES.map(function (ph) {
       return '<div class="f100-phase">' +
-        '<div class="f100-phase-progress">' +
-          [1, 2, 3].map(function (n) {
-            return (n > 1 ? '<span class="seg' + (n <= ph.progress ? ' active' : '') + '"></span>' : '') +
-              '<span class="dot' + (n <= ph.progress ? ' active' : '') + '"></span>';
-          }).join('') +
-        '</div>' +
         '<p class="eyebrow">' + ph.label + '</p>' +
         '<h3 class="f100-phase-q">' + ph.question + '</h3>' +
         ph.priorities.map(function (p, i) {
@@ -1477,7 +1462,6 @@ function viewGlossary() {
     '<div class="tablewrap"><table><caption>Glossary of operating-model terms</caption><thead><tr><th scope="col">Term</th><th scope="col">Definition</th></tr></thead><tbody>' +
     GLOSSARY.map(g => '<tr><th scope="row">' + esc(g[0]) + '</th><td>' + esc(g[1]) + '</td></tr>').join('') +
     '</tbody></table></div>' +
-    '<p><a class="btn ghost" href="#/">Back to overview</a></p>' +
   '</section></div>';
 }
 

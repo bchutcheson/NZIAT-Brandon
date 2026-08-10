@@ -67,8 +67,10 @@ nav.primary a:hover{background:#0D6B88;color:#fff;}
 nav.primary a[aria-current="page"]{color:#fff;background:#0D6B88;border-left-color:var(--teal);}
 nav.primary .nav-group-core{background:var(--navy-3);margin:1.1rem 0 0;padding:1.1rem 0;border-top:2px solid #095167;}
 nav.primary .nav-group-core li{border-bottom-color:#0A2A33;}
+nav.primary .nav-group-core a{padding:.5rem 1.35rem;}
 nav.primary .nav-group-core a:hover{background:#052731;}
 nav.primary .nav-group-core a[aria-current="page"]{background:#052731;}
+nav.primary .nav-group-core li.nav-group-title{font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#70BDD5;padding:.9rem 1.35rem .5rem;}
 @media (max-width:880px){
   .app-shell{flex-direction:column;}
   .sidebar{width:100%;flex:0 0 auto;}
@@ -121,9 +123,6 @@ main{padding-bottom:4rem;}
 .vm-card p{font-size:.87rem;line-height:1.5;color:var(--muted);margin:0;}
 @media (max-width:760px){.vision-hero{grid-template-columns:1fr;}}
 
-.f100-lede{font-family:var(--display);font-weight:600;font-size:1.12rem;color:var(--navy-2);margin:0 0 1.7rem;}
-.f100-quote{background:var(--navy);color:#fff;border-radius:var(--r-l);padding:1.9rem 2.1rem;margin:0 0 2.8rem;}
-.f100-quote blockquote{font-family:var(--display);font-weight:700;font-size:clamp(1.1rem,2.1vw,1.45rem);line-height:1.42;margin:0;}
 .f100-roadmap{display:flex;justify-content:space-between;align-items:flex-start;position:relative;margin:0 0 2.8rem;padding-top:.3rem;}
 .f100-roadmap::before{content:"";position:absolute;top:14px;left:8%;right:8%;height:2px;background:var(--line);}
 .f100-roadmap-stage{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:.5rem;flex:1;text-align:center;}
@@ -311,6 +310,7 @@ svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
         <li><a href="#/first100days" data-route="/first100days">First 100 days</a></li>
       </ul>
       <ul class="nav-group-core">
+        <li class="nav-group-title">Supporting information</li>
         <li><a href="#/" data-route="/">Overview</a></li>
         <li><a href="#/s/strategy" data-route="/s/strategy">Strategy</a></li>
         <li><a href="#/missions" data-route="/missions">Missions</a></li>
@@ -1329,8 +1329,6 @@ const F100_PHASES = [
 function viewFirst100DaysPage() {
   return '<div class="wrap"><section class="view" aria-labelledby="h-100">' +
     '<div class="section-head"><p class="eyebrow">Strategy</p><h2 id="h-100" tabindex="-1">First 100 Days</h2></div>' +
-    '<p class="f100-lede">Judgement, sequencing and leadership before speed.</p>' +
-    '<div class="f100-quote"><blockquote>“My objective would not be to show how quickly I can make decisions, but to make sure NZIAT can make the right decisions repeatedly.”</blockquote></div>' +
     '<div class="f100-roadmap">' +
       F100_ROADMAP.map(function (r) {
         return '<div class="f100-roadmap-stage"><span class="node">' + r[0] + '</span><span class="lbl">' + r[1] + '</span><span class="sub">' + r[2] + '</span></div>';
@@ -1355,7 +1353,6 @@ function viewFirst100DaysPage() {
         '<div class="f100-outcome"><p class="lbl">By the end of this phase</p><p>' + ph.outcome + '</p></div>' +
       '</div>';
     }).join('') +
-    '<p><a class="btn ghost" href="#/">Back to overview</a></p>' +
   '</section></div>';
 }
 

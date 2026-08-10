@@ -104,7 +104,12 @@ main{padding-bottom:4rem;}
 .status-hypothesis{background:#FFF8F5;border-color:#FDDFD0;color:#D1442C;}
 .status-board{background:#EAF4F7;border-color:#A8D6E5;color:#095167;}
 .status-legal{background:#FACCCC;border-color:#F59999;color:#890000;}
-.quotebox{background:var(--navy);color:#fff;border-radius:var(--r-l);padding:2rem 2.2rem;margin:1.4rem 0;font-family:var(--display);font-weight:700;font-size:clamp(1.35rem,3vw,2rem);line-height:1.35;}
+.vision-lead{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(1.5rem,3.4vw,2.35rem);line-height:1.28;color:var(--navy);margin:1.6rem 0 0;max-width:26ch;}
+.vision-divider{width:64px;height:4px;border:none;border-radius:2px;background:var(--teal);margin:1.5rem 0;}
+.vision-body{font-size:1.08rem;line-height:1.65;color:var(--body);max-width:58ch;margin:0 0 1.9rem;}
+.vision-callout{background:var(--navy);color:#fff;border-radius:var(--r-l);padding:1.9rem 2.1rem;margin:0 0 1.6rem;}
+.vision-callout .vc-lead{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(1.15rem,2.4vw,1.5rem);line-height:1.32;margin:0 0 .9rem;}
+.vision-callout p{font-size:1rem;line-height:1.62;color:var(--ice);margin:0;max-width:56ch;}
 .mustcan{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;border-radius:var(--r-l);overflow:hidden;margin:1.4rem 0;border:1px solid var(--line);}
 .mustcan .col h3{padding:1rem 1.3rem;margin:0;font-size:1.25rem;color:#fff;}
 .mustcan .col.must h3{background:var(--navy);}
@@ -1189,7 +1194,13 @@ function viewMissions() {
 function viewVisionPage() {
   return '<div class="wrap"><section class="view" aria-labelledby="h-vision">' +
     '<div class="section-head"><p class="eyebrow">Strategy</p><h2 id="h-vision" tabindex="-1">My Vision for NZIAT</h2></div>' +
-    '<blockquote class="quotebox">My vision is for NZIAT to secure New Zealand’s place on the new economic frontier through a small number of ambitious missions. These missions would pursue frontier opportunities beyond the reach of conventional funding and create the pathways through which uncertain science can become lasting national capability, future industries and economic value. In doing so, NZIAT would rekindle ambition across the research system encouraging researchers to pursue more consequential goals while attracting a broader mix of scientists, technologists, entrepreneurs and unconventional problem-solvers.</blockquote>' +
+    '<p class="vision-lead">My vision is for NZIAT to secure New Zealand’s place on the new economic frontier through a small number of ambitious missions.</p>' +
+    '<hr class="vision-divider">' +
+    '<p class="vision-body">These missions would pursue frontier opportunities beyond the reach of conventional funding and create the pathways through which uncertain science can become lasting national capability, future industries and economic value.</p>' +
+    '<div class="vision-callout">' +
+      '<p class="vc-lead">In doing so, NZIAT would rekindle ambition across the research system</p>' +
+      '<p>encouraging researchers to pursue more consequential goals while attracting a broader mix of scientists, technologists, entrepreneurs and unconventional problem-solvers.</p>' +
+    '</div>' +
   '</section></div>';
 }
 

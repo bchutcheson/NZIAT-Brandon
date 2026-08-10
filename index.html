@@ -110,6 +110,15 @@ main{padding-bottom:4rem;}
 .vision-callout{background:var(--navy);color:#fff;border-radius:var(--r-l);padding:1.9rem 2.1rem;margin:0 0 1.6rem;}
 .vision-callout .vc-lead{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.01em;font-size:clamp(1.15rem,2.4vw,1.5rem);line-height:1.32;margin:0 0 .9rem;}
 .vision-callout p{font-size:1rem;line-height:1.62;color:var(--ice);margin:0;max-width:56ch;}
+.vision-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,320px);gap:2.5rem;align-items:start;margin:0 0 1.8rem;}
+.vision-missions{padding-top:.3rem;}
+.vision-missions > .eyebrow{margin:0 0 1rem;}
+.vm-list{display:flex;flex-direction:column;gap:1rem;}
+.vm-card{background:var(--paper);border:1px solid var(--ice);border-radius:var(--r-m);padding:1.1rem 1.25rem;}
+.vm-card .vm-label{font-family:var(--display);font-weight:600;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);display:inline-block;margin:0 0 .55rem;padding-bottom:.4rem;border-bottom:2px solid var(--teal);}
+.vm-card h3{font-family:var(--display);font-weight:700;font-size:1.02rem;color:var(--navy);margin:0 0 .35rem;line-height:1.3;}
+.vm-card p{font-size:.87rem;line-height:1.5;color:var(--muted);margin:0;}
+@media (max-width:760px){.vision-hero{grid-template-columns:1fr;}}
 .mustcan{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;border-radius:var(--r-l);overflow:hidden;margin:1.4rem 0;border:1px solid var(--line);}
 .mustcan .col h3{padding:1rem 1.3rem;margin:0;font-size:1.25rem;color:#fff;}
 .mustcan .col.must h3{background:var(--navy);}
@@ -1191,12 +1200,33 @@ function viewMissions() {
 /* ============================================================
    VIEW: VISION (standalone)
    ============================================================ */
+const VISION_MISSIONS = [
+  ['Mission 01', 'Space and Off-World Systems', 'Enabling resilient human and machine activity beyond Earth.'],
+  ['Mission 02', 'Human–Machine Partnership', 'Extending human capability through deeper integration with intelligent systems.'],
+  ['Mission 03', 'Radical Geoengineering', 'Developing safe interventions capable of reshaping climate outcomes.']
+];
 function viewVisionPage() {
   return '<div class="wrap"><section class="view" aria-labelledby="h-vision">' +
     '<div class="section-head"><p class="eyebrow">Strategy</p><h2 id="h-vision" tabindex="-1">My Vision for NZIAT</h2></div>' +
-    '<p class="vision-lead">My vision is for NZIAT to secure New Zealand’s place on the new economic frontier through a small number of ambitious missions.</p>' +
-    '<hr class="vision-divider">' +
-    '<p class="vision-body">These missions would pursue frontier opportunities beyond the reach of conventional funding and create the pathways through which uncertain science can become lasting national capability, future industries and economic value.</p>' +
+    '<div class="vision-hero">' +
+      '<div class="vision-main">' +
+        '<p class="vision-lead">My vision is for NZIAT to secure New Zealand’s place on the new economic frontier through a small number of ambitious missions.</p>' +
+        '<hr class="vision-divider">' +
+        '<p class="vision-body">These missions would pursue frontier opportunities beyond the reach of conventional funding and create the pathways through which uncertain science can become lasting national capability, future industries and economic value.</p>' +
+      '</div>' +
+      '<div class="vision-missions">' +
+        '<p class="eyebrow">Proposed mission portfolio</p>' +
+        '<div class="vm-list">' +
+          VISION_MISSIONS.map(function (m) {
+            return '<article class="vm-card">' +
+              '<p class="vm-label">' + m[0] + '</p>' +
+              '<h3>' + m[1] + '</h3>' +
+              '<p>' + m[2] + '</p>' +
+            '</article>';
+          }).join('') +
+        '</div>' +
+      '</div>' +
+    '</div>' +
     '<div class="vision-callout">' +
       '<p class="vc-lead">In doing so, NZIAT would rekindle ambition across the research system</p>' +
       '<p>encouraging researchers to pursue more consequential goals while attracting a broader mix of scientists, technologists, entrepreneurs and unconventional problem-solvers.</p>' +

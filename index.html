@@ -741,7 +741,7 @@ const MISSIONS_SIMPLE = [
   { num:'1', title:'Space and Off-World Systems',
     description:'Technologies that enable people, machines and industries to operate beyond Earth, developing resilient, autonomous and resource-efficient systems that unlock new economic opportunities in space and strengthen life in extreme environments on Earth.' },
   { num:'2', title:'Human\u2013Machine Partnership',
-    description:'Transformative ways for humans and intelligent machines to think, decide and act together, developing safe, intuitive and high-performance partnerships that extend human capability beyond today\u2019s physical and cognitive limits.' },
+    description:'Systems that let humans and intelligent machines think, decide and act together, developing safe, intuitive and high-performance partnerships that extend human capability beyond today\u2019s physical and cognitive limits.' },
   { num:'3', title:'Radical Geoengineering',
     description:'Technologies that deliberately influence Earth\u2019s natural systems, developing safe, measurable and governable interventions capable of addressing climate risks beyond the reach of conventional solutions.' }
 ];
@@ -841,9 +841,9 @@ DIA.org = () => svgWrap(
   ['Chief of Staff / Strategy &amp; Intelligence','Chief Investment Officer','Crown Operations &amp; Governance lead','Science &amp; Technical Challenge lead','Commercialisation &amp; Partnerships lead','M\u0101ori Partnership executive'].map(function (m, i) {
     return '<rect x="440" y="' + (176 + i * 42) + '" width="380" height="34" rx="8" fill="#F7F6F3" stroke="#E2E0DB"/><text class="t" x="458" y="' + (198 + i * 42) + '" font-size="12">' + m + '</text>';
   }).join('') +
-  '<rect x="20" y="440" width="800" height="40" rx="9" fill="#053B4A"/><text class="tw" x="40" y="464" font-size="12">Enabling technology stack (AI \u00b7 quantum \u00b7 synthetic biology \u00b7 advanced materials &amp; magnetics), shared across missions, not a mission itself</text>' +
-  '<text class="cap" x="20" y="500">Every box is a direct report to the Chief Executive; nothing reports through a mission. Mission Directors are added as missions are validated.</text>' + arrowDef,
-  '0 0 840 512', 'Organisation chart with phased mission teams, Phase 1 executive roles and a shared enabling technology stack, all reporting to the chief executive', 'Mission teams are added in phases as missions are validated; the technology stack is shared infrastructure, not a set of missions.');
+  '<rect x="20" y="440" width="800" height="58" rx="9" fill="#053B4A"/><text class="tw" x="40" y="462" font-size="12">Enabling technology stack (AI \u00b7 quantum \u00b7 synthetic biology \u00b7 advanced materials &amp; magnetics),</text><text class="tw" x="40" y="482" font-size="12">shared across missions, not a mission itself</text>' +
+  '<text class="cap" x="20" y="518">Every box is a direct report to the Chief Executive; nothing reports through a mission. Mission Directors are added as missions are validated.</text>' + arrowDef,
+  '0 0 840 530', 'Organisation chart with phased mission teams, Phase 1 executive roles and a shared enabling technology stack, all reporting to the chief executive', 'Mission teams are added in phases as missions are validated; the technology stack is shared infrastructure, not a set of missions.');
 
 DIA.gates = () => svgWrap(
   [['G0','Entry'],['G1','Feasibility'],['G2','Progress'],['G3','Pathway'],['G4','Exit']].map(function (g, i) {
@@ -1084,7 +1084,18 @@ const SECTION_EXTRA = {
     '<p><strong>Stage-gate principle.</strong> Every commitment must state what evidence the next tranche is buying and what conditions would cause NZIAT to continue, reshape, merge, stop or scale. Milestones should reduce uncertainty rather than manufacture false precision.</p>' +
     '<p><strong>Duplication treatment.</strong> Apparent duplication is not automatically waste: independent replication, alternative methods and competitive approaches can be valuable. The decision question is whether the proposal creates additional information, capability or strategic options relative to existing work. The assessment must explicitly document the global landscape, the claimed differentiation and why public funding is additional.</p>',
   organisation:
-    '<p>Build a small institution with unusually high judgement, shown as a phased capability model rather than a finished day-one structure. See <a href="#/leadership">Leadership approach</a> for how this organisation would actually be led.</p>',
+    '<p>Build a small institution with unusually high judgement: capabilities where trust, capital, integration and Crown accountability matter most are held internally, with technical depth drawn from fixed-term experts, panels, fellows and delivery partners. The organisation is shown in three phases, not as a finished day-one structure. See <a href="#/leadership">Leadership approach</a> for how this organisation would actually be led.</p>' +
+    DIA.org() +
+    '<h3>Three phases, not a finished day-one structure</h3>' +
+    '<div class="tablewrap"><table><caption>How the organisation builds out</caption><thead><tr><th scope="col">Phase</th><th scope="col">Who is in place</th><th scope="col">Gate to the next phase</th></tr></thead><tbody>' +
+      [
+        ['Phase 1, critical control and judgement','Chief Executive, Chief of Staff / Strategy &amp; Intelligence, Chief Investment Officer, Crown Operations &amp; Governance lead, Science &amp; Technical Challenge lead, Commercialisation &amp; Partnerships lead and Māori Partnership executive.','In place before new capital is committed; not sequenced behind mission work.'],
+        ['Phase 2, mission teams aligned to validated missions','Two to three Mission Directors, each leading a small team of programme lead, embedded commercial lead and analyst/intelligence support drawn from universities, PROs, firms, Māori enterprises, independents and international partners.','A mission case must be validated before its Mission Director is appointed.'],
+        ['Phase 3, scale only where evidence justifies it','A fourth Mission Director and further mission-team capacity.','Added only if the Board confirms a fourth mission, capital permits and the work requires it.']
+      ].map(r => '<tr><th scope="row">' + r[0] + '</th><td>' + r[1] + '</td><td>' + r[2] + '</td></tr>').join('') +
+    '</tbody></table></div>' +
+    '<p><strong>A Mission Director is a conductor, not a soloist.</strong> They align science, industry, capital and government around a time-bound national commitment, and need enough technical credibility to challenge the work without being its deepest expert.</p>' +
+    '<p><a class="btn ghost" href="#/c/org">See the full roles, accountability and remuneration table &rarr;</a></p>',
   governance:
     '<p>NZIAT must be protected from short-termism without becoming detached from democratic accountability. Good governance is not a brake on frontier ambition; it is what gives the institution permission to take technical uncertainty while maintaining public trust.</p>' +
     '<h3>Board relationship</h3><p>The Board sets strategy, approves missions, holds major allocation and equity decisions, and sets risk appetite. It receives a no-surprises rhythm from the Chief Executive: material risks, prospective stops and inherited-commitment issues are raised before they become news, not after.</p>' +

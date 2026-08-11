@@ -504,7 +504,8 @@ const COMPONENTS = [
     status:'proposed', doc:'Investment Operating Framework', site:null, evidence:true,
     sub:'A single lifecycle, decision gates, delegated authority and evidence standard governing all investment decisions.',
     purpose:'The keystone operating document of an investment-led institution. It applies to every dollar NZIAT deploys, including new commitments, inherited platforms, opportunity seeds and follow-on capital alike, and prevails over any other document on an investment matter.',
-    diagram:'gates',
+    diagram:'lifecycle',
+    diagram2:'gates',
     how:[
       'Seven-stage lifecycle: intelligence, sourcing, triage, diligence, commitment, active management, transition or exit.',
       'Five decision tests every case must pass: strategic fit, New Zealand advantage, additionality, value pathway, deliverability.',
@@ -856,6 +857,18 @@ DIA.gates = () => svgWrap(
   }).join('') + '<text class="cap" x="10" y="180">A stop on good evidence is a success of the decision system, not a failure of the team</text>' + arrowDef,
   '0 0 840 190', 'Five gates from entry to exit, each with four possible outcomes', 'Gates are scheduled decisions with evidence prepared beforehand.');
 
+DIA.lifecycle = () => svgWrap(
+  [['1','Intelligence'],['2','Sourcing'],['3','Triage'],['4','Diligence'],['5','Commitment'],['6','Active','management'],['7','Transition','or exit']].map(function (s, i) {
+    const x = 10 + i * 118, twoLine = s.length === 3;
+    return '<rect x="' + x + '" y="14" width="104" height="70" rx="9" fill="#053B4A"/>' +
+      '<text class="tw" x="' + (x + 52) + '" y="34" text-anchor="middle" font-size="14">' + s[0] + '</text>' +
+      (twoLine
+        ? '<text class="sw" x="' + (x + 52) + '" y="50" text-anchor="middle" font-size="11">' + s[1] + '</text><text class="sw" x="' + (x + 52) + '" y="64" text-anchor="middle" font-size="11">' + s[2] + '</text>'
+        : '<text class="sw" x="' + (x + 52) + '" y="56" text-anchor="middle" font-size="11">' + s[1] + '</text>') +
+      (i < 6 ? '<line x1="' + (x + 104) + '" y1="49" x2="' + (x + 118) + '" y2="49" stroke="#5D6E85" marker-end="url(#ar)"/>' : '');
+  }).join('') + '<text class="cap" x="10" y="106">The seven-stage lifecycle runs beneath the five gates, from first intelligence to transition or exit</text>' + arrowDef,
+  '0 0 840 118', 'Seven lifecycle stages from intelligence to transition or exit', 'Every case moves through this sequence before it reaches a continue, reshape, stop or scale decision at each gate.');
+
 DIA.delegations = () => svgWrap(
   [['Mission Director','Up to $500k within envelope \u00B7 project selection \u00B7 15% reallocation','#FFF8F5','#FF5804',false],
    ['Executive Investment Committee','$500k \u2013 $5m \u00B7 continue and reshape \u00B7 seeds to $250k','#F7F6F3','#E2E0DB',false],
@@ -1099,7 +1112,7 @@ function viewComponent(id) {
   const c = COMPONENT_BY_ID[id];
   if (!c) return viewNotFound();
   const m = META[id];
-  const dia = c.diagram && DIA[c.diagram] ? DIA[c.diagram]() : '';
+  const dia = (c.diagram && DIA[c.diagram] ? DIA[c.diagram]() : '') + (c.diagram2 && DIA[c.diagram2] ? DIA[c.diagram2]() : '');
   const idx = FLAT_ORDER.indexOf(id);
   const prev = idx > 0 ? COMPONENT_BY_ID[FLAT_ORDER[idx - 1]] : null;
   const next = idx < FLAT_ORDER.length - 1 ? COMPONENT_BY_ID[FLAT_ORDER[idx + 1]] : null;
@@ -1116,10 +1129,11 @@ function viewComponent(id) {
     '<div class="detail-head">' +
       '<p class="eyebrow">Part ' + m.number + ' \u00B7 ' + esc(m.domain.name) + '</p>' +
       '<h2 id="d-title" tabindex="-1">' + esc(c.title) + '</h2>' +
-      '<p class="sub">' + esc(c.sub) + '</p>' +
-      '<div class="meta-row">' + statusTag(c.status) + (c.legal ? legalTag() : '') +
-        '<span class="owner">Owner: ' + esc(c.owner) + '</span><span class="owner">Source: ' + esc(c.doc) + '</span><span class="owner">Working draft updated 6 August 2026</span>' +
-      '</div>' +
+      (id === 'investment' ? '' :
+        '<p class="sub">' + esc(c.sub) + '</p>' +
+        '<div class="meta-row">' + statusTag(c.status) + (c.legal ? legalTag() : '') +
+          '<span class="owner">Owner: ' + esc(c.owner) + '</span><span class="owner">Source: ' + esc(c.doc) + '</span><span class="owner">Working draft updated 6 August 2026</span>' +
+        '</div>') +
     '</div>' +
     '<div class="detail-body">' +
       '<div>' +
@@ -1128,7 +1142,7 @@ function viewComponent(id) {
         (c.extra || '') +
         '<h3>2. How it operates</h3><ul>' + c.how.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' +
         '<h3>3. Key decisions and thresholds</h3><ul>' + c.decisions.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' +
-        '<h3>4. Considerations for the Board</h3><ul class="testlist">' + c.test.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' +
+        (id === 'investment' ? '' : '<h3>4. Considerations for the Board</h3><ul class="testlist">' + c.test.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>') +
         evidenceLink +
         (siteBlock ? '<h3>5. Further detail</h3>' + siteBlock : '') +
       '</div>' +

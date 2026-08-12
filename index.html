@@ -236,11 +236,6 @@ ol.contents{list-style:none;padding:0;counter-reset:c;}
 ol.contents li{counter-increment:c;position:relative;padding-left:2rem;margin-bottom:.5rem;}
 ol.contents li::before{content:counter(c,decimal-leading-zero);position:absolute;left:0;top:.1rem;font-family:var(--display);font-weight:700;font-size:.8rem;color:var(--teal-d);letter-spacing:.05em;}
 .evidlink{font-size:.85rem;display:inline-block;margin:.2rem 0 1rem;}
-.pagernav{display:flex;justify-content:space-between;gap:1rem;margin-top:2.2rem;padding-top:1.2rem;border-top:1px solid var(--line);flex-wrap:wrap;}
-.pagernav a{text-decoration:none;font-size:.88rem;max-width:32%;}
-.pagernav .pn-label{display:block;font-size:.72rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;}
-.pagernav .pn-mid{text-align:center;}
-@media (max-width:640px){.pagernav a{max-width:100%;}.pagernav{flex-direction:column;text-align:left;}}
 
 .toolbar{display:flex;flex-wrap:wrap;gap:.8rem;align-items:flex-end;justify-content:space-between;margin:1.4rem 0 1.1rem;}
 .filters{display:flex;flex-wrap:wrap;gap:.4rem;}
@@ -287,7 +282,7 @@ svg .n{font-size:11px;font-weight:700;fill:var(--teal-d);}
 svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
 
 @media print{
-  .sidebar nav,.toolbar,.skip,.side,.pagernav{display:none!important;}
+  .sidebar nav,.toolbar,.skip,.side{display:none!important;}
   .view[hidden]{display:block!important;}
   .hero{background:#fff;color:#000;}
   .hero h1,.hero .lede{color:#000;}
@@ -406,13 +401,13 @@ const DOMAINS = [
   { id:'mandate',      num:'1', name:'Mandate and outcomes',                       blurb:'Defines NZIAT\u2019s purpose and the outcomes that would indicate success.',                                   children:['vision'] },
   { id:'firstyear',    num:'2', name:'First-year plan',                            blurb:'Sets out how NZIAT would establish its operating foundations within the first hundred days and its first year.', children:['first100','opplan'] },
   { id:'missions',     num:'3', name:'Mission selection and origination',          blurb:'Explains how national challenges are translated into missions, and how investable opportunities are identified.', children:['missiondev','discovery'] },
-  { id:'capital',      num:'4', name:'Capital allocation and portfolio management',blurb:'Governs how capital is committed, staged, monitored, reallocated and closed.',                    children:['inheritedCommitments','investment','portfolio','programme','aiIntelligence'] },
+  { id:'capital',      num:'4', name:'Capital allocation and portfolio management',blurb:'Governs how capital is committed, staged, monitored, reallocated and closed.',                    children:['investment','portfolio','programme','aiIntelligence'] },
   { id:'commercial',   num:'5', name:'Commercialisation and retained value',       blurb:'Explains how research is converted into licences, ventures, partnerships and retained national value.', children:['commercialisation'] },
   { id:'organisation', num:'6', name:'Organisation and leadership',                blurb:'Sets out the structure, roles and leadership model required to deliver missions and programmes.',               children:['org','missiondirector'] }
 ];
 
 /* ============================================================
-   DATA: COMPONENTS (12)
+   DATA: COMPONENTS
    ============================================================ */
 const COMPONENTS = [
   { id:'vision', title:'Vision and mandate', owner:'Chief Executive',
@@ -599,25 +594,6 @@ const COMPONENTS = [
     figures:[['3\u20134 yrs','Fixed term'],['$500k','Independent commitment authority'],['15%','Annual reallocation']],
     decisions:['A mission with no stops or significant reshapes over time should trigger challenge as to whether the portfolio is being managed actively enough.','Authority is delegated to Mission Directors within clear limits, and every decision is visible to the next level of oversight within a single reporting cycle.'],
   },
-  { id:'inheritedCommitments', title:'Inherited commitments baseline', owner:'Chief Investment Officer',
-    status:'proposed', doc:'Inherited commitments baseline (working summary)', site:null, evidence:false,
-    sub:'How the starting capital position would be established before any claim is made about discretionary capacity.',
-    purpose:'\u201cAround two-thirds committed\u201d cannot be asserted without a current, authoritative capital schedule; that claim is too consequential to infer from public announcements. This component sets out the baseline process run in the first 30 days, establishing the categories and fields the register will hold even before actual amounts are populated.',
-    how:[
-      'Every live commitment is classified into one of five categories: legally committed, contracted, provisionally committed, ring-fenced, or unallocated.',
-      'Each commitment is recorded with amount, remaining discretion, next decision point, accountable owner and strategic fit, not just a total dollar figure.',
-      'The register is built in the first 30 days of the first 100 days and refreshed before every capital-allocation claim is made publicly.',
-      'Until the register is populated with authoritative figures, no page on this site states a specific committed proportion of the $231m mandate.'
-    ],
-    extra:'<p>This structure is intentionally unpopulated: it establishes the categories and fields the register will hold once authoritative transition information is available, rather than asserting a current position on how much of the mandate is committed.</p>' +
-      '<div class="tablewrap"><table><caption>Current commitments: register structure, awaiting authoritative data</caption><thead><tr><th scope="col">Commitment</th><th scope="col">Legal status</th><th scope="col">Amount</th><th scope="col">Remaining discretion</th><th scope="col">Next decision</th><th scope="col">Owner</th><th scope="col">Strategic fit</th></tr></thead><tbody>' +
-      '<tr><td colspan="7" style="text-align:center;color:var(--muted);font-style:italic">Populated from the authoritative transition schedule once available</td></tr>' +
-      '</tbody></table></div>' +
-      '<h3>Funding instrument matrix</h3><p>Once the baseline is established, commitments and new capital are deployed through a compact set of instruments, each subject to NZIAT\u2019s mandate and legal authority.</p>' +
-      '<ul>' + ['Discovery seeds','Challenge contracts','Grants','Commissioned research','Co-investment','Fellowships / secondments','Infrastructure / platform commitments','Equity or convertible instruments (subject to mandate and legal authority)'].map(x => '<li>' + x + '</li>').join('') + '</ul>',
-    figures:[['5','Baseline categories'],['30 days','Target to first draft register']],
-    decisions:['No figure for \u201cproportion committed\u201d is published until the register is built from authoritative transition information, not public announcements.','The register, not an assumed even split of $231m across four years, is the basis for any statement about discretionary capacity.'],
-  },
   { id:'aiIntelligence', title:'AI-enhanced investment intelligence', owner:'Chief Investment Officer',
     status:'proposed', doc:'AI-enhanced investment intelligence (working summary)', site:null, evidence:false,
     sub:'Frontier tooling for better public-capital decisions: accountable decision support, not automated allocation.',
@@ -646,11 +622,9 @@ const SECTION_BY_ID = byId(SECTIONS);
 const COMPONENT_BY_ID = byId(COMPONENTS);
 
 const META = {};
-const FLAT_ORDER = [];
 DOMAINS.forEach(function (d) {
   d.children.forEach(function (cid, i) {
     META[cid] = { domain: d, section: SECTIONS.filter(s => s.domains.indexOf(d.id) !== -1)[0], number: d.num + '.' + (i + 1) };
-    FLAT_ORDER.push(cid);
   });
 });
 
@@ -1068,9 +1042,6 @@ function viewComponent(id) {
   if (!c) return viewNotFound();
   const m = META[id];
   const dia = (c.diagram && DIA[c.diagram] ? DIA[c.diagram]() : '') + (c.diagram2 && DIA[c.diagram2] ? DIA[c.diagram2]() : '');
-  const idx = FLAT_ORDER.indexOf(id);
-  const prev = idx > 0 ? COMPONENT_BY_ID[FLAT_ORDER[idx - 1]] : null;
-  const next = idx < FLAT_ORDER.length - 1 ? COMPONENT_BY_ID[FLAT_ORDER[idx + 1]] : null;
 
   const evidenceLink = '';
   const siteBlock = c.site
@@ -1107,11 +1078,6 @@ function viewComponent(id) {
         '<div class="panel"><h4>Operating area</h4><p style="font-size:.88rem;margin:0">' + esc(m.domain.name) + ', within ' + esc(m.section.name) + '.</p></div>' +
       '</aside>' +
     '</div>' +
-    '<nav class="pagernav" aria-label="Component sequence">' +
-      (prev ? '<a href="#/c/' + prev.id + '"><span class="pn-label">&larr; Previous</span>' + esc(prev.title) + '</a>' : '<span></span>') +
-      '<a class="pn-mid" href="#/s/' + m.section.id + '"><span class="pn-label">Section</span>' + esc(m.section.name) + '</a>' +
-      (next ? '<a href="#/c/' + next.id + '" style="text-align:right"><span class="pn-label">Next &rarr;</span>' + esc(next.title) + '</a>' : '<span></span>') +
-    '</nav>' +
   '</section></div>';
 }
 

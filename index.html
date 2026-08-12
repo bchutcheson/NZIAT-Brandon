@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="NZIAT's proposed operating model: how national priorities are translated into missions, programmes, investment, commercialisation and governance.">
+<meta name="description" content="NZIAT's proposed operating model: how national priorities are translated into missions, programmes, investment and commercialisation.">
 <title>NZIAT: Proposed operating model</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -199,10 +199,6 @@ main{padding-bottom:4rem;}
 .dcard .go{font-size:.85rem;color:var(--teal-d);font-weight:600;margin-top:auto;}
 .dcard:hover .go{text-decoration:underline;}
 
-.testgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;list-style:none;padding:0;margin:0;}
-.testgrid li{border:1px solid var(--line);border-radius:var(--r-m);padding:.9rem 1rem;font-size:.9rem;background:var(--paper-2);}
-.testgrid li a{font-size:.8rem;display:inline-block;margin-top:.4rem;}
-
 .routegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.8rem;}
 .route{border:1px solid var(--line);border-radius:var(--r-m);padding:1rem 1.1rem;background:var(--paper);}
 .route .rt{font-family:var(--display);font-weight:700;font-size:.85rem;color:var(--teal-d);letter-spacing:.05em;}
@@ -355,20 +351,19 @@ svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
     </a>
     <nav class="primary" id="primaryNav" aria-label="Primary">
       <ul>
-        <li><a href="#/vision" data-route="/vision">Vision</a></li>
+        <li><a href="#/" data-route="/">Vision</a></li>
         <li><a href="#/achieve" data-route="/achieve">What can NZIAT Achieve</a></li>
         <li><a href="#/first100days" data-route="/first100days">First 100 days</a></li>
       </ul>
       <ul class="nav-group-core">
         <li class="nav-group-title">Supporting information</li>
-        <li><a href="#/" data-route="/">Overview</a></li>
+        <li><a href="#/overview" data-route="/overview">Overview</a></li>
         <li><a href="#/s/strategy" data-route="/s/strategy">Strategy</a></li>
         <li><a href="#/missions" data-route="/missions">Missions</a></li>
         <li><a href="#/c/investment" data-route="/c/investment">Investment Framework</a></li>
         <li><a href="#/s/capital" data-route="/s/capital">Capital</a></li>
         <li><a href="#/s/organisation" data-route="/s/organisation">Organisation</a></li>
         <li><a href="#/leadership" data-route="/leadership">Leadership approach</a></li>
-        <li><a href="#/s/governance" data-route="/s/governance">Governance</a></li>
         <li><a href="#/all" data-route="__all">All frameworks (searchable index)</a></li>
       </ul>
       <ul>
@@ -392,8 +387,7 @@ svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
 const SECTIONS = [
   { id:'strategy',     name:'Strategy',     blurb:'Sets out what NZIAT exists to achieve and how national priorities are translated into defined missions.', domains:['mandate','firstyear','missions'] },
   { id:'capital',      name:'Capital',      blurb:'Governs how capital is committed, monitored, reallocated and converted into commercial and national value.', domains:['capital','commercial'] },
-  { id:'organisation', name:'Organisation', blurb:'Sets out the structure, roles and leadership required to deliver missions and programmes.', domains:['organisation'] },
-  { id:'governance',   name:'Governance',   blurb:'Defines how decisions are made, evidenced, delegated and held accountable.', domains:['governance'] }
+  { id:'organisation', name:'Organisation', blurb:'Sets out the structure, roles and leadership required to deliver missions and programmes.', domains:['organisation'] }
 ];
 
 /* ============================================================
@@ -405,8 +399,7 @@ const DOMAINS = [
   { id:'missions',     num:'3', name:'Mission selection and origination',          blurb:'Explains how national challenges are translated into missions, and how investable opportunities are identified.', children:['missiondev','discovery'] },
   { id:'capital',      num:'4', name:'Capital allocation and portfolio management',blurb:'Governs how capital is committed, staged, monitored, reallocated and closed.',                    children:['inheritedCommitments','investment','portfolio','programme','aiIntelligence'] },
   { id:'commercial',   num:'5', name:'Commercialisation and retained value',       blurb:'Explains how research is converted into licences, ventures, partnerships and retained national value.', children:['commercialisation'] },
-  { id:'organisation', num:'6', name:'Organisation and leadership',                blurb:'Sets out the structure, roles and leadership model required to deliver missions and programmes.',               children:['org','missiondirector'] },
-  { id:'governance',   num:'7', name:'Governance and assurance',                   blurb:'Defines decision rights, evidence requirements, and how conflicts and accountability are managed.',       children:['committee'] }
+  { id:'organisation', num:'6', name:'Organisation and leadership',                blurb:'Sets out the structure, roles and leadership model required to deliver missions and programmes.',               children:['org','missiondirector'] }
 ];
 
 /* ============================================================
@@ -605,21 +598,6 @@ const COMPONENTS = [
     decisions:['A mission with no stops is presumed under-managed rather than high-performing.','Authority is delegated to Mission Directors within clear limits, and every decision is visible to the next level of oversight within a single reporting cycle.'],
     test:['Is a three-to-four-year fixed term long enough to see a mission\u2019s founding thesis through, or too short?','Does \u201Ca mission with no stops is under-managed\u201D actually get applied in practice, or only stated as principle?']
   },
-  { id:'committee', title:'Investment Committee Framework', owner:'Chief Executive',
-    status:'board-decision', doc:'Investment Committee Framework', site:null, evidence:false,
-    sub:'Decision rights, voting, papers and conflict management for the Executive Investment Committee.',
-    purpose:'The Executive Investment Committee is where investment judgement is exercised between Board meetings, and where coordination between mission teams and functional units takes place. It exercises delegated authority; it does not dilute the accountability of the individuals who sit on it.',
-    diagram:'committee',
-    how:[
-      'Fortnightly, quorum of four, chaired by the CEO with the CIO as deputy; a Mission Director may not form quorum on their own mission.',
-      'Decisions are made by consensus where possible; where consensus is not reached, the Chair decides and any dissenting views are recorded.',
-      'Five paper types with required content and page limits, each answering one standing question: what would change our mind?',
-      'Any two voting members may escalate a decision to the Board without the Chair\u2019s agreement.'
-    ],
-    figures:[['Fortnightly','Meeting cadence'],['4','Quorum'],['5 days','Papers circulated in advance'],['$5m','Board escalation threshold']],
-    decisions:['Decisions made collectively by a committee can dilute individual accountability; every decision under this framework belongs to a named person acting at a defined level of delegation.','Conflicts are declared at the point an opportunity is logged, not at the meeting, and managed by recorded recusal.'],
-    test:['Is a CEO-chaired committee with a two-member escalation right sufficient counterweight, or does the Board want a direct attendance right?','Are the conflict-management provisions realistic given the small size of New Zealand\u2019s research and investment community?']
-  },
   { id:'inheritedCommitments', title:'Inherited commitments baseline', owner:'Chief Investment Officer',
     status:'proposed', doc:'Inherited commitments baseline (working summary)', site:null, evidence:false,
     sub:'How the starting capital position would be established before any claim is made about discretionary capacity.',
@@ -723,9 +701,6 @@ const DESIGNED = [
   ['Risk appetite stated by domain','Follows the evidence that tolerance for technical failure and tolerance for probity failure need to be set independently, rather than as a single statement.'],
   ['Ten origination channels with named owners','The list of channels reflects NZIAT\u2019s intended reach; assigning a named owner and coverage measure to each channel is a design addition.'],
   ['15-working-day intake response standard','A service standard set to give the research and industry community a clear, dependable point of engagement with NZIAT.'],
-  ['Committee quorum of four, Mission Directors barred from quorum on their own mission','A standard governance construction, adapted to the size of NZIAT\u2019s executive team.'],
-  ['Two-member escalation right to the Board','A design choice intended to provide a structural counterweight to a Committee chaired by the Chief Executive.'],
-  ['Five paper types with page limits and the standing "what would change our mind?" question','Draws on the tradition of structured decision papers used in comparable agencies, adapted to NZIAT\u2019s scale.'],
   ['IP default positions','Constructed from general technology-transfer practice. These require legal review and represent a negotiating posture, not settled policy.'],
   ['Six exit pathways','Set out to ensure venture creation is treated as one commercial route among several, rather than as the definition of success.'],
   ['Organisation shape, 44 FTE and remuneration bands','A phased design: 44 FTE is an upper scenario for a fully built-out institution, not a day-one commitment, tested against portfolio volume and evidence as missions are validated. Remuneration bands are market benchmarks; chief executive remuneration is subject to Public Service Commission consultation.'],
@@ -925,17 +900,6 @@ DIA.channels = () => svgWrap(
   '<text class="cap" x="10" y="228">Relationship-sourced opportunities face</text><text class="cap" x="10" y="244">identical diligence, flagged as such.</text>' + arrowDef,
   '0 0 840 254', 'Ten origination channels feeding one common intake and triage', 'One intake for all ten channels.');
 
-DIA.committee = () => svgWrap(
-  '<rect x="10" y="10" width="820" height="88" rx="12" fill="#F7F6F3" stroke="#E2E0DB"/><text class="n" x="30" y="34">EXECUTIVE INVESTMENT COMMITTEE: FORTNIGHTLY \u00B7 QUORUM 4</text>' +
-  [['CEO','Chair'],['CIO','Deputy'],['MDs (phased)','Voting'],['Crown Ops','Voting'],['Comm. &amp; Ptnr','Voting'],['M\u0101ori Ptnr','Voting']].map(function (m, i) {
-    const x = 30 + i * 133;
-    return '<rect x="' + x + '" y="44" width="120" height="40" rx="8" fill="#FFF8F5" stroke="#FF5804"/><text class="t" x="' + (x + 60) + '" y="62" text-anchor="middle" font-size="12">' + m[0] + '</text><text class="s" x="' + (x + 60) + '" y="77" text-anchor="middle">' + m[1] + '</text>';
-  }).join('') +
-  '<rect x="10" y="112" width="400" height="52" rx="9" fill="#FFF8F5" stroke="#FF5804"/><text class="t" x="30" y="134">Consensus where possible</text><text class="s" x="30" y="152">Otherwise the Chair decides; dissent recorded</text>' +
-  '<rect x="430" y="112" width="400" height="52" rx="9" fill="#053B4A"/><text class="tw" x="450" y="134">Any two voting members may escalate</text><text class="sw" x="450" y="152">to the Board, without the Chair\u2019s agreement</text>' +
-  '<text class="cap" x="10" y="186">A Mission Director may not form quorum for a decision on their own mission</text>',
-  '0 0 840 196', 'Investment Committee composition, decision rule and escalation right', 'The Committee tests recommendations; it does not absorb accountability.');
-
 /* ============================================================
    HELPERS
    ============================================================ */
@@ -957,17 +921,6 @@ function statusLegend() {
 /* ============================================================
    VIEW: HOME
    ============================================================ */
-const TOP_TESTS = [
-  ['What is the true inherited-commitments baseline, and how much of the $231m mandate is genuinely discretionary?','firstyear'],
-  ['What concentration appetite does the Board want across missions, before capital is committed?','capital'],
-  ['How many missions should NZIAT actually run, and on what evidence would a fourth be added?','missions'],
-  ['Are the CEO/Board delegations, $500k / $5m, set at the right level for a fund this size?','governance'],
-  ['What level of technical failure is acceptable, and how is that different from probity failure?','governance'],
-  ['When will the Board see the first visible, evidence-based proof the model works?','firstyear'],
-  ['Does the full-build organisation actually fit inside the opex discipline once mission-team delivery costs are counted?','organisation'],
-  ['Are the retained-national-value terms strong enough to keep value onshore?','commercial']
-];
-
 const PREVENTS = [
   'Technology labels becoming the strategy.',
   'Capital being spread thinly to avoid difficult choices.',
@@ -1010,18 +963,9 @@ function viewHome() {
       domainGrid() +
     '</section>' +
 
-    '<section class="view" aria-labelledby="h-test">' +
-      '<div class="section-head"><p class="eyebrow">Matters for decision</p><h2 id="h-test">Matters requiring Board consideration</h2>' +
-      '<p>The following matters remain open for Board decision as the operating model is finalised.</p></div>' +
-      '<ul class="testgrid">' + TOP_TESTS.map(function (t) {
-        const sec = SECTIONS.filter(function (s) { return s.domains.indexOf(t[1]) !== -1; })[0] || { id: 'strategy' };
-        return '<li>' + esc(t[0]) + '<br><a href="#/s/' + sec.id + '/' + t[1] + '">Related operating area &rarr;</a></li>';
-      }).join('') + '</ul>' +
-    '</section>' +
-
     '<section class="view" aria-labelledby="h-routes">' +
       '<div class="section-head"><p class="eyebrow">Further information</p><h2 id="h-routes">Further detail on the operating model</h2>' +
-      '<p>Additional detail on purpose, strategy, capital allocation, organisation and governance is set out below, together with the evidence and assumptions underlying the model.</p></div>' +
+      '<p>Additional detail on purpose, strategy, capital allocation and organisation is set out below, together with the evidence and assumptions underlying the model.</p></div>' +
       '<div class="routegrid">' +
         '<div class="route"><p class="rt">Purpose and mandate</p><p>The rationale for NZIAT and the outcomes it is intended to achieve.</p><a href="#/c/vision">View purpose and mandate &rarr;</a></div>' +
         '<div class="route"><p class="rt">Strategy and missions</p><p>How national priorities are translated into missions and delivery.</p><a href="#/s/strategy">View strategy &rarr;</a></div>' +
@@ -1070,7 +1014,6 @@ const SECTION_EXTRA = {
   capital:
     '<p>NZIAT should not try to pick every winner at the beginning. It should create options, learn quickly, concentrate behind evidence and protect enough follow-on capacity to scale what proves out. Capital allocation is an ongoing leadership activity, not a once-a-year grant round.</p>' +
     '<h3>A layered capital model</h3>' +
-    '<p>The simple “80/20” split is kept only as an indicative discipline within the priority-missions layer, not as a promise about the whole $231m mandate.</p>' +
     '<div class="tablewrap"><table><caption>Capital layers</caption><thead><tr><th scope="col">Capital layer</th><th scope="col">Purpose</th><th scope="col">Required discipline</th></tr></thead><tbody>' +
       [
         ['Inherited commitments','Existing platforms, contracts and obligations.','Bring every inherited commitment into one common evidence, gate and reporting standard; do not pretend all $231m is discretionary.'],
@@ -1095,22 +1038,14 @@ const SECTION_EXTRA = {
       ].map(r => '<tr><th scope="row">' + r[0] + '</th><td>' + r[1] + '</td><td>' + r[2] + '</td></tr>').join('') +
     '</tbody></table></div>' +
     '<p><strong>A Mission Director is a conductor, not a soloist.</strong> They align science, industry, capital and government around a time-bound national commitment, and need enough technical credibility to challenge the work without being its deepest expert.</p>' +
-    '<p><a class="btn ghost" href="#/c/org">See the full roles, accountability and remuneration table &rarr;</a></p>',
-  governance:
-    '<p>NZIAT must be protected from short-termism without becoming detached from democratic accountability. Good governance is not a brake on frontier ambition; it is what gives the institution permission to take technical uncertainty while maintaining public trust.</p>' +
-    '<h3>Board relationship</h3><p>The Board sets strategy, approves missions, holds major allocation and equity decisions, and sets risk appetite. It receives a no-surprises rhythm from the Chief Executive: material risks, prospective stops and inherited-commitment issues are raised before they become news, not after.</p>' +
-    '<h3>Ministerial and public interface</h3><p>The Minister holds an ownership and accountability relationship consistent with the statutory and Crown-entity framework, not routine project selection. Public communication explains choices in plain terms, including why a mission was stopped or reshaped, so scrutiny strengthens rather than erodes trust.</p>' +
-    '<h3>Humility and challenge</h3><p>Independent experts, panels and the Science &amp; Technical Challenge lead exist to challenge Mission Director and Executive assumptions before capital is committed, not to rubber-stamp them. Dissent is recorded, not smoothed over.</p>' +
-    '<h3>Failure and accountability</h3><p>Frontier investment can fail technically while still being governed well: a proportion of early-stage investment is expected not to work, and a mission or programme with no stops is presumed under-managed rather than high-performing. What must never fail is probity: conflicts declared late, evidence suppressed, or decisions made outside delegated authority. Risk appetite is stated by domain because technical risk and probity risk are not the same risk.</p>' +
-    '<h3>Conflicts and small-system reality</h3><p>New Zealand’s research and investment community is small enough that conflicts of interest are common rather than exceptional. Conflicts are declared at the point an opportunity is logged, not at the meeting where it is decided, and are managed by recorded recusal rather than by pretending they do not exist.</p>' +
-    '<div class="note"><strong>Decision hierarchy.</strong> Mission Director: decisions within approved envelope and delegation. Executive Investment Committee: cross-functional challenge and delegated commitments. Chief Executive: accountable recommendation, organisational integration and escalation. Board: strategy, mission approval, major allocations, equity positions, risk appetite and material exceptions. Minister: ownership and accountability relationship consistent with the statutory and Crown-entity framework, not routine project selection.</div>'
+    '<p><a class="btn ghost" href="#/c/org">See the full roles, accountability and remuneration table &rarr;</a></p>'
 };
 
 function viewSection(sectionId) {
   const sec = SECTION_BY_ID[sectionId];
   if (!sec) return viewNotFound();
   return '<div class="wrap"><section class="view" aria-labelledby="sec-title">' +
-    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>' + esc(sec.name) + '</nav>' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/overview">Overview</a><span>/</span>' + esc(sec.name) + '</nav>' +
     '<div class="section-head"><p class="eyebrow">NZIAT operating model</p><h2 id="sec-title">' + esc(sec.name) + '</h2><p>' + esc(sec.blurb) + '</p></div>' +
     (SECTION_EXTRA[sectionId] || '') +
   '</section></div>';
@@ -1134,7 +1069,7 @@ function viewComponent(id) {
     : '';
 
   return '<div class="wrap"><section class="view" aria-labelledby="d-title">' +
-    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/overview">Overview</a><span>/</span>' +
       '<a href="#/s/' + m.section.id + '">' + esc(m.section.name) + '</a><span>/</span>' + esc(c.title) +
     '</nav>' +
     '<div class="detail-head">' +
@@ -1178,7 +1113,7 @@ let filterState = { domain: 'all', q: '' };
 
 function viewAll() {
   return '<div class="wrap"><section class="view" aria-labelledby="h-all">' +
-    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>All frameworks</nav>' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/overview">Overview</a><span>/</span>All frameworks</nav>' +
     '<div class="section-head"><p class="eyebrow">Framework index</p><h2 id="h-all">All operating frameworks</h2>' +
     '<p>A complete list of the frameworks that make up the NZIAT operating model, searchable by operating area.</p></div>' +
     '<div class="toolbar">' +
@@ -1220,22 +1155,11 @@ function renderCards() {
    ============================================================ */
 function viewEvidence() {
   return '<div class="wrap"><section class="view" aria-labelledby="h-ev">' +
-    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>Evidence, assumptions and design choices</nav>' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/overview">Overview</a><span>/</span>Evidence, assumptions and design choices</nav>' +
     '<div class="section-head"><p class="eyebrow">Appendix</p><h2 id="h-ev">Evidence, assumptions and design choices</h2>' +
     '<p>The operating model draws on three distinct foundations: published evidence from comparable institutions, planning assumptions about NZIAT\u2019s current context, and design choices made to fit the scale and obligations of a New Zealand Crown entity.</p></div>' +
     statusLegend() +
     '<div class="note"><strong>Why the distinction matters.</strong> Some design choices, such as fixed, non-renewable terms for Mission Directors, are supported directly by published evidence. Others, such as a $500,000 delegation threshold, are management recommendations calibrated to NZIAT\u2019s scale, put forward for Board decision rather than derived from external evidence.</div>' +
-
-    '<h3>What changed in August 2026</h3>' +
-    '<p>This working draft was revised in August 2026 to correct unsupported assumptions and complete missing content ahead of Board discussion. The principal shifts:</p>' +
-    '<ul>' + [
-      'Technology-labelled missions became problem-led mission hypotheses. AI, quantum, synthetic biology and advanced materials are now shown as a shared enabling stack, not as mission names in themselves.',
-      'An assumed \u201caround two-thirds committed\u201d and a \u201c$58m deployable per year\u201d figure were removed and replaced with an inherited-commitments baseline requirement, built from an authoritative capital schedule rather than public announcements.',
-      'The four example missions are now explicitly labelled as hypotheses to test, not a pre-selected or approved portfolio.',
-      'Mission Director numbers were reconciled: two to three are appointed initially as missions are validated, scaling to four only on Board confirmation, replacing an internal contradiction between two-to-three and four.',
-      'AI-enhanced decision support was added as a named capability, described throughout as accountable support for human judgement, never as an automated funding decision.',
-      'The organisation moved from a single 44-FTE, fully hired structure to a phased capability model, with 44 FTE retained only as an upper-scenario assumption to test.'
-    ].map(x => '<li>' + x + '</li>').join('') + '</ul>' +
 
     '<h3><span class="tier t1">Tier one</span> The published evidence base</h3>' +
     '<p>Ten sources, concentrated on the ARPA family, the UK\u2019s ARIA, and the mission-oriented innovation policy literature.</p>' +
@@ -1259,7 +1183,7 @@ function viewEvidence() {
     '<p>The frameworks are drafted as though already in force, to demonstrate how the institution would operate. They remain a candidate\u2019s working proposal, and every threshold is a recommendation for the Board to test, and the intellectual property positions require legal review before adoption.</p>' +
     '<p>This is a proposed operating model, prepared as a candidate working draft. The maturity of each element is stated on its page. No element should be read as approved by the Board unless stated. <em>Working draft updated 6 August 2026.</em></p>' +
     '<p>Thresholds, delegation levels and remuneration bands set out in this operating model are recommendations calibrated to the scale of NZIAT\u2019s $231m first mandate, pending an authoritative inherited-commitments baseline, and remain subject to Board decision. Intellectual property positions require legal review before adoption.</p>' +
-    '<p><a class="btn ghost" href="#/">Back to overview</a></p>' +
+    '<p><a class="btn ghost" href="#/overview">Back to overview</a></p>' +
   '</section></div>';
 }
 
@@ -1268,7 +1192,7 @@ function viewEvidence() {
    ============================================================ */
 function viewMissions() {
   return '<div class="wrap"><section class="view" aria-labelledby="h-mh">' +
-    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>Missions</nav>' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/overview">Overview</a><span>/</span>Missions</nav>' +
     '<div class="section-head"><p class="eyebrow">Strategy</p><h2 id="h-mh" tabindex="-1">Missions</h2>' +
     '<p>Missions are the mechanism through which NZIAT turns national priorities into action. Each mission is a concrete, time-bound commitment to a consequential future-world problem, concentrating capital, capability and partnerships behind it until the mission is fulfilled, invalidated or superseded.</p></div>' +
     '<div class="missiongrid2">' +
@@ -1435,7 +1359,7 @@ function viewLeadership() {
     'Build a culture where curiosity is disciplined, dissent is recorded and evidence can change the answer.'
   ];
   return '<div class="wrap"><section class="view" aria-labelledby="h-lead">' +
-    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>Leadership approach</nav>' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/overview">Overview</a><span>/</span>Leadership approach</nav>' +
     '<div class="section-head"><p class="eyebrow">How the institution would be led</p><h2 id="h-lead" tabindex="-1">Leadership: ambitious, evidence-led and institutionally grounded</h2>' +
     '<p>The first Chief Executive must build the institution while it is already moving. The leadership task is to create coherence across actors that do not naturally share incentives or time horizons, then turn that coherence into better choices, disciplined capital and visible national value.</p></div>' +
     '<ul>' + points.map(p => '<li>' + esc(p) + '</li>').join('') + '</ul>' +
@@ -1450,7 +1374,7 @@ function viewLeadership() {
    ============================================================ */
 function viewGlossary() {
   return '<div class="wrap"><section class="view" aria-labelledby="h-gloss">' +
-    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/">Overview</a><span>/</span>Glossary</nav>' +
+    '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/overview">Overview</a><span>/</span>Glossary</nav>' +
     '<div class="section-head"><p class="eyebrow">Definitions</p><h2 id="h-gloss" tabindex="-1">Glossary</h2>' +
     '<p>Terms used consistently across the operating model, defined once here.</p></div>' +
     '<div class="tablewrap"><table><caption>Glossary of operating-model terms</caption><thead><tr><th scope="col">Term</th><th scope="col">Definition</th></tr></thead><tbody>' +
@@ -1465,7 +1389,7 @@ function viewGlossary() {
 function viewNotFound() {
   return '<div class="wrap"><section class="view" aria-labelledby="h-404">' +
     '<div class="section-head"><p class="eyebrow">Not found</p><h2 id="h-404">That page does not exist</h2><p>The link may be out of date.</p></div>' +
-    '<p><a class="btn" href="#/">Back to overview</a></p>' +
+    '<p><a class="btn" href="#/overview">Back to overview</a></p>' +
   '</section></div>';
 }
 
@@ -1475,7 +1399,7 @@ function viewNotFound() {
 function parseHash() {
   const h = (location.hash || '#/').replace(/^#/, '');
   const parts = h.split('/').filter(Boolean);
-  if (!parts.length) return { name: 'home' };
+  if (!parts.length) return { name: 'vision' };
   if (parts[0] === 's' && parts[1]) return { name: 'section', id: parts[1] };
   if (parts[0] === 'c' && parts[1]) return { name: 'component', id: parts[1] };
   if (parts[0] === 'all') return { name: 'all' };
@@ -1484,9 +1408,10 @@ function parseHash() {
   if (parts[0] === 'leadership') return { name: 'leadership' };
   if (parts[0] === 'glossary') return { name: 'glossary' };
   if (parts[0] === 'vision') return { name: 'vision' };
+  if (parts[0] === 'overview') return { name: 'overview' };
   if (parts[0] === 'achieve') return { name: 'achieve' };
   if (parts[0] === 'first100days') return { name: 'first100days' };
-  return { name: 'home' };
+  return { name: 'vision' };
 }
 
 function render() {
@@ -1508,10 +1433,11 @@ function render() {
     case 'missions': html = viewMissions(); label = 'Missions'; navKeys = ['/missions']; break;
     case 'leadership': html = viewLeadership(); label = 'Leadership approach'; navKeys = ['/leadership']; break;
     case 'glossary': html = viewGlossary(); label = 'Glossary'; navKeys = ['__glossary']; break;
-    case 'vision': html = viewVisionPage(); label = 'My Vision for NZIAT'; navKeys = ['/vision']; break;
+    case 'overview': html = viewHome(); label = 'Overview'; navKeys = ['/overview']; break;
     case 'achieve': html = viewAchievePage(); label = 'What can NZIAT Achieve'; navKeys = ['/achieve']; break;
     case 'first100days': html = viewFirst100DaysPage(); label = 'First 100 Days'; navKeys = ['/first100days']; break;
-    default: html = viewHome(); label = 'Overview'; navKeys = ['/'];
+    case 'vision':
+    default: html = viewVisionPage(); label = 'My Vision for NZIAT'; navKeys = ['/'];
   }
 
   root.innerHTML = html;

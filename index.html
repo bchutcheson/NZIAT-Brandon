@@ -144,9 +144,6 @@ main{padding-bottom:4rem;}
 .f100-outcome{background:var(--tint);border-radius:var(--r-m);padding:1.1rem 1.4rem;margin:1.3rem 0 0;}
 .f100-outcome .lbl{font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);margin:0 0 .5rem;}
 .f100-outcome p{font-family:var(--display);font-weight:700;font-size:1.04rem;line-height:1.42;color:var(--navy);margin:0;}
-.f100-tests{margin:1.3rem 0 0;}
-.f100-tests .lbl{font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);margin:0 0 .6rem;}
-.f100-tests .testlist{margin:0;}
 @media (max-width:760px){
   .f100-priority{grid-template-columns:1fr;gap:.5rem;}
   .f100-roadmap-stage .sub{display:none;}
@@ -372,7 +369,6 @@ svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
         <li><a href="#/all" data-route="__all">All frameworks (searchable index)</a></li>
       </ul>
       <ul>
-        <li><a href="#/evidence" data-route="__evidence">Evidence, assumptions and design choices</a></li>
         <li><a href="#/glossary" data-route="__glossary">Glossary</a></li>
       </ul>
     </nav>
@@ -428,7 +424,7 @@ const COMPONENTS = [
   },
   { id:'first100', title:'The first 100 days', owner:'Chief Executive',
     status:'proposed', doc:'NZIAT first-year implementation plan (summary)', site:null, evidence:false,
-    sub:'The incoming Chief Executive inherits commitments and a clock already running. The first phase begins with truth about the starting position, not a blank-sheet strategy process.',
+    sub:'This is what I’m proposing the first 100 days looks like.',
     purpose:'The first 100 days should establish a trusted mandate, an authoritative capital and capability baseline, a Board-approved decision system and enough visible movement to prove pace. The objective is not to arrive with every answer. It is to make the first consequential decisions well and create confidence that the institution can learn, choose and act.',
     diagram:'first100',
     extra:'<div class="tablewrap"><table><caption>Four phases, including pre-day-one transition</caption><thead><tr><th scope="col">Phase</th><th scope="col">Leadership focus</th><th scope="col">Concrete outputs</th></tr></thead><tbody>' +
@@ -930,6 +926,9 @@ function statusLegend() {
     '<span>Every page states which of these applies. None should be read as approved unless it says “requires Board decision” and the Board has since approved it.</span>' +
   '</div>';
 }
+function disclosureBanner() {
+  return '<div class="note">This is reference information I built to help understand NZIAT’s future operating model and to establish my understanding of what the NZIAT operating framework would look like. <strong>Disclosure:</strong> it may contain errors.</div>';
+}
 
 /* ============================================================
    VIEW: HOME
@@ -957,6 +956,7 @@ function viewHome() {
     '</div>' +
   '</div></section>' +
   '<div class="wrap">' +
+    disclosureBanner() +
     '<p><strong>The real product of NZIAT is decision quality.</strong> Good decisions compound: they attract stronger people, concentrate capital behind better opportunities, create credible partnerships and make difficult stop or scale decisions possible.</p>' +
 
     '<section class="view" aria-labelledby="h-flow">' +
@@ -978,12 +978,11 @@ function viewHome() {
 
     '<section class="view" aria-labelledby="h-routes">' +
       '<div class="section-head"><p class="eyebrow">Further information</p><h2 id="h-routes">Further detail on the operating model</h2>' +
-      '<p>Additional detail on purpose, strategy, capital allocation and organisation is set out below, together with the evidence and assumptions underlying the model.</p></div>' +
+      '<p>Additional detail on purpose, strategy, capital allocation and organisation is set out below.</p></div>' +
       '<div class="routegrid">' +
         '<div class="route"><p class="rt">Purpose and mandate</p><p>The rationale for NZIAT and the outcomes it is intended to achieve.</p><a href="#/c/vision">View purpose and mandate &rarr;</a></div>' +
         '<div class="route"><p class="rt">Strategy and missions</p><p>How national priorities are translated into missions and delivery.</p><a href="#/s/strategy">View strategy &rarr;</a></div>' +
         '<div class="route"><p class="rt">Full framework index</p><p>All operating frameworks, searchable by area.</p><a href="#/all">View framework index &rarr;</a></div>' +
-        '<div class="route"><p class="rt">Evidence and assumptions</p><p>The evidence base and planning assumptions underlying the model.</p><a href="#/evidence">View evidence &rarr;</a></div>' +
       '</div>' +
     '</section>' +
 
@@ -1061,6 +1060,7 @@ function viewSection(sectionId) {
   return '<div class="wrap"><section class="view" aria-labelledby="sec-title">' +
     '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/overview">Overview</a><span>/</span>' + esc(sec.name) + '</nav>' +
     '<div class="section-head"><p class="eyebrow">NZIAT operating model</p><h2 id="sec-title">' + esc(sec.name) + '</h2><p>' + esc(sec.blurb) + '</p></div>' +
+    disclosureBanner() +
     (SECTION_EXTRA[sectionId] || '') +
   '</section></div>';
 }
@@ -1077,7 +1077,7 @@ function viewComponent(id) {
   const prev = idx > 0 ? COMPONENT_BY_ID[FLAT_ORDER[idx - 1]] : null;
   const next = idx < FLAT_ORDER.length - 1 ? COMPONENT_BY_ID[FLAT_ORDER[idx + 1]] : null;
 
-  const evidenceLink = c.evidence ? '<p class="evidlink"><a href="#/evidence">See the published evidence behind this framework &rarr;</a></p>' : '';
+  const evidenceLink = '';
   const siteBlock = c.site
     ? '<a class="btn" href="' + c.site + '">View the detailed framework &rarr;</a><p class="hint">Sets out the full detail of this framework, including delegations, criteria and process.</p>'
     : '';
@@ -1095,6 +1095,7 @@ function viewComponent(id) {
           '<span class="owner">Owner: ' + esc(c.owner) + '</span><span class="owner">Source: ' + esc(c.doc) + '</span><span class="owner">Working draft updated 6 August 2026</span>' +
         '</div>') +
     '</div>' +
+    (id === 'investment' ? disclosureBanner() : '') +
     '<div class="detail-body">' +
       '<div>' +
         '<h3>1. Purpose</h3><p>' + esc(c.purpose) + '</p>' +
@@ -1130,6 +1131,7 @@ function viewAll() {
     '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/overview">Overview</a><span>/</span>All frameworks</nav>' +
     '<div class="section-head"><p class="eyebrow">Framework index</p><h2 id="h-all">All operating frameworks</h2>' +
     '<p>A complete list of the frameworks that make up the NZIAT operating model, searchable by operating area.</p></div>' +
+    disclosureBanner() +
     '<div class="toolbar">' +
       '<div class="filters" role="group" aria-label="Filter by domain">' +
         '<button class="filter" type="button" data-domain="all" aria-pressed="true">All areas</button>' +
@@ -1209,6 +1211,7 @@ function viewMissions() {
     '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/overview">Overview</a><span>/</span>Missions</nav>' +
     '<div class="section-head"><p class="eyebrow">Strategy</p><h2 id="h-mh" tabindex="-1">Candidate Missions</h2>' +
     '<p>A candidate mission is a potential mission being evaluated against the mission selection tests, before Board commitment. Once the Board commits, a mission becomes the mechanism through which NZIAT turns national priorities into action: a concrete, time-bound commitment to a consequential future-world problem, concentrating capital, capability and partnerships behind it until the mission is fulfilled, invalidated or superseded. The three candidate missions below illustrate the level and type of ambition NZIAT could pursue; they are not predetermined investment decisions.</p></div>' +
+    disclosureBanner() +
     '<div class="missiongrid2">' +
     MISSIONS_SIMPLE.map(function (m) {
       return '<article class="missionbox">' +
@@ -1237,6 +1240,10 @@ function viewVisionPage() {
         '<p class="vision-lead">Secure New Zealand’s place on the new economic frontier through a small number of ambitious missions.</p>' +
         '<hr class="vision-divider">' +
         '<p class="vision-body">These missions would pursue frontier opportunities beyond the reach of conventional funding and create the pathways through which uncertain science can become lasting national capability, future industries and economic value.</p>' +
+        '<div class="vision-callout">' +
+          '<p class="vc-lead">In doing so, NZIAT would rekindle ambition across the research system</p>' +
+          '<p>encouraging researchers to pursue more consequential goals while attracting a broader mix of scientists, technologists, entrepreneurs and unconventional problem-solvers.</p>' +
+        '</div>' +
       '</div>' +
       '<div class="vision-missions">' +
         '<p class="eyebrow">Proposed mission portfolio</p>' +
@@ -1251,10 +1258,6 @@ function viewVisionPage() {
           }).join('') +
         '</div>' +
       '</div>' +
-    '</div>' +
-    '<div class="vision-callout">' +
-      '<p class="vc-lead">In doing so, NZIAT would rekindle ambition across the research system</p>' +
-      '<p>encouraging researchers to pursue more consequential goals while attracting a broader mix of scientists, technologists, entrepreneurs and unconventional problem-solvers.</p>' +
     '</div>' +
   '</section></div>';
 }
@@ -1304,13 +1307,6 @@ const F100_ROADMAP = [
   ['02', 'Choose & Commit', 'Days 30–60'],
   ['03', 'Activate', 'Days 60–100']
 ];
-const F100_MISSION_TESTS = [
-  'Is the challenge important enough?',
-  'Is there genuine technical uncertainty?',
-  'Does New Zealand have a credible right to play?',
-  'Could New Zealand build capability that becomes difficult to replace?',
-  'Is NZIAT genuinely needed?'
-];
 const F100_PHASES = [
   {
     label: 'Days 1–30 · Understand',
@@ -1330,7 +1326,6 @@ const F100_PHASES = [
       ['Assess leadership capability', 'Confirm the critical leadership capabilities needed around the CEO, identify genuine gaps and begin recruitment where required.'],
       ['Evaluate and commit the initial mission portfolio', 'Evaluate candidate missions against the mission selection tests, then take a recommended mission portfolio to the Board for challenge and commitment by approximately Day 60.']
     ],
-    tests: F100_MISSION_TESTS,
     outcome: 'A Board-aligned operating model, investment philosophy, leadership architecture and committed initial mission portfolio.'
   },
   {
@@ -1362,7 +1357,6 @@ function viewFirst100DaysPage() {
             '<p class="f100-priority-body">' + p[1] + '</p>' +
           '</div>';
         }).join('') +
-        (ph.tests ? '<div class="f100-tests"><p class="lbl">Mission selection tests</p><ul class="testlist">' + ph.tests.map(function (t) { return '<li>' + t + '</li>'; }).join('') + '</ul></div>' : '') +
         '<div class="f100-outcome"><p class="lbl">By the end of this phase</p><p>' + ph.outcome + '</p></div>' +
       '</div>';
     }).join('') +
@@ -1385,6 +1379,7 @@ function viewLeadership() {
     '<nav class="crumbs" aria-label="Breadcrumb"><a href="#/overview">Overview</a><span>/</span>Leadership approach</nav>' +
     '<div class="section-head"><p class="eyebrow">How the institution would be led</p><h2 id="h-lead" tabindex="-1">Leadership: ambitious, evidence-led and institutionally grounded</h2>' +
     '<p>The first Chief Executive must build the institution while it is already moving. The leadership task is to create coherence across actors that do not naturally share incentives or time horizons, then turn that coherence into better choices, disciplined capital and visible national value.</p></div>' +
+    disclosureBanner() +
     '<ul>' + points.map(p => '<li>' + esc(p) + '</li>').join('') + '</ul>' +
     '<p><strong>Opportunity Discovery is curiosity with discipline.</strong> Its purpose is learning before funding, and a valid outcome is deciding not to proceed.</p>' +
     '<p><strong>Missions are national commitments, not large projects.</strong> They should end when their purpose is fulfilled, invalidated or superseded, not become permanent organisational territories.</p>' +
@@ -1426,7 +1421,6 @@ function parseHash() {
   if (parts[0] === 's' && parts[1]) return { name: 'section', id: parts[1] };
   if (parts[0] === 'c' && parts[1]) return { name: 'component', id: parts[1] };
   if (parts[0] === 'all') return { name: 'all' };
-  if (parts[0] === 'evidence') return { name: 'evidence' };
   if (parts[0] === 'missions') return { name: 'missions' };
   if (parts[0] === 'leadership') return { name: 'leadership' };
   if (parts[0] === 'glossary') return { name: 'glossary' };
@@ -1452,7 +1446,6 @@ function render() {
       navKeys = c ? ['/s/' + META[c.id].section.id, '/c/' + c.id] : ['/']; break;
     }
     case 'all': html = viewAll(); label = 'All frameworks'; navKeys = ['__all']; break;
-    case 'evidence': html = viewEvidence(); label = 'Evidence, assumptions and design choices'; navKeys = ['__evidence']; break;
     case 'missions': html = viewMissions(); label = 'Missions'; navKeys = ['/missions']; break;
     case 'leadership': html = viewLeadership(); label = 'Leadership approach'; navKeys = ['/leadership']; break;
     case 'glossary': html = viewGlossary(); label = 'Glossary'; navKeys = ['__glossary']; break;

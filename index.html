@@ -75,7 +75,13 @@ nav.primary .nav-group-core li{border-bottom-color:#0A2A33;}
 nav.primary .nav-group-core a{padding:.5rem 1.35rem;}
 nav.primary .nav-group-core a:hover{background:#052731;}
 nav.primary .nav-group-core a[aria-current="page"]{background:#052731;}
-nav.primary .nav-group-core li.nav-group-title{font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#70BDD5;padding:.9rem 1.35rem .5rem;}
+nav.primary .nav-group-core li.nav-group-title{padding:0;border-bottom:none;}
+nav.primary .nav-group-toggle{display:flex;align-items:center;justify-content:space-between;gap:.6rem;width:100%;background:none;border:none;cursor:pointer;font:inherit;font-family:var(--display);font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#70BDD5;padding:.9rem 1.35rem;}
+nav.primary .nav-group-toggle:hover{color:#fff;}
+nav.primary .nav-group-chevron{flex:0 0 auto;transition:transform .15s ease;}
+nav.primary .nav-group-toggle[aria-expanded="true"] .nav-group-chevron{transform:rotate(180deg);}
+nav.primary .nav-group-core.collapsed{padding-bottom:0;}
+nav.primary .nav-group-core.collapsed li:not(.nav-group-title){display:none;}
 @media (max-width:880px){
   .app-shell{flex-direction:column;}
   .sidebar{width:100%;flex:0 0 auto;}
@@ -357,8 +363,13 @@ svg .cap{font-size:10.5px;fill:var(--muted);font-style:italic;}
         <li><a href="#/achieve" data-route="/achieve">What can NZIAT Achieve</a></li>
         <li><a href="#/first100days" data-route="/first100days">First 100 days</a></li>
       </ul>
-      <ul class="nav-group-core">
-        <li class="nav-group-title">Supporting information</li>
+      <ul class="nav-group-core collapsed" id="supportingNav">
+        <li class="nav-group-title">
+          <button class="nav-group-toggle" type="button" aria-expanded="false" aria-controls="supportingNav">
+            <span>Supporting information</span>
+            <svg class="nav-group-chevron" aria-hidden="true" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </li>
         <li><a href="#/overview" data-route="/overview">Overview</a></li>
         <li><a href="#/s/strategy" data-route="/s/strategy">Strategy</a></li>
         <li><a href="#/missions" data-route="/missions">Missions</a></li>
@@ -1462,6 +1473,13 @@ function render() {
     if (navKeys.indexOf(a.getAttribute('data-route')) !== -1) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
   });
 
+  const supportingNav = $('#supportingNav');
+  if (supportingNav && supportingNav.querySelector('a[aria-current="page"]')) {
+    supportingNav.classList.remove('collapsed');
+    const toggle = $('.nav-group-toggle', supportingNav);
+    if (toggle) toggle.setAttribute('aria-expanded', 'true');
+  }
+
   if (route.name === 'all') {
     renderCards();
     $$('.filter').forEach(function (b) {
@@ -1487,6 +1505,15 @@ function render() {
    ============================================================ */
 (function init() {
   window.addEventListener('hashchange', render);
+  const supportingToggle = $('.nav-group-toggle');
+  if (supportingToggle) {
+    supportingToggle.addEventListener('click', function () {
+      const group = $('#supportingNav');
+      const expanded = supportingToggle.getAttribute('aria-expanded') === 'true';
+      supportingToggle.setAttribute('aria-expanded', String(!expanded));
+      group.classList.toggle('collapsed', expanded);
+    });
+  }
   render();
 })();
 </script>

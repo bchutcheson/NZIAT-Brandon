@@ -235,9 +235,6 @@ main{padding-bottom:4rem;}
 ol.contents{list-style:none;padding:0;counter-reset:c;}
 ol.contents li{counter-increment:c;position:relative;padding-left:2rem;margin-bottom:.5rem;}
 ol.contents li::before{content:counter(c,decimal-leading-zero);position:absolute;left:0;top:.1rem;font-family:var(--display);font-weight:700;font-size:.8rem;color:var(--teal-d);letter-spacing:.05em;}
-.testlist{list-style:none;padding:0;}
-.testlist li{position:relative;padding-left:1.6rem;margin-bottom:.6rem;}
-.testlist li::before{content:"?";position:absolute;left:0;top:-.05rem;font-family:var(--display);font-weight:700;color:var(--gold);}
 .evidlink{font-size:.85rem;display:inline-block;margin:.2rem 0 1rem;}
 .pagernav{display:flex;justify-content:space-between;gap:1rem;margin-top:2.2rem;padding-top:1.2rem;border-top:1px solid var(--line);flex-wrap:wrap;}
 .pagernav a{text-decoration:none;font-size:.88rem;max-width:32%;}
@@ -431,7 +428,6 @@ const COMPONENTS = [
     ],
     figures:[['$231m','First mandate, four years'],['100 days','To an authoritative baseline'],['\u22644','Candidate missions under evaluation']],
     decisions:['The distinction between an active system orchestrator and a broad grant programme depends on ongoing Board oversight rather than being fixed at the outset.','Success by year four would be measured through evidence of conversion: concentrated investment in credible priorities, a trusted decision-making system, private co-investment secured, and value retained in New Zealand, rather than through levels of funded activity.','$231m is the size of the first mandate over four years, not a figure to be divided by four; annual discretionary capacity depends on an inherited-commitments baseline still to be established.'],
-    test:['Is the mandate concentrated enough, or does it still read as a technology list?','What would falsify this vision within two years, and who is watching for it?']
   },
   { id:'first100', title:'The first 100 days', owner:'Chief Executive',
     status:'proposed', doc:'NZIAT first-year implementation plan (summary)', site:null, evidence:false,
@@ -457,7 +453,6 @@ const COMPONENTS = [
     ],
     figures:[['100','Days to a Board decision point'],['1 wk','To a no-surprises cadence'],['4','Phases, including pre-day-one transition']],
     decisions:['No irreversible commitment is made before the Board has approved the decision system.','M\u0101ori partnership is engaged as structural to investment design from day one, not as late consultation.','The inherited-capital register, not an assumed even split of $231m across four years, is the starting point for any statement about discretionary capacity.'],
-    test:['Does the 100-day sequence commit anything irreversible before the decision system is Board-approved?','Is the stakeholder order, Board and inheritance first, the sequence the Board itself would choose?']
   },
   { id:'opplan', title:'Year-one operational plan', owner:'Chief Executive',
     status:'proposed', doc:'Chief Executive\u2019s Operational Plan', site:null, evidence:true,
@@ -472,7 +467,6 @@ const COMPONENTS = [
     ],
     figures:[['4','Quarters of accountable milestones'],['8','Recommended changes to the original proposition'],['12\u201315%','Central opex discipline']],
     decisions:['Eight specific changes to the original proposition are recommended, including two-to-three empowered Mission Directors in place of five functional directorates.','The first consequential evidence-based portfolio decision, whether to scale, reshape, reallocate or stop, is an important demonstration that NZIAT is actively managing capital.'],
-    test:['Which of the eight recommended changes to the original proposition does the Board still need to test?','Is the opex ceiling realistic once mission-team delivery costs are counted in?']
   },
   { id:'missiondev', title:'Mission Development Framework', owner:'Chief Executive',
     status:'proposed', doc:'Mission Development Framework', site:null, evidence:true,
@@ -488,7 +482,6 @@ const COMPONENTS = [
     ],
     figures:[['5','Mission selection tests'],['Days 30\u201360','Principal mission-selection window'],['\u226415pp','Mission case length']],
     decisions:['Once the Board-approved mission portfolio limit has been reached, adding another mission would require closing an existing mission or explicitly increasing the portfolio envelope.','A mission can still be reshaped or concluded if its strategic rationale fundamentally disappears, but individual mission hypotheses failing beneath it should not cause constant mission churn.'],
-    test:['Would adding a mission beyond the Board-approved portfolio limit be resisted, or quietly absorbed as scope creep?','Has any candidate mission actually been declined, or only ever approved with conditions?']
   },
   { id:'discovery', title:'Opportunity Discovery Framework', owner:'Chief Investment Officer',
     status:'proposed', doc:'Opportunity Discovery Framework', site:null, evidence:true,
@@ -503,7 +496,6 @@ const COMPONENTS = [
     ],
     figures:[['10','Origination channels'],['15 days','Substantive response standard'],['$250k','Seed award ceiling']],
     decisions:['Institutional affiliation is not a proxy for quality and is not a precondition for funding.','Coverage is measured by channel, performer concentration and non-traditional participation, not by application volume.'],
-    test:['Which of the ten channels is least developed at present, and who is accountable for improving it?','Does the 15-working-day response standard hold once the pipeline is operating at scale?']
   },
   { id:'investment', title:'Investment Operating Framework', owner:'Chief Investment Officer',
     status:'proposed', doc:'Investment Operating Framework', site:null, evidence:true,
@@ -520,7 +512,6 @@ const COMPONENTS = [
     ],
     figures:[['7','Lifecycle stages'],['5','Gates, G0 to G4'],['6 wks','Seed decision standard'],['16 wks','Programme diligence standard']],
     decisions:['Delegations: Mission Directors to $500k, the Investment Committee to $5m, the Board above that and for all equity.','An investment is not ready for commitment until clear conditions for stopping it have been defined.'],
-    test:['Are the $500k and $5m delegation thresholds right for a fund of this size?','Has a gate produced a stop in practice, or only continues and reshapes?']
   },
   { id:'portfolio', title:'Portfolio Management Framework', owner:'Chief Investment Officer',
     status:'proposed', doc:'Portfolio Management Framework', site:null, evidence:true,
@@ -535,7 +526,6 @@ const COMPONENTS = [
     ],
     figures:[['4','Oversight tiers'],['6','Concentration limits'],['Majority','Of discretionary capital concentrated behind missions'],['5%','Intervention reserve']],
     decisions:['Seeds are cohort-managed and reported in aggregate; the cohort, not the individual seed, is the unit of management.','No single mission may exceed 40% of uncommitted capital in an allocation round without Board approval.'],
-    test:['Are the six concentration limits tight enough to prevent one mission or performer dominating the portfolio?','Is aggregate cohort reporting on seeds giving the Board enough visibility, or too little?']
   },
   { id:'programme', title:'Programme Management Framework', owner:'Chief Executive',
     status:'proposed', doc:'Programme Management Framework', site:null, evidence:true,
@@ -550,7 +540,6 @@ const COMPONENTS = [
     ],
     figures:[['2\u20134','Programmes per mission'],['2\u20135 yrs','Typical programme life'],['30 days','Closure record deadline']],
     decisions:['A collection of separately negotiated grants sharing a topic is not a programme; that distinction is what stops agencies quietly reverting to grant administration.','Every closure, successful or not, produces a written record feeding the annual decision-quality review.'],
-    test:['Do programme teams treat reshaping as a legitimate outcome, or as a disguised failure?','Are closure records actually being written within 30 days, in practice?']
   },
   { id:'commercialisation', title:'Commercialisation Framework', owner:'Commercialisation & Partnerships lead',
     status:'proposed', doc:'Commercialisation Framework', site:null, evidence:false, legal:true,
@@ -567,7 +556,6 @@ const COMPONENTS = [
     ],
     figures:[['6','Exit pathways'],['3 yrs','Minimum post-exit tracking']],
     decisions:['Venture creation is one route among six, not the definition of success.','IP default positions favour performer ownership with onshore anchoring and rights to reclaim unused intellectual property (march-in rights); this is a negotiating posture, not settled policy.'],
-    test:['Are the IP default positions realistic once multiple institutions collaborate on one programme?','Is venture creation being treated as the definition of commercial success, contrary to the framework\u2019s intent?']
   },
   { id:'org', title:'Organisation, roles and remuneration', owner:'Chief Executive',
     status:'board-decision', doc:'Organisation charts, roster and position descriptions', site:null, evidence:false,
@@ -595,7 +583,6 @@ const COMPONENTS = [
     ],
     figures:[['8','Phase 1 executive roles'],['2\u20133','Mission Directors to start, scaled only as the Board approves'],['44','Upper-scenario FTE, an assumption to test, not a commitment']],
     decisions:['44 FTE is not displayed as the default day-one organisation; it is kept in the assumptions register as an upper scenario, tested against portfolio volume and evidence as missions are validated.','Crown Operations &amp; Governance is an early critical hire, not a later addition; select-committee readiness and no-surprises discipline reduce the incoming Chief Executive\u2019s appointment risk from day one.','Chief executive remuneration is subject to Public Service Commission consultation, not management discretion.'],
-    test:['Does the Phase 1 core give an incoming Chief Executive enough Crown-operations and investment capability without over-hiring ahead of evidence?','Is scaling Mission Director capacity only on Board confirmation the right gate, or should capacity be built ahead of validated missions?']
   },
   { id:'missiondirector', title:'Mission Director Operating Framework', owner:'Chief Executive',
     status:'proposed', doc:'Mission Director Operating Framework', site:null, evidence:true,
@@ -611,7 +598,6 @@ const COMPONENTS = [
     ],
     figures:[['3\u20134 yrs','Fixed term'],['$500k','Independent commitment authority'],['15%','Annual reallocation']],
     decisions:['A mission with no stops or significant reshapes over time should trigger challenge as to whether the portfolio is being managed actively enough.','Authority is delegated to Mission Directors within clear limits, and every decision is visible to the next level of oversight within a single reporting cycle.'],
-    test:['Is a three-to-four-year fixed term long enough to see a mission\u2019s founding thesis through, or too short?','Does \u201Ca mission with no stops or reshapes should trigger challenge\u201D actually get applied in practice, or only stated as principle?']
   },
   { id:'inheritedCommitments', title:'Inherited commitments baseline', owner:'Chief Investment Officer',
     status:'proposed', doc:'Inherited commitments baseline (working summary)', site:null, evidence:false,
@@ -631,7 +617,6 @@ const COMPONENTS = [
       '<ul>' + ['Discovery seeds','Challenge contracts','Grants','Commissioned research','Co-investment','Fellowships / secondments','Infrastructure / platform commitments','Equity or convertible instruments (subject to mandate and legal authority)'].map(x => '<li>' + x + '</li>').join('') + '</ul>',
     figures:[['5','Baseline categories'],['30 days','Target to first draft register']],
     decisions:['No figure for \u201cproportion committed\u201d is published until the register is built from authoritative transition information, not public announcements.','The register, not an assumed even split of $231m across four years, is the basis for any statement about discretionary capacity.'],
-    test:['Has the inherited-commitments register actually been built from authoritative sources, or is it still an assumption?','What proportion of the mandate turns out to be genuinely discretionary once the register is complete?']
   },
   { id:'aiIntelligence', title:'AI-enhanced investment intelligence', owner:'Chief Investment Officer',
     status:'proposed', doc:'AI-enhanced investment intelligence (working summary)', site:null, evidence:false,
@@ -649,7 +634,6 @@ const COMPONENTS = [
     extra:'<p><strong>AI-enhanced, not AI-decided.</strong> Intelligent agents continuously scan the global research and market environment, identify possible duplication and flag when the assumptions behind an investment have changed, giving experts and Mission Directors better evidence at each gate. The accountable decision remains human, documented and visible to the Board.</p>',
     figures:[['0','Autonomous funding decisions, by design'],['7','Capability areas']],
     decisions:['No automated recommendation becomes a funding decision without named accountable human judgement.','Sources, model version, prompts or rules, uncertainty and the human decision are all preserved for audit.'],
-    test:['Is the boundary between AI-enhanced decision support and automated allocation actually enforced in practice, or only stated as principle?','Are the fairness, confidentiality and M\u0101ori data-interest safeguards sufficient once this operates at the scale of a full portfolio?']
   }
 ];
 
@@ -1114,9 +1098,8 @@ function viewComponent(id) {
         (c.extra || '') +
         '<h3>2. How it operates</h3><ul>' + c.how.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' +
         '<h3>3. Key decisions and thresholds</h3><ul>' + c.decisions.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' +
-        (id === 'investment' ? '' : '<h3>4. Considerations for the Board</h3><ul class="testlist">' + c.test.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>') +
         evidenceLink +
-        (siteBlock ? '<h3>5. Further detail</h3>' + siteBlock : '') +
+        (siteBlock ? '<h3>4. Further detail</h3>' + siteBlock : '') +
       '</div>' +
       '<aside class="side" aria-label="Component summary">' +
         (c.figures && c.figures.length ? '<div class="panel"><h4>Key figures</h4><ul class="figlist">' +
@@ -1163,7 +1146,7 @@ function renderCards() {
     const m = META[c.id];
     if (filterState.domain !== 'all' && m.domain.id !== filterState.domain) return false;
     if (!q) return true;
-    const hay = [c.title, c.sub, c.purpose, c.doc, c.owner, c.how.join(' '), c.decisions.join(' '), c.test.join(' ')].join(' ').toLowerCase();
+    const hay = [c.title, c.sub, c.purpose, c.doc, c.owner, c.how.join(' '), c.decisions.join(' ')].join(' ').toLowerCase();
     return hay.indexOf(q) !== -1;
   });
   grid.innerHTML = list.length ? list.map(function (c) {
